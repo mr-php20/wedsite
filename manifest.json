@@ -1,0 +1,10 @@
+{
+  "name": "Arivalan & Akshaya Wedding",
+  "short_name": "A & A Wedding",
+  "description": "Wedding invitation for Arivalan & Akshaya — 29 May 2026",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFF8F0",
+  "theme_color": "#800020",
+  "icons": []
+}

@@ -1,5 +1,6 @@
 /* =========================================
    ARIVALAN & AKSHAYA — WEDDING INVITATION
+   Enhanced with Tamil Cultural Motifs
    ========================================= */
 
 /* ---------- CSS CUSTOM PROPERTIES ---------- */
@@ -7,17 +8,19 @@
   --ivory: #FFF8F0;
   --gold: #C9A84C;
   --gold-light: #E8D8A0;
+  --gold-dark: #A0842A;
   --maroon: #800020;
   --maroon-dark: #5A0015;
   --pink-soft: #F5E6E0;
   --dark: #2C1810;
   --dark-muted: #5C4A3A;
   --white: #FFFFFF;
-  --overlay: rgba(44, 24, 16, 0.55);
+  --green-leaf: #4A7C5C;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-script: 'Great Vibes', cursive;
   --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-tamil: 'Noto Sans Tamil', sans-serif;
 
   --section-padding: clamp(3.5rem, 8vw, 7rem);
   --container-max: 900px;
@@ -57,7 +60,6 @@ a {
   text-decoration: none;
 }
 
-/* ---------- UTILITIES ---------- */
 .container {
   width: 90%;
   max-width: var(--container-max);
@@ -82,35 +84,51 @@ a {
   transform: translateY(0);
 }
 
-/* stagger children */
 .animate-on-scroll:nth-child(2) { transition-delay: 0.12s; }
 .animate-on-scroll:nth-child(3) { transition-delay: 0.24s; }
 .animate-on-scroll:nth-child(4) { transition-delay: 0.36s; }
 .animate-on-scroll:nth-child(5) { transition-delay: 0.48s; }
 
-/* ---------- ORNAMENT DIVIDER ---------- */
-.ornament-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin: 1.5rem 0;
+/* ---------- GOLD SHIMMER TEXT EFFECT ---------- */
+.shimmer-text {
+  background: linear-gradient(
+    120deg,
+    var(--maroon) 0%,
+    var(--maroon) 35%,
+    var(--gold) 50%,
+    var(--maroon) 65%,
+    var(--maroon) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s ease-in-out infinite;
 }
 
-.ornament-divider.small {
+@keyframes shimmer {
+  0%, 100% { background-position: 200% center; }
+  50%      { background-position: -200% center; }
+}
+
+/* ---------- KOLAM DIVIDER ---------- */
+.kolam-divider {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  color: var(--gold);
+}
+
+.kolam-divider.small {
   margin: 1rem 0;
 }
 
-.ornament-line {
-  display: inline-block;
-  width: 60px;
-  height: 1px;
-  background: var(--gold);
+.kolam-divider.tiny {
+  margin: 0.75rem 0;
 }
 
-.ornament-diamond {
-  color: var(--gold);
-  font-size: 0.6rem;
+.kolam-divider.dark {
+  color: var(--gold-light);
 }
 
 /* ---------- SECTION HEADER ---------- */
@@ -132,6 +150,65 @@ a {
 }
 
 /* ==========================================
+   LOADING SCREEN
+   ========================================== */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-content {
+  text-align: center;
+  position: relative;
+}
+
+.loading-vilakku {
+  color: var(--gold);
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%      { transform: scale(1.05); opacity: 1; }
+}
+
+.loading-flame-glow {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(201,168,76,0.5) 0%, transparent 70%);
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flameGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes flameGlow {
+  0%   { opacity: 0.4; transform: translateX(-50%) scale(0.8); }
+  100% { opacity: 0.8; transform: translateX(-50%) scale(1.2); }
+}
+
+.loading-text {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--maroon);
+  margin-top: 1.5rem;
+}
+
+/* ==========================================
    HERO SECTION
    ========================================== */
 .hero {
@@ -150,18 +227,47 @@ a {
   overflow: hidden;
 }
 
-.hero::before,
-.hero::after {
-  content: '';
+/* Gopuram art in hero */
+.hero-gopuram {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 1px solid var(--gold-light);
-  border-radius: 50%;
-  opacity: 0.25;
+  bottom: 0;
+  color: var(--gold-light);
+  opacity: 0.15;
+  z-index: 0;
 }
-.hero::before { top: -60px; left: -60px; width: 250px; height: 250px; }
-.hero::after  { bottom: -60px; right: -60px; width: 300px; height: 300px; }
+
+.hero-gopuram-left {
+  left: -20px;
+}
+
+.hero-gopuram-right {
+  right: -20px;
+  transform: scaleX(-1);
+}
+
+/* Floating kolam decorations */
+.hero-kolam {
+  position: absolute;
+  color: var(--gold-light);
+  opacity: 0.2;
+  animation: floatKolam 8s ease-in-out infinite;
+}
+
+.hero-kolam-1 {
+  top: 10%;
+  right: 8%;
+}
+
+.hero-kolam-2 {
+  bottom: 15%;
+  left: 5%;
+  animation-delay: -3s;
+}
+
+@keyframes floatKolam {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-15px) rotate(10deg); }
+}
 
 .hero-content {
   position: relative;
@@ -176,20 +282,21 @@ a {
 
 .hero-frame-inner {
   border: 1px solid var(--gold-light);
-  padding: clamp(2.5rem, 5vw, 5rem) clamp(2rem, 6vw, 6rem);
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(2.5rem, 7vw, 7rem);
   position: relative;
 }
 
-/* corner ornaments */
-.hero-frame-inner::before,
-.hero-frame-inner::after {
-  content: '✦';
+/* Corner paisley ornaments */
+.hero-paisley {
   position: absolute;
   color: var(--gold);
-  font-size: 0.75rem;
+  opacity: 0.35;
 }
-.hero-frame-inner::before { top: 8px; left: 12px; }
-.hero-frame-inner::after  { bottom: 8px; right: 12px; }
+
+.hero-paisley-tl { top: 6px; left: 6px; }
+.hero-paisley-tr { top: 6px; right: 6px; transform: scaleX(-1); }
+.hero-paisley-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+.hero-paisley-br { bottom: 6px; right: 6px; transform: scale(-1); }
 
 .hero-subtitle {
   font-family: var(--font-body);
@@ -205,7 +312,6 @@ a {
   font-family: var(--font-script);
   font-size: clamp(3rem, 6vw + 1rem, 5.5rem);
   font-weight: 400;
-  color: var(--maroon);
   line-height: 1.1;
 }
 
@@ -241,7 +347,7 @@ a {
   margin-top: 1.25rem;
 }
 
-/* scroll indicator */
+/* Scroll indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -278,12 +384,91 @@ a {
 }
 
 /* ==========================================
+   MANGO LEAF TORAN DIVIDER
+   ========================================== */
+.toran-divider {
+  position: relative;
+  height: 55px;
+  overflow: hidden;
+  background: var(--ivory);
+}
+
+.toran-string {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+
+.toran-leaves {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  top: 2px;
+}
+
+.toran-leaf-svg {
+  color: var(--green-leaf);
+  flex-shrink: 0;
+  animation: toranSway 3s ease-in-out infinite;
+}
+
+.toran-leaf-svg:nth-child(odd) {
+  animation-delay: -0.5s;
+}
+
+.toran-leaf-svg:nth-child(3n) {
+  animation-delay: -1s;
+}
+
+@keyframes toranSway {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(2deg); }
+  75%      { transform: rotate(-2deg); }
+}
+
+/* ==========================================
    INVOCATION SECTION
    ========================================== */
 .invocation {
   background: var(--white);
   padding-top: calc(var(--section-padding) * 1.2);
   padding-bottom: calc(var(--section-padding) * 1.2);
+}
+
+.invocation-lamps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.lamp-wrapper {
+  flex-shrink: 0;
+  color: var(--gold);
+  position: relative;
+  padding-top: 1rem;
+}
+
+.lamp-flame-glow {
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, rgba(201,168,76,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flameGlow 1.2s ease-in-out infinite alternate;
+}
+
+.invocation-text {
+  flex: 1;
+  max-width: 600px;
+  text-align: center;
 }
 
 .sanskrit {
@@ -326,9 +511,9 @@ a {
 
 .parents-separator {
   color: var(--gold);
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
   margin: 0.75rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .invite-label {
@@ -356,7 +541,6 @@ a {
   font-family: var(--font-script);
   font-size: clamp(2.5rem, 5vw + 0.5rem, 4rem);
   font-weight: 400;
-  color: var(--maroon);
   line-height: 1.2;
 }
 
@@ -460,11 +644,81 @@ a {
   flex-shrink: 0;
 }
 
+/* Embedded Google Map */
+.map-embed {
+  margin-top: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(44,24,16,0.08);
+}
+
+.map-embed iframe {
+  display: block;
+}
+
+/* ==========================================
+   THIRUKKURAL SECTION
+   ========================================== */
+.kural {
+  background: var(--white);
+  padding-top: calc(var(--section-padding) * 0.8);
+  padding-bottom: calc(var(--section-padding) * 0.8);
+}
+
+.kural-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--ivory);
+  border-radius: 16px;
+  border: 1px solid var(--gold-light);
+}
+
+.kural-lamp {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.kural-content {
+  text-align: center;
+  flex: 1;
+}
+
+.kural-tamil {
+  font-family: var(--font-tamil);
+  font-size: clamp(1rem, 1.3vw + 0.4rem, 1.3rem);
+  font-weight: 600;
+  color: var(--maroon);
+  line-height: 1.8;
+}
+
+.kural-meaning {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1vw + 0.3rem, 1.05rem);
+  font-style: italic;
+  color: var(--dark-muted);
+  line-height: 1.6;
+}
+
+.kural-source {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
 /* ==========================================
    COUPLE SECTION
    ========================================== */
 .couple {
-  background: var(--white);
+  background:
+    linear-gradient(180deg, var(--ivory) 0%, var(--pink-soft) 50%, var(--ivory) 100%);
 }
 
 .couple-section-content {
@@ -519,6 +773,66 @@ a {
   color: var(--dark-muted);
   margin-bottom: 1rem;
   font-size: clamp(0.95rem, 1vw + 0.35rem, 1.1rem);
+}
+
+/* ==========================================
+   PHOTO GALLERY
+   ========================================== */
+.gallery {
+  background: var(--white);
+}
+
+.gallery-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-top: 2rem;
+}
+
+.gallery-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.gallery-item {
+  flex: 0 0 clamp(200px, 40vw, 280px);
+  scroll-snap-align: center;
+}
+
+.gallery-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold-light);
+  transition: transform 0.3s ease;
+}
+
+.gallery-placeholder:hover {
+  transform: scale(1.02);
+}
+
+.gallery-placeholder span {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--dark-muted);
+  font-weight: 500;
+}
+
+.gallery-hint {
+  font-size: 0.85rem;
+  color: var(--dark-muted);
+  margin-top: 1rem;
+  font-style: italic;
+  opacity: 0.6;
 }
 
 /* ==========================================
@@ -642,17 +956,25 @@ a {
   margin: 1.25rem 0 1.5rem;
 }
 
+.instagram-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
 .instagram-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--white);
   background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
-  padding: 0.85rem 2rem;
+  padding: 0.75rem 1.75rem;
   border-radius: 50px;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 16px rgba(131,58,180,0.25);
@@ -676,14 +998,6 @@ a {
 }
 
 .countdown .section-title {
-  color: var(--gold-light);
-}
-
-.countdown .ornament-line {
-  background: var(--gold-light);
-}
-
-.countdown .ornament-diamond {
   color: var(--gold-light);
 }
 
@@ -732,15 +1046,43 @@ a {
   background: var(--dark);
   color: rgba(255,255,255,0.7);
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem 2rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
+}
+
+.footer-gopuram {
+  color: rgba(255,255,255,0.08);
+  margin-bottom: 1rem;
 }
 
 .footer-small {
   font-size: 0.8rem;
   margin-top: 0.35rem;
   color: rgba(255,255,255,0.4);
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  background: transparent;
+  border: 1px solid rgba(232,216,160,0.3);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.share-btn:hover {
+  border-color: var(--gold-light);
+  background: rgba(255,255,255,0.05);
 }
 
 /* ==========================================
@@ -792,12 +1134,43 @@ a {
     width: 35px;
   }
 
-  .ornament-line {
-    width: 40px;
-  }
-
   .couple-photos {
     gap: 1.5rem;
+  }
+
+  .hero-gopuram {
+    opacity: 0.1;
+  }
+
+  .hero-gopuram svg {
+    width: 120px;
+    height: auto;
+  }
+
+  .lamp-wrapper {
+    display: none;
+  }
+
+  .invocation-lamps {
+    display: block;
+  }
+
+  .kural-lamp {
+    display: none;
+  }
+
+  .kural-card {
+    display: block;
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .hero-paisley {
+    opacity: 0.2;
+  }
+
+  .hero-paisley svg {
+    width: 22px;
+    height: auto;
   }
 }
 
@@ -851,5 +1224,21 @@ a {
     right: 1rem;
     width: 42px;
     height: 42px;
+  }
+
+  .hero-gopuram {
+    display: none;
+  }
+
+  .hero-kolam {
+    display: none;
+  }
+
+  .toran-leaf-svg:nth-child(n+9) {
+    display: none;
+  }
+
+  .gallery-item {
+    flex: 0 0 75vw;
   }
 }

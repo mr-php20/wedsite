@@ -97,6 +97,257 @@
   /* ---------- SHARE BUTTON ---------- */
   var shareBtn = document.getElementById('shareBtn');
 
+  /* ---------- TRAVEL BY TRAIN ---------- */
+  var trainData = {
+    chennai: {
+      station: 'Chennai (MS / TBM)',
+      trains: [
+        { number: '16127', name: 'MS Guruvayur Express', dep: '11:07, May 28', arr: '21:10, May 28', duration: '~10h 03m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '12633', name: 'Kanyakumari Express', dep: '17:20, May 28', arr: '03:10, May 29', duration: '~9h 50m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '20605', name: 'MS TCN SF Express', dep: '16:00, May 28', arr: '04:10, May 29', duration: '~12h 10m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '12667', name: 'MS Cape SF Express', dep: '19:30, May 28', arr: '04:55, May 29', duration: '~9h 25m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '20635', name: 'Anantapuri Express', dep: '20:17, May 28', arr: '06:00, May 29', duration: '~9h 43m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '12631', name: 'Nellai SF Express', dep: '20:50, May 28', arr: '07:00, May 29', duration: '~10h 10m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '20683', name: 'TBM SCT SF Express', dep: '20:50, May 28', arr: '08:45, May 29', duration: '~11h 55m', frequency: 'Tue, Thu, Sun', board: 'Board May 28' },
+        { number: '20691', name: 'TBM-NCJ Antyodaya Express', dep: '22:40, May 28', arr: '10:50, May 29', duration: '~12h 10m', frequency: 'Thu', board: 'Board May 28' },
+        { number: '20627', name: 'Vande Bharat Express', dep: '05:00, May 28', arr: '12:38, May 28', duration: '~7h 38m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
+        { number: '20665', name: 'TEN Vande Bharat', dep: '15:10, May 28', arr: '23:00, May 28', duration: '~7h 50m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
+      ]
+    },
+    bengaluru: {
+      station: 'KSR Bengaluru (SMVB)',
+      trains: [
+        { number: '17235', name: 'Nagercoil Express', dep: '17:15, May 28', arr: '05:10, May 29', duration: '~11h 55m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '11021', name: 'Dadar TEN Express', dep: '21:20, May 28', arr: '10:40, May 29', duration: '~13h 20m', frequency: 'Thu', board: 'Board May 28' }
+      ]
+    },
+    coimbatore: {
+      station: 'Coimbatore Jn (CBE)',
+      trains: [
+        { number: '16322', name: 'CBE-NCJ Express', dep: '08:00, May 28', arr: '17:55, May 28', duration: '~9h 55m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '22668', name: 'CBE NCJ SF Express', dep: '19:30, May 28', arr: '02:55, May 29', duration: '~7h 25m', frequency: 'Daily', board: 'Board May 28' }
+      ]
+    },
+    madurai: {
+      station: 'Madurai Jn (MDU)',
+      trains: [
+        { number: '16731', name: 'PGT-TCN Express', dep: '11:00, May 28', arr: '13:40, May 28', duration: '~2h 40m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '16322', name: 'CBE-NCJ Express', dep: '14:30, May 28', arr: '17:55, May 28', duration: '~3h 25m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '16845', name: 'ED-SCT Express', dep: '18:00, May 28', arr: '20:25, May 28', duration: '~2h 25m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '16127', name: 'MS Guruvayur Express', dep: '18:45, May 28', arr: '21:10, May 28', duration: '~2h 25m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '17069', name: 'HYB Cape Express', dep: '22:00, May 28', arr: '00:20, May 29', duration: '~2h 20m', frequency: 'Thu', board: 'Board May 28' },
+        { number: '07230', name: 'HYB Cape Special', dep: '21:50, May 28', arr: '00:23, May 29', duration: '~2h 33m', frequency: 'Thu', board: 'Board May 28' },
+        { number: '16729', name: 'MDU Punalur Express', dep: '23:15, May 28', arr: '01:40, May 29', duration: '~2h 25m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '12667', name: 'MS Cape SF Express', dep: '02:35, May 29', arr: '04:55, May 29', duration: '~2h 20m', frequency: 'Daily', board: 'Board May 29' },
+        { number: '16707', name: 'MAJN TEN Express', dep: '04:20, May 29', arr: '07:45, May 29', duration: '~3h 25m', frequency: 'Daily', board: 'Board May 29' },
+        { number: '20627', name: 'Vande Bharat Express', dep: '10:40, May 28', arr: '12:38, May 28', duration: '~1h 58m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
+        { number: '20665', name: 'TEN Vande Bharat', dep: '20:50, May 28', arr: '23:00, May 28', duration: '~2h 10m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
+      ]
+    },
+    trichy: {
+      station: 'Tiruchirappalli Jn (TPJ)',
+      trains: [
+        { number: '22627', name: 'TPJ TVC SF Express', dep: '07:15, May 28', arr: '11:45, May 28', duration: '~4h 30m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '16127', name: 'MS Guruvayur Express', dep: '16:20, May 28', arr: '21:10, May 28', duration: '~4h 50m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '17069', name: 'HYB Cape Express', dep: '19:45, May 28', arr: '00:20, May 29', duration: '~4h 35m', frequency: 'Thu', board: 'Board May 28' },
+        { number: '07230', name: 'HYB Cape Special', dep: '19:15, May 28', arr: '00:23, May 29', duration: '~5h 08m', frequency: 'Thu', board: 'Board May 28' },
+        { number: '12633', name: 'Kanyakumari Express', dep: '22:30, May 28', arr: '03:10, May 29', duration: '~4h 40m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '20605', name: 'MS TCN SF Express', dep: '23:50, May 28', arr: '04:10, May 29', duration: '~4h 20m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '12667', name: 'MS Cape SF Express', dep: '00:30, May 29', arr: '04:55, May 29', duration: '~4h 25m', frequency: 'Daily', board: 'Board May 29' },
+        { number: '20627', name: 'Vande Bharat Express', dep: '09:00, May 28', arr: '12:38, May 28', duration: '~3h 38m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
+        { number: '20665', name: 'TEN Vande Bharat', dep: '19:05, May 28', arr: '23:00, May 28', duration: '~3h 55m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
+      ]
+    },
+    thiruthuraipoondi: {
+      station: 'Thiruthuraipoondi (TTP)',
+      trains: [
+        { number: '20683', name: 'TBM SCT SF Express', dep: '02:28, May 28', arr: '08:45, May 28', duration: '~6h 17m', frequency: 'Tue, Thu, Sun', board: 'Board May 28 (Thu)' }
+      ]
+    }
+  };
+
+  var citySelector = document.getElementById('citySelector');
+  var trainList = document.getElementById('trainList');
+  var trainListWrap = document.getElementById('trainListWrap');
+  var trainListFade = document.getElementById('trainListFade');
+  var showMoreBtn = document.getElementById('showMoreBtn');
+  var trainControls = document.getElementById('trainControls');
+  var filterDaily = document.getElementById('filterDaily');
+  var filterNoVB = document.getElementById('filterNoVB');
+
+  var currentCity = 'chennai';
+  var currentSort = 'arrival';
+
+  function parseTime(str) {
+    var timePart = str.split(',')[0].trim();
+    var parts = timePart.split(':');
+    var h = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10);
+    var val = h * 60 + m;
+    if (str.indexOf('May 29') !== -1) val += 1440;
+    return val;
+  }
+
+  function parseDuration(str) {
+    var match = str.match(/(\d+)h\s*(\d+)m/);
+    if (!match) return 9999;
+    return parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
+  }
+
+  function isVandeBharat(t) {
+    var n = t.name.toLowerCase();
+    return n.indexOf('vande bharat') !== -1 || n.indexOf('vandebharat') !== -1;
+  }
+
+  function getSortedFiltered(city) {
+    var data = trainData[city];
+    if (!data) return [];
+    var trains = data.trains.slice();
+
+    if (filterDaily && filterDaily.checked) {
+      trains = trains.filter(function (t) { return t.frequency.toLowerCase().indexOf('daily') === 0; });
+    }
+    if (filterNoVB && filterNoVB.checked) {
+      trains = trains.filter(function (t) { return !isVandeBharat(t); });
+    }
+
+    if (currentSort === 'arrival') {
+      trains.sort(function (a, b) {
+        var va = isVandeBharat(a) ? 1 : 0;
+        var vb = isVandeBharat(b) ? 1 : 0;
+        if (va !== vb) return va - vb;
+        return parseTime(a.arr) - parseTime(b.arr);
+      });
+    } else if (currentSort === 'departure') {
+      trains.sort(function (a, b) {
+        var va = isVandeBharat(a) ? 1 : 0;
+        var vb = isVandeBharat(b) ? 1 : 0;
+        if (va !== vb) return va - vb;
+        return parseTime(a.dep) - parseTime(b.dep);
+      });
+    } else if (currentSort === 'duration') {
+      trains.sort(function (a, b) {
+        var va = isVandeBharat(a) ? 1 : 0;
+        var vb = isVandeBharat(b) ? 1 : 0;
+        if (va !== vb) return va - vb;
+        return parseDuration(a.duration) - parseDuration(b.duration);
+      });
+    }
+    return trains;
+  }
+
+  function renderTrains(city) {
+    if (!trainList) return;
+    var data = trainData[city];
+    if (!data) return;
+    var trains = getSortedFiltered(city);
+
+    if (trains.length === 0) {
+      trainList.innerHTML = '<p style="text-align:center;color:var(--dark-muted);padding:2rem 0;">No trains match the current filters.</p>';
+      updateShowMore();
+      return;
+    }
+
+    var html = '';
+    trains.forEach(function (t) {
+      var vb = isVandeBharat(t);
+      html += '<div class="train-card' + (vb ? ' vande-bharat' : '') + '">' +
+        '<div class="train-header">' +
+          '<span class="train-name">' + t.name + '</span>' +
+          '<span class="train-number">#' + t.number + '</span>' +
+        '</div>' +
+        '<div class="train-details">' +
+          '<span class="train-detail">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
+            '<span>Dep: <strong>' + t.dep + '</strong></span>' +
+          '</span>' +
+          '<span class="train-detail">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
+            '<span>Arr: <strong>' + t.arr + '</strong></span>' +
+          '</span>' +
+          '<span class="train-detail">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>' +
+            '<span>' + t.duration + '</span>' +
+          '</span>' +
+        '</div>' +
+        '<div class="train-footer">' +
+          '<span class="train-frequency">' + t.frequency + '</span>' +
+          '<span class="train-board">' + t.board + '</span>' +
+        '</div>' +
+      '</div>';
+    });
+    trainList.innerHTML = html;
+    updateShowMore();
+  }
+
+  function collapseList() {
+    if (trainListWrap) {
+      trainListWrap.classList.remove('expanded');
+    }
+    if (showMoreBtn) {
+      showMoreBtn.classList.remove('expanded');
+      var txtEl = showMoreBtn.querySelector('.show-more-text');
+      if (txtEl) txtEl.textContent = 'Show All Trains';
+    }
+  }
+
+  function updateShowMore() {
+    if (!trainListWrap || !showMoreBtn) return;
+    var needsExpand = trainListWrap.scrollHeight > trainListWrap.clientHeight + 10;
+    var isExpanded = trainListWrap.classList.contains('expanded');
+    showMoreBtn.style.display = (needsExpand || isExpanded) ? '' : 'none';
+    if (trainListFade) {
+      trainListFade.style.display = needsExpand && !isExpanded ? '' : 'none';
+    }
+  }
+
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', function () {
+      var isExpanded = trainListWrap.classList.toggle('expanded');
+      showMoreBtn.classList.toggle('expanded', isExpanded);
+      var txtEl = showMoreBtn.querySelector('.show-more-text');
+      if (txtEl) txtEl.textContent = isExpanded ? 'Show Less' : 'Show All Trains';
+      if (trainListFade) trainListFade.style.display = isExpanded ? 'none' : '';
+    });
+  }
+
+  if (trainControls) {
+    trainControls.addEventListener('click', function (e) {
+      var btn = e.target.closest('.sort-btn');
+      if (!btn) return;
+      currentSort = btn.getAttribute('data-sort');
+      trainControls.querySelectorAll('.sort-btn').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      renderTrains(currentCity);
+    });
+  }
+
+  if (filterDaily) {
+    filterDaily.addEventListener('change', function () { renderTrains(currentCity); });
+  }
+  if (filterNoVB) {
+    filterNoVB.addEventListener('change', function () { renderTrains(currentCity); });
+  }
+
+  if (citySelector) {
+    collapseList();
+    renderTrains('chennai');
+
+    citySelector.addEventListener('click', function (e) {
+      var btn = e.target.closest('.city-btn');
+      if (!btn) return;
+      currentCity = btn.getAttribute('data-city');
+      citySelector.querySelectorAll('.city-btn').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      collapseList();
+      renderTrains(currentCity);
+    });
+  }
+
   if (shareBtn) {
     shareBtn.addEventListener('click', function () {
       var shareData = {
@@ -136,7 +387,7 @@
     { sel: '.weds-text', en: 'Weds', ta: 'உடன்' },
     { sel: '.hero-bride', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Invocation
-    { sel: '.blessing-text', en: 'With the heavenly blessings of the Almighty', ta: '\u0b87\u0bb1\u0bc8\u0bb5\u0ba9\u0bbf\u0ba9\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0bb5\u0bb0\u0bc1\u0bb3\u0bbe\u0bb2\u0bcd' },
+    { sel: '.blessing-text', en: 'With love and blessings', ta: 'அன்புடனும் ஆசியுடனும்' },
     { sel: '.parent-group:first-child .parent-label', en: 'Parents of the Groom', ta: '\u0bae\u0ba3\u0bae\u0b95\u0ba9\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bcb\u0bb0\u0bcd' },
     { sel: '.parent-group:last-child .parent-label', en: 'Parents of the Bride', ta: '\u0bae\u0ba3\u0bae\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bcb\u0bb0\u0bcd' },
     { sel: '.invite-label', en: 'Cordially invite you', ta: 'திருமண விழாவிற்கு' },
@@ -201,6 +452,17 @@
     { sel: '.countdown-message', en: 'Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.', ta: '\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bc1\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bb0\u0bc1\u0b95\u0bc8\u0baf\u0bc8 \u0b86\u0bb5\u0bb2\u0bc1\u0b9f\u0ba9\u0bcd \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9\u0bb0\u0bcd.' },
     // Footer
     { sel: '.footer > p:first-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 \u0bae\u0bc7 2026' },
+    // Travel
+    { sel: '#travel .section-label', en: 'How to', ta: '\u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf' },
+    { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf \u0b9a\u0bc6\u0bb2\u0bcd\u0bb5\u0ba4\u0bc1' },
+    { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb4\u0bae\u0bc8, \u0bae\u0bc7 29 \u0b95\u0bbe\u0bb2\u0bc8 9:00 \u0bae\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc1. \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0ba8\u0bc7\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bb0 \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0b95\u0bb3\u0bcd.' },
+    { sel: '.travel-note', en: 'Timings are approximate. Please verify schedules before booking.', ta: '\u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bcb\u0bb0\u0bbe\u0baf\u0bae\u0bbe\u0ba9\u0bb5\u0bc8. \u0baa\u0baf\u0ba3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.' },
+    { sel: '.irctc-btn .btn-text', en: 'Book on IRCTC', ta: 'IRCTC-\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95' },
+    { sel: '.sort-label', en: 'Sort by', ta: '\u0bb5\u0bb0\u0bbf\u0b9a\u0bc8' },
+    { sel: '.sort-btn[data-sort="arrival"]', en: 'Arrival', ta: '\u0bb5\u0bb0\u0bc1\u0b95\u0bc8' },
+    { sel: '.sort-btn[data-sort="departure"]', en: 'Departure', ta: '\u0baa\u0bc1\u0bb1\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bc1' },
+    { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: '\u0b95\u0bbe\u0bb2\u0bae\u0bcd' },
+    { sel: '.show-more-text', en: 'Show All Trains', ta: '\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0b95\u0bb3\u0bcd' },
     { sel: '.footer-small', en: 'Made with \u2665', ta: '\u2665 \u0b89\u0b9f\u0ba9\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1' },
     { sel: '#shareBtn .btn-text', en: 'Share Invitation', ta: '\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0ba4\u0bb4\u0bc8 \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd' },
     // Loading

@@ -209,7 +209,7 @@
           </div>
 
           <div class="animate-on-scroll">
-            <p class="blessing-text">With the heavenly blessings of the Almighty</p>
+            <p class="blessing-text">With love and blessings</p>
           </div>
 
           <div class="parents-block animate-on-scroll">
@@ -455,6 +455,67 @@
           <h3 class="info-title">Parking</h3>
           <p class="info-desc">Ample parking space is available at the venue for all our guests.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRAVEL BY TRAIN ========== -->
+  <section id="travel" class="section travel">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <p class="section-label">How to</p>
+        <h2 class="section-title">Reach Tirunelveli</h2>
+        <div class="kolam-divider small">
+          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+        </div>
+        <p class="travel-intro">Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.</p>
+      </div>
+
+      <div class="city-selector animate-on-scroll" id="citySelector">
+        <button class="city-btn active" data-city="chennai">Chennai</button>
+        <button class="city-btn" data-city="bengaluru">Bengaluru</button>
+        <button class="city-btn" data-city="coimbatore">Coimbatore</button>
+        <button class="city-btn" data-city="madurai">Madurai</button>
+        <button class="city-btn" data-city="trichy">Trichy</button>
+        <button class="city-btn" data-city="thiruthuraipoondi">Thiruthuraipoondi</button>
+      </div>
+
+      <div class="train-controls animate-on-scroll" id="trainControls">
+        <div class="sort-group">
+          <span class="sort-label">Sort by</span>
+          <button class="sort-btn active" data-sort="arrival">Arrival</button>
+          <button class="sort-btn" data-sort="departure">Departure</button>
+          <button class="sort-btn" data-sort="duration">Duration</button>
+        </div>
+        <div class="filter-group">
+          <label class="filter-check">
+            <input type="checkbox" id="filterDaily" />
+            <span>Daily only</span>
+          </label>
+          <label class="filter-check">
+            <input type="checkbox" id="filterNoVB" />
+            <span>Hide Vande Bharat</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="train-list-wrap" id="trainListWrap">
+        <div class="train-list animate-on-scroll" id="trainList">
+          <!-- Populated by JS -->
+        </div>
+        <div class="train-list-fade" id="trainListFade"></div>
+      </div>
+      <button class="show-more-btn" id="showMoreBtn">
+        <span class="show-more-text">Show All Trains</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+
+      <div class="travel-footer animate-on-scroll">
+        <p class="travel-note">Timings are approximate. Please verify schedules before booking.</p>
+        <a href="https://www.irctc.co.in" target="_blank" rel="noopener noreferrer" class="irctc-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          <span class="btn-text">Book on IRCTC</span>
+        </a>
       </div>
     </div>
   </section>

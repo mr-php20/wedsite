@@ -397,12 +397,20 @@
     { sel: '.couple-name.bride-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Events
     { sel: '#events .section-label', en: 'Save the Date', ta: 'நாள்' },
-    { sel: '#events .section-title', en: 'Muhurtham', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
-    { sel: '.event-name', en: 'Muhurtham', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
-    { sel: '.event-date', en: 'Friday, May 29th, 2026', ta: '\u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb4\u0bae\u0bc8, \u0bae\u0bc7 29, 2026' },
-    { sel: '.event-venue', en: 'Maharaasi Mahal, Tirunelveli', ta: '\u0bae\u0b95\u0bbe\u0bb0\u0bbe\u0b9a\u0bbf \u0bae\u0bb9\u0bbe\u0bb2\u0bcd, \u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf' },
-    { sel: '.event-time', en: '9:00 AM \u2013 10:30 AM', ta: '\u0b95\u0bbe\u0bb2\u0bc8 9:00 \u2013 10:30' },
-    { sel: '.event-map-btn .btn-text', en: 'See the route', ta: '\u0bb5\u0bb4\u0bbf\u0baf\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0ba3' },
+    { sel: '#events .section-title', en: 'Wedding Day', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0ba8\u0bbe\u0bb3\u0bcd' },
+    { sel: '.event-date-main', en: 'Friday, May 29th, 2026', ta: '\u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb4\u0bae\u0bc8, \u0bae\u0bc7 29, 2026' },
+    { sel: '.timeline-item:first-child .event-name', en: 'Muhurtham', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
+    { sel: '.timeline-item:first-child .event-time', en: '9:00 AM \u2013 10:00 AM', ta: '\u0b95\u0bbe\u0bb2\u0bc8 9:00 \u2013 10:00' },
+    { sel: '.timeline-item:first-child .event-venue', en: 'Arulmigu Sri Malai Parvathi Amman Temple', ta: '\u0b85\u0bb0\u0bc1\u0bb3\u0bcd\u0bae\u0bbf\u0b95\u0bc1 \u0bb8\u0bcd\u0bb0\u0bc0 \u0bae\u0bb2\u0bc8 \u0baa\u0bbe\u0bb0\u0bcd\u0bb5\u0ba4\u0bbf \u0b85\u0bae\u0bcd\u0bae\u0ba9\u0bcd \u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bcd' },
+    { sel: '.timeline-item:first-child .event-venue-sub', en: 'Atop a scenic hill near Tirunelveli', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf \u0b85\u0bb0\u0bc1\u0b95\u0bbf\u0bb2\u0bcd \u0b92\u0bb0\u0bc1 \u0bae\u0bb2\u0bc8\u0bae\u0bc7\u0bb2\u0bcd' },
+    { sel: '.timeline-item:first-child .event-map-btn:first-child .btn-text', en: 'Temple Location', ta: '\u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bcd \u0b87\u0b9f\u0bae\u0bcd' },
+    { sel: '.timeline-item:first-child .event-map-btn-alt .btn-text', en: 'Car Parking', ta: '\u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
+    { sel: '.timeline-item:last-child .event-name', en: 'Wedding Reception', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0bb5\u0bb0\u0bb5\u0bc7\u0bb1\u0bcd\u0baa\u0bc1' },
+    { sel: '.timeline-item:last-child .event-time', en: '11:30 AM onwards', ta: '\u0b95\u0bbe\u0bb2\u0bc8 11:30 \u0bae\u0bc1\u0ba4\u0bb2\u0bcd' },
+    { sel: '.timeline-item:last-child .event-venue', en: 'Maharaasi Mahal, Tirunelveli', ta: '\u0bae\u0b95\u0bbe\u0bb0\u0bbe\u0b9a\u0bbf \u0bae\u0bb9\u0bbe\u0bb2\u0bcd, \u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf' },
+    { sel: '.timeline-item:last-child .event-venue-sub', en: '~19 km from the temple', ta: '\u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 ~19 \u0b95\u0bbf.\u0bae\u0bc0.' },
+    { sel: '.timeline-item:last-child .event-map-btn .btn-text', en: 'See the route', ta: '\u0bb5\u0bb4\u0bbf\u0baf\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0ba3' },
+    { sel: '.calendar-btn .btn-text', en: 'Add to Calendar', ta: '\u0ba8\u0bbe\u0bb3\u0bcd\u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd' },
     // Kural
     { sel: '.kural-meaning', en: '\u201cThe loveless possess everything for themselves;<br>the loving give even their bones for others.\u201d', ta: '\u201c\u0b85\u0ba9\u0bcd\u0baa\u0bc1 \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bcd \u0ba4\u0bae\u0b95\u0bcd\u0b95\u0bc7 \u0b89\u0bb0\u0bbf\u0baf\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd;<br>\u0b85\u0ba9\u0bcd\u0baa\u0bc1 \u0b89\u0b9f\u0bc8\u0baf\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bae\u0bcd \u0b8e\u0bb2\u0bc1\u0bae\u0bcd\u0baa\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0bb1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0bb0\u0bbf\u0baf\u0ba4\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0bb5\u0bb0\u0bcd.\u201d' },
     { sel: '.kural-source', en: '\u2014 Thirukkural, Kural 72', ta: '\u2014 \u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bb1\u0bb3\u0bcd, \u0b95\u0bc1\u0bb1\u0bb3\u0bcd 72' },
@@ -456,6 +464,10 @@
     { sel: '#travel .section-label', en: 'How to', ta: '\u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf' },
     { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf \u0b9a\u0bc6\u0bb2\u0bcd\u0bb5\u0ba4\u0bc1' },
     { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb4\u0bae\u0bc8, \u0bae\u0bc7 29 \u0b95\u0bbe\u0bb2\u0bc8 9:00 \u0bae\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc1. \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0ba8\u0bc7\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bb0 \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0b95\u0bb3\u0bcd.' },
+    // Attractions
+    { sel: '#attractions .section-label', en: 'Explore', ta: '\u0b85\u0bb1\u0bbf\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
+    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: '\u0b85\u0bb0\u0bc1\u0b95\u0bbf\u0bb2\u0bcd \u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1\u0bb2\u0bbe \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
+    { sel: '.attractions-intro', en: 'If you\u2019re travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.', ta: '\u0ba4\u0bc2\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bb0\u0bc1\u0baa\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbf\u0baf \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd.' },
     { sel: '.travel-note', en: 'Timings are approximate. Please verify schedules before booking.', ta: '\u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bcb\u0bb0\u0bbe\u0baf\u0bae\u0bbe\u0ba9\u0bb5\u0bc8. \u0baa\u0baf\u0ba3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.' },
     { sel: '.irctc-btn .btn-text', en: 'Book on IRCTC', ta: 'IRCTC-\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95' },
     { sel: '.sort-label', en: 'Sort by', ta: '\u0bb5\u0bb0\u0bbf\u0b9a\u0bc8' },
@@ -482,6 +494,60 @@
       langToggle.classList.toggle('active', currentLang === 'ta');
       langToggle.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Tamil' : 'Switch to English');
       document.documentElement.lang = currentLang;
+    });
+  }
+
+  /* ---------- ADD TO CALENDAR ---------- */
+  var addToCalendarBtn = document.getElementById('addToCalendarBtn');
+  var calendarDropdown = document.getElementById('calendarDropdown');
+  var calGoogleBtn = document.getElementById('calGoogleBtn');
+  var calIcsBtn = document.getElementById('calIcsBtn');
+
+  var calTitle = 'Arivalan & Akshaya Wedding';
+  var calLocation = 'Arulmigu Sri Malai Parvathi Amman Temple, Tirunelveli';
+  var calDetails = 'Muhurtham: 9:00 AM – 10:00 AM at the Temple\\nReception: 11:30 AM onwards at Maharaasi Mahal, Tirunelveli';
+  // Wedding: 29 May 2026, 9:00 AM IST to 2:00 PM IST (covers both events)
+  var calStart = '20260529T033000Z'; // 9:00 AM IST = 3:30 AM UTC
+  var calEnd   = '20260529T083000Z'; // 2:00 PM IST = 8:30 AM UTC
+
+  if (calGoogleBtn) {
+    var googleUrl = 'https://www.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent(calTitle)
+      + '&dates=' + calStart + '/' + calEnd
+      + '&details=' + encodeURIComponent(calDetails)
+      + '&location=' + encodeURIComponent(calLocation);
+    calGoogleBtn.href = googleUrl;
+  }
+
+  if (calIcsBtn) {
+    var icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//ArivlanAkshayaWedding//EN',
+      'BEGIN:VEVENT',
+      'DTSTART:' + calStart,
+      'DTEND:' + calEnd,
+      'SUMMARY:' + calTitle,
+      'DESCRIPTION:' + calDetails.replace(/\\n/g, '\\n'),
+      'LOCATION:' + calLocation,
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    calIcsBtn.href = URL.createObjectURL(blob);
+  }
+
+  if (addToCalendarBtn && calendarDropdown) {
+    addToCalendarBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      calendarDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function () {
+      calendarDropdown.classList.remove('open');
+    });
+    calendarDropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
     });
   }
 

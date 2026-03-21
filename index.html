@@ -10,6 +10,10 @@
   <meta property="og:type" content="website">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#800020">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="icon" href="assets/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Catamaran:wght@400;600;700&family=Mukta+Malar:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,19 +24,6 @@
   <!-- ========== SVG DEFS (Tamil Cultural Motifs) ========== -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <defs>
-      <!-- VILAKKU (Oil Lamp) -->
-      <symbol id="vilakku" viewBox="0 0 80 120">
-        <path d="M40 10 C40 10, 32 20, 32 28 C32 36, 40 36, 40 36 C40 36, 48 36, 48 28 C48 20, 40 10, 40 10Z" fill="none" stroke="currentColor" stroke-width="1.5" class="flame"/>
-        <ellipse cx="40" cy="38" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M32 38 Q28 42, 24 44 L56 44 Q52 42, 48 38" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <ellipse cx="40" cy="44" rx="16" ry="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M36 48 L36 78 L44 78 L44 48" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M28 78 Q40 72, 52 78" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <ellipse cx="40" cy="80" rx="18" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M22 80 L22 90 Q40 96, 58 90 L58 80" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <ellipse cx="40" cy="90" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      </symbol>
-
       <!-- GOPURAM (Temple Tower) -->
       <symbol id="gopuram" viewBox="0 0 200 280">
         <rect x="30" y="240" width="140" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -91,21 +82,6 @@
         <line x1="28" y1="75" x2="52" y2="75" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
       </symbol>
 
-      <!-- KOLAM DOT PATTERN -->
-      <symbol id="kolam-dots" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="3" fill="currentColor"/>
-        <circle cx="50" cy="20" r="2" fill="currentColor"/>
-        <circle cx="50" cy="80" r="2" fill="currentColor"/>
-        <circle cx="20" cy="50" r="2" fill="currentColor"/>
-        <circle cx="80" cy="50" r="2" fill="currentColor"/>
-        <circle cx="30" cy="30" r="1.5" fill="currentColor"/>
-        <circle cx="70" cy="30" r="1.5" fill="currentColor"/>
-        <circle cx="30" cy="70" r="1.5" fill="currentColor"/>
-        <circle cx="70" cy="70" r="1.5" fill="currentColor"/>
-        <path d="M50 20 Q70 30, 80 50 Q70 70, 50 80 Q30 70, 20 50 Q30 30, 50 20Z" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
-        <path d="M50 28 Q64 35, 72 50 Q64 65, 50 72 Q36 65, 28 50 Q36 35, 50 28Z" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
-      </symbol>
-
       <!-- MANGO LEAF TORAN -->
       <symbol id="toran-leaf" viewBox="0 0 40 50">
         <path d="M20 5 Q30 15, 28 30 Q25 40, 20 48 Q15 40, 12 30 Q10 15, 20 5Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
@@ -127,9 +103,7 @@
   <!-- ========== LOADING SCREEN ========== -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-content">
-      <svg class="loading-vilakku" width="80" height="120" aria-hidden="true">
-        <use href="#vilakku"/>
-      </svg>
+      <img class="loading-vilakku" src="assets/vilakkuCommon.png" width="50" height="163" alt="" aria-hidden="true">
       <div class="loading-flame-glow"></div>
       <p class="loading-text">Arivalan &amp; Akshaya</p>
     </div>
@@ -146,8 +120,8 @@
     </div>
 
     <!-- Floating kolam decorations -->
-    <div class="hero-kolam hero-kolam-1"><svg width="60" height="60" aria-hidden="true"><use href="#kolam-dots"/></svg></div>
-    <div class="hero-kolam hero-kolam-2"><svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg></div>
+    <div class="hero-kolam hero-kolam-1"><img src="assets/pulliKolam.png" width="60" height="60" alt="" aria-hidden="true"></div>
+    <div class="hero-kolam hero-kolam-2"><img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true"></div>
 
     <div class="hero-content">
       <div class="hero-frame">
@@ -170,14 +144,13 @@
         </div>
       </div>
     </div>
-    <div class="scroll-indicator">
-      <span></span>
-    </div>
   </section>
 
   <!-- ========== MANGO LEAF TORAN DIVIDER ========== -->
   <div class="toran-divider" aria-hidden="true">
     <div class="toran-string"></div>
+    <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="">
+    <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="">
     <div class="toran-leaves">
       <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
       <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
@@ -198,13 +171,12 @@
     <div class="container">
       <div class="invocation-lamps">
         <div class="lamp-wrapper lamp-left animate-on-scroll">
-          <svg class="vilakku-svg" width="50" height="75" aria-hidden="true"><use href="#vilakku"/></svg>
-          <div class="lamp-flame-glow"></div>
+          <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true">
         </div>
         <div class="invocation-text">
           <div class="animate-on-scroll">
             <div class="kolam-divider">
-              <svg width="50" height="50" aria-hidden="true"><use href="#kolam-dots"/></svg>
+              <img src="assets/pulliKolam.png" width="50" height="50" alt="" aria-hidden="true">
             </div>
           </div>
 
@@ -218,7 +190,7 @@
               <p class="parent-label">Parents of the Groom</p>
             </div>
             <div class="parents-separator">
-              <svg width="30" height="30" aria-hidden="true"><use href="#kolam-dots"/></svg>
+              <img src="assets/pulliKolam.png" width="30" height="30" alt="" aria-hidden="true">
             </div>
             <div class="parent-group">
               <p class="parent-name">Mr. Manivannan &amp; Mrs. D. Umarani</p>
@@ -238,8 +210,7 @@
           </div>
         </div>
         <div class="lamp-wrapper lamp-right animate-on-scroll">
-          <svg class="vilakku-svg" width="50" height="75" aria-hidden="true"><use href="#vilakku"/></svg>
-          <div class="lamp-flame-glow"></div>
+          <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true">
         </div>
       </div>
     </div>
@@ -248,6 +219,8 @@
   <!-- ========== TORAN DIVIDER ========== -->
   <div class="toran-divider" aria-hidden="true">
     <div class="toran-string"></div>
+    <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="">
+    <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="">
     <div class="toran-leaves">
       <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
       <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
@@ -270,7 +243,7 @@
         <p class="section-label">Save the Date</p>
         <h2 class="section-title">Wedding Day</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="event-date-main">Friday, May 29th, 2026</p>
       </div>
@@ -312,7 +285,7 @@
           </div>
           <div class="event-card">
             <div class="event-icon">
-              <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+              <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
             </div>
             <h3 class="event-name">Wedding Reception</h3>
             <div class="event-detail-divider"></div>
@@ -323,6 +296,10 @@
               <a href="https://www.google.com/maps/search/Maharaasi+Mahal+Tirunelveli" target="_blank" rel="noopener noreferrer" class="event-map-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span class="btn-text">See the route</span>
+              </a>
+              <a href="https://www.google.com/maps/search/Maharaasi+Mahal+Tirunelveli" target="_blank" rel="noopener noreferrer" class="event-map-btn event-map-btn-alt">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-2.7-3.6A2 2 0 0 0 13.7 5H6.3a2 2 0 0 0-1.6.9L2 9.5 1.5 11c-.8.2-1.5 1-1.5 1.9v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+                <span class="btn-text">Car Parking</span>
               </a>
             </div>
           </div>
@@ -337,19 +314,19 @@
       <div class="animate-on-scroll">
         <div class="kural-card">
           <div class="kural-lamp">
-            <svg width="35" height="52" aria-hidden="true"><use href="#vilakku"/></svg>
+            <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true">
           </div>
           <div class="kural-content">
             <p class="kural-tamil">அன்பிலார் எல்லாம் தமக்குரியர் அன்புடையார்</p>
             <p class="kural-tamil">என்பும் உரியர் பிறர்க்கு.</p>
             <div class="kolam-divider tiny">
-              <svg width="25" height="25" aria-hidden="true"><use href="#kolam-dots"/></svg>
+              <img src="assets/pulliKolam.png" width="25" height="25" alt="" aria-hidden="true">
             </div>
             <p class="kural-meaning">"The loveless possess everything for themselves;<br>the loving give even their bones for others."</p>
             <p class="kural-source">— Thirukkural, Kural 72</p>
           </div>
           <div class="kural-lamp">
-            <svg width="35" height="52" aria-hidden="true"><use href="#vilakku"/></svg>
+            <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true">
           </div>
         </div>
       </div>
@@ -363,7 +340,7 @@
         <p class="section-label">meet the</p>
         <h2 class="section-title">Bride &amp; Groom</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
       </div>
 
@@ -404,18 +381,18 @@
         <p class="section-label">our</p>
         <h2 class="section-title">Gallery</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
       </div>
 
       <div class="gallery-scroll animate-on-scroll">
         <div class="gallery-track">
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04852.jpeg" alt="Photo 2"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04896.jpeg" alt="Photo 3"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04904.jpeg" alt="Photo 4"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05425.jpeg" alt="Photo 6"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05428.jpeg" alt="Photo 7"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05465.jpeg" alt="Photo 8"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04852.jpeg" alt="Photo 1" loading="lazy"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04896.jpeg" alt="Photo 2" loading="lazy"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04904.jpeg" alt="Photo 3" loading="lazy"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05425.jpeg" alt="Photo 4" loading="lazy"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05428.jpeg" alt="Photo 5" loading="lazy"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05465.jpeg" alt="Photo 6" loading="lazy"></div></div>
         </div>
       </div>
       <p class="gallery-hint animate-on-scroll">← Swipe to see more →</p>
@@ -429,7 +406,7 @@
         <p class="section-label">Please</p>
         <h2 class="section-title">RSVP</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="rsvp-text">Click to message on WhatsApp</p>
         <a href="https://wa.me/919XXXXXXX" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
@@ -447,19 +424,12 @@
         <p class="section-label">A few</p>
         <h2 class="section-title">Things to Know</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="info-intro">To help you feel at ease and enjoy every moment of the celebrations, we've gathered a few thoughtful details we'd love for you to know before the big day.</p>
       </div>
 
       <div class="info-grid">
-        <div class="info-card animate-on-scroll">
-          <div class="info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></svg>
-          </div>
-          <h3 class="info-title">Hashtag</h3>
-          <p class="info-desc">While posting photos on social media please use the hashtag — <strong>#ArivalanWedsAkshaya</strong></p>
-        </div>
         <div class="info-card animate-on-scroll">
           <div class="info-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
@@ -469,17 +439,10 @@
         </div>
         <div class="info-card animate-on-scroll">
           <div class="info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <h3 class="info-title">Dresscode</h3>
-          <p class="info-desc">Traditional attire is preferred. Ladies in sarees and gentlemen in veshti or formal wear would be wonderful.</p>
-        </div>
-        <div class="info-card animate-on-scroll">
-          <div class="info-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-2.7-3.6A2 2 0 0 0 13.7 5H6.3a2 2 0 0 0-1.6.9L2 9.5 1.5 11c-.8.2-1.5 1-1.5 1.9v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17h2"/><path d="M15 17h2"/></svg>
           </div>
           <h3 class="info-title">Parking</h3>
-          <p class="info-desc">Dedicated parking is available at the base of the temple hill. <a href="https://maps.app.goo.gl/HpBWswTSFMNCj8PG6" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">View parking location</a>. Parking is also available at Maharaasi Mahal.</p>
+          <p class="info-desc"><a href="https://maps.app.goo.gl/HpBWswTSFMNCj8PG6" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">Dedicated parking</a> is available at the base of the temple hill. Parking is also available at <a href="https://www.google.com/maps/search/Maharaasi+Mahal+Tirunelveli" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">Maharaasi Mahal</a>.</p>
         </div>
       </div>
     </div>
@@ -492,7 +455,7 @@
         <p class="section-label">How to</p>
         <h2 class="section-title">Reach Tirunelveli</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="travel-intro">Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.</p>
       </div>
@@ -574,7 +537,7 @@
         <p class="section-label">Explore</p>
         <h2 class="section-title">Nearby Attractions</h2>
         <div class="kolam-divider small">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="attractions-intro">If you're travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.</p>
       </div>
@@ -582,50 +545,83 @@
       <div class="attractions-grid">
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
-          </div>
-          <h3 class="attraction-name">Nellaiappar Temple</h3>
-          <p class="attraction-desc">Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.</p>
-          <a href="https://maps.app.goo.gl/4LxJvQnqZQnXsMwK8" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
-          </div>
-          <h3 class="attraction-name">Krishnapuram Palace</h3>
-          <p class="attraction-desc">18th-century Nayak palace with a renowned mural of Gajendra Moksham and a museum.</p>
-          <a href="https://maps.app.goo.gl/7YnHqChGcGmFnR1d8" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-          </div>
-          <h3 class="attraction-name">Courtallam Falls</h3>
-          <p class="attraction-desc">The "Spa of South India" — scenic waterfalls surrounded by the Western Ghats, ~60 km away.</p>
-          <a href="https://maps.app.goo.gl/9NxVzwxN2qGwVj8J9" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <h3 class="attraction-name">Tiruchendur Murugan Temple</h3>
-          <p class="attraction-desc">One of the six abodes of Lord Murugan, a magnificent seaside temple ~80 km from the city.</p>
-          <a href="https://maps.app.goo.gl/2R6xVzHvXwYqY1fC6" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M12 2 L2 7 l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="attraction-name">Banana Market (Valaiyankulam)</h3>
-          <p class="attraction-desc">One of Asia's largest banana markets — a vibrant local experience unique to Tirunelveli.</p>
-          <a href="https://maps.app.goo.gl/QfR8jGWDZYhvQfKv5" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            <!-- Halwa: sweet on a plate with steam -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="24" rx="13" ry="4"/><path d="M5 24c0-2 3-8 5-10h12c2 2 5 8 5 10"/><path d="M10 14c1-2 3-4 6-4s5 2 6 4"/><path d="M12 6c0-2 1.5-3 1-4"/><path d="M16 5c0-2 1.5-3 1-4"/><path d="M20 6c0-2 1.5-3 1-4"/></svg>
           </div>
           <h3 class="attraction-name">Tirunelveli Halwa</h3>
           <p class="attraction-desc">Don't leave without the legendary wheat halwa. Skip the overrated Iruttu Kadai — try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> instead for the real deal!</p>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Nellaiappar Temple: Dravidian gopuram with musical pillars -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30h24"/><path d="M8 30V14"/><path d="M24 30V14"/><path d="M8 14h16"/><path d="M10 14V8h12v6"/><path d="M12 8V5h8v3"/><path d="M14 5V3h4v2"/><path d="M16 3V1"/><circle cx="16" cy="1" r="0.8" fill="currentColor"/><line x1="12" y1="18" x2="12" y2="26"/><line x1="16" y1="18" x2="16" y2="26"/><line x1="20" y1="18" x2="20" y2="26"/><path d="M11 21h2M15 21h2M19 21h2" stroke-width="1" opacity="0.5"/></svg>
+          </div>
+          <h3 class="attraction-name">Nellaiappar Temple</h3>
+          <p class="attraction-desc">Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.</p>
+          <a href="https://maps.app.goo.gl/Ej2vikYy6hahuTJN6" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Sivakalai: archaeological dig with pottery shard -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28h20"/><path d="M8 28c0-4 2-6 3-8l1-6h8l1 6c1 2 3 4 3 8"/><ellipse cx="16" cy="14" rx="4" ry="1.5"/><path d="M14 14v-3c0-1 1-2 2-2s2 1 2 2v3"/><path d="M3 24l4-3M29 24l-4-3" stroke-width="1" opacity="0.5"/><circle cx="14" cy="20" r="0.8" fill="currentColor" opacity="0.5"/><circle cx="18" cy="22" r="0.8" fill="currentColor" opacity="0.5"/></svg>
+          </div>
+          <h3 class="attraction-name">Sivakalai Archaeological Site</h3>
+          <p class="attraction-desc">A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.</p>
+          <a href="https://maps.app.goo.gl/UmFkiC9Wwu4YpdcW7" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Adichanallur: ancient burial urn -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8c-2 4-4 10-3 16h18c1-6-1-12-3-16"/><ellipse cx="16" cy="8" rx="6" ry="2.5"/><path d="M10 8c-1-1-1.5-2.5 0-3.5"/><path d="M22 8c1-1 1.5-2.5 0-3.5"/><path d="M11 16h10" stroke-width="1" opacity="0.4"/><path d="M10 20h12" stroke-width="1" opacity="0.4"/><path d="M13 12l1 2 1-2 1 2 1-2 1 2" stroke-width="0.8" opacity="0.5"/></svg>
+          </div>
+          <h3 class="attraction-name">Adichanallur Archaeological Site</h3>
+          <p class="attraction-desc">An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.</p>
+          <a href="https://maps.app.goo.gl/vimr6aSUraDFkD4F9" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Vallanadu: blackbuck/antelope -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M10 26l1-6 3-4"/><path d="M22 26l-1-6-3-4"/><path d="M14 16c-3 0-5-2-5-5s3-5 7-5c4 0 7 2 7 5s-2 5-5 5"/><circle cx="13" cy="10" r="1" fill="currentColor"/><path d="M12 6c-2-3-3-4-2.5-5"/><path d="M20 6c1-2 3-4 4-4.5" /><path d="M20 16h1c2 1 3 3 3 5"/><path d="M12 16h-1c-1 1-2 3-2 5"/><path d="M6 28h20" stroke-width="1" opacity="0.3"/></svg>
+          </div>
+          <h3 class="attraction-name">Vallanadu Blackbuck Sanctuary</h3>
+          <p class="attraction-desc">A wildlife sanctuary home to the endangered Indian blackbuck — a rare sight in Tamil Nadu.</p>
+          <a href="https://maps.app.goo.gl/6yU8PxWveHL1ZanE8" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Manimutharu Falls: waterfall with rocks -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v20"/><path d="M4 6h8"/><path d="M10 10c2 4 2 8 1 12" stroke-width="1.2"/><path d="M12 10c3 5 3 10 2 14" stroke-width="1"/><path d="M6 10c-1 4-1 8 0 12" stroke-width="1"/><path d="M3 26c2-1 5-2 8-2s6 1 8 2"/><ellipse cx="22" cy="14" rx="4" ry="6" stroke-width="1" opacity="0.3"/><path d="M20 20c1 2 3 4 6 5" stroke-width="1" opacity="0.4"/><circle cx="25" cy="27" r="2" stroke-width="1" opacity="0.3"/></svg>
+          </div>
+          <h3 class="attraction-name">Manimutharu Falls</h3>
+          <p class="attraction-desc">A beautiful waterfall nestled in the Western Ghats — a serene spot for nature lovers.</p>
+          <a href="https://maps.app.goo.gl/dYvzMrtFcsET8WrcA" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Agasthiyar Falls: waterfall with sage symbolism -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h6"/><path d="M9 4v6c-2 4-3 8-3 12"/><path d="M7 8c-1 4 0 8 1 12" stroke-width="1"/><path d="M11 8c1 3 2 7 2 12" stroke-width="1"/><path d="M4 24c3-2 7-2 10 0s7 2 10 0"/><path d="M20 10a4 4 0 1 1 0 8" stroke-width="1.2"/><path d="M20 14h3"/><circle cx="22" cy="8" r="3"/><path d="M22 5V3" stroke-width="1"/></svg>
+          </div>
+          <h3 class="attraction-name">Agasthiyar Falls</h3>
+          <p class="attraction-desc">A scenic waterfall near Papanasam, believed to be blessed by Sage Agasthiyar.</p>
+          <a href="https://maps.app.goo.gl/3SHmbG5FovcpBgF57" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Courtallam Falls: cascading multi-stream waterfall -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8c4-2 8-4 12-4s8 2 12 4"/><path d="M8 8c0 4-1 8-1 14"/><path d="M14 6c0 4 0 10-1 16"/><path d="M20 6c0 4 0 10 1 16"/><path d="M26 8c0 4 1 8 1 14"/><path d="M10 10c0 3-1 7-1 12" stroke-width="0.8" opacity="0.4"/><path d="M23 10c0 3 1 7 1 12" stroke-width="0.8" opacity="0.4"/><path d="M4 26c4-2 8-3 12-3s8 1 12 3"/><path d="M6 28c3-1 6-2 10-2s7 1 10 2" stroke-width="1" opacity="0.3"/></svg>
+          </div>
+          <h3 class="attraction-name">Courtallam Falls</h3>
+          <p class="attraction-desc">The "Spa of South India" — scenic waterfalls surrounded by the Western Ghats, ~60 km away.</p>
+          <a href="https://www.google.com/maps/search/Courtallam+Falls" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <!-- Tiruchendur: seaside temple with vel (spear) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" stroke-linecap="round" stroke-linejoin="round"><path d="M22 28V12"/><path d="M18 12h8"/><path d="M20 12V8h4v4"/><path d="M21 8V6h2v2"/><path d="M22 6V4"/><circle cx="22" cy="3.5" r="1" fill="currentColor"/><path d="M4 28h24"/><path d="M6 28V20h10v8"/><path d="M6 20l5-4 5 4"/><path d="M9 28v-4h4v4"/><path d="M2 25c2-1 3.5-2.5 3.5-2.5" stroke-width="0.8" opacity="0.4"/><path d="M1 27c1.5-.5 3-1.5 3-1.5" stroke-width="0.8" opacity="0.4"/><path d="M2 29c1-.3 2.5-1 2.5-1" stroke-width="0.8" opacity="0.4"/></svg>
+          </div>
+          <h3 class="attraction-name">Tiruchendur Murugan Temple</h3>
+          <p class="attraction-desc">One of the six abodes of Lord Murugan, a magnificent seaside temple ~80 km from the city.</p>
+          <a href="https://www.google.com/maps/search/Tiruchendur+Murugan+Temple" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
         </div>
       </div>
     </div>
@@ -638,7 +634,7 @@
         <p class="section-label">The</p>
         <h2 class="section-title">Countdown Begins</h2>
         <div class="kolam-divider small dark">
-          <svg width="40" height="40" aria-hidden="true"><use href="#kolam-dots"/></svg>
+          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
         </div>
       </div>
 

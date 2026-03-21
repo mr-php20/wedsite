@@ -455,14 +455,6 @@ a {
   text-align: center;
 }
 
-.sanskrit {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.5vw + 0.4rem, 1.5rem);
-  color: var(--maroon);
-  letter-spacing: 0.1em;
-  font-weight: 600;
-}
-
 .blessing-text {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.1vw + 0.4rem, 1.2rem);
@@ -696,85 +688,6 @@ a {
   flex-shrink: 0;
 }
 
-/* Add to Calendar */
-.calendar-add {
-  margin-top: 2.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.calendar-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--maroon);
-  background: var(--white);
-  border: 2px solid var(--gold);
-  padding: 0.75rem 1.75rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.calendar-btn:hover {
-  background: var(--maroon);
-  color: var(--white);
-  border-color: var(--maroon);
-}
-
-.calendar-dropdown {
-  position: absolute;
-  bottom: calc(100% + 0.5rem);
-  left: 50%;
-  transform: translateX(-50%) scale(0.95);
-  background: var(--white);
-  border: 1px solid var(--gold-light);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(44,24,16,0.12);
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-  z-index: 10;
-  min-width: 220px;
-}
-
-.calendar-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) scale(1);
-}
-
-.calendar-option {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.25rem;
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--dark);
-  transition: background 0.2s ease;
-  white-space: nowrap;
-}
-
-.calendar-option:hover {
-  background: rgba(201,168,76,0.1);
-}
-
-.calendar-option + .calendar-option {
-  border-top: 1px solid var(--gold-light);
-}
-
-.calendar-option svg {
-  color: var(--gold);
-  flex-shrink: 0;
-}
-
 /* ==========================================
    THIRUKKURAL SECTION
    ========================================== */
@@ -817,7 +730,6 @@ a {
   font-weight: 600;
   color: var(--maroon);
   line-height: 1.8;
-  white-space: nowrap;
 }
 
 /* Global Language Toggle (fixed top-right) */
@@ -826,9 +738,9 @@ a {
   top: 1rem;
   right: 1rem;
   z-index: 1000;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: 100px;
+  height: 50px;
+  border-radius: 10%;
   background: var(--maroon);
   color: var(--ivory);
   border: 2px solid var(--gold);
@@ -852,56 +764,6 @@ a {
   font-family: var(--font-body);
   font-size: 0.85rem;
   letter-spacing: 0.05em;
-}
-
-/* Dev Font Picker (fixed bottom-left panel) */
-.dev-font-picker {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 9999;
-  background: rgba(44, 24, 16, 0.92);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 0.6rem 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.dev-font-label {
-  color: var(--gold-light);
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  text-align: center;
-  margin-bottom: 0.15rem;
-}
-
-.dev-font-btn {
-  padding: 0.3rem 0.6rem;
-  background: transparent;
-  color: var(--ivory);
-  border: 1px solid rgba(201, 168, 76, 0.3);
-  border-radius: 6px;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.dev-font-btn:hover {
-  background: rgba(201, 168, 76, 0.15);
-  border-color: var(--gold);
-}
-
-.dev-font-btn.active {
-  background: var(--maroon);
-  border-color: var(--gold);
-  color: var(--gold-light);
 }
 
 .kural-meaning {
@@ -962,12 +824,6 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.photo-placeholder span {
-  font-family: var(--font-script);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: var(--maroon);
 }
 
 .photo-name {
@@ -1041,54 +897,12 @@ a {
   object-fit: cover;
 }
 
-.gallery-placeholder span {
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  color: var(--dark-muted);
-  font-weight: 500;
-}
-
 .gallery-hint {
   font-size: 0.85rem;
   color: var(--dark-muted);
   margin-top: 1rem;
   font-style: italic;
   opacity: 0.6;
-}
-
-/* ==========================================
-   RSVP SECTION
-   ========================================== */
-.rsvp {
-  background:
-    linear-gradient(180deg, var(--ivory) 0%, var(--pink-soft) 100%);
-}
-
-.rsvp-text {
-  font-size: clamp(0.95rem, 1vw + 0.35rem, 1.1rem);
-  color: var(--dark-muted);
-  margin: 1rem 0 1.75rem;
-}
-
-.whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--white);
-  background: #25D366;
-  padding: 0.9rem 2rem;
-  border-radius: 50px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 16px rgba(37,211,102,0.25);
-}
-
-.whatsapp-btn:hover {
-  background: #1EB554;
-  transform: scale(1.03);
 }
 
 /* ==========================================
@@ -1483,12 +1297,6 @@ a {
 }
 .follow-text-3 { font-size: clamp(2.5rem, 5vw, 3.8rem); }
 
-.follow-cta {
-  font-size: clamp(0.9rem, 1vw + 0.3rem, 1.05rem);
-  color: var(--dark-muted);
-  margin: 1.25rem 0 1.5rem;
-}
-
 .instagram-btns {
   display: flex;
   justify-content: center;
@@ -1688,46 +1496,9 @@ a {
 }
 
 /* ==========================================
-   AUDIO TOGGLE BUTTON
-   ========================================== */
-.audio-toggle {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 100;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  background: var(--white);
-  color: var(--maroon);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(44,24,16,0.12);
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.audio-toggle:hover {
-  background: var(--ivory);
-  transform: scale(1.08);
-}
-
-.audio-toggle .audio-off  { display: block; }
-.audio-toggle .audio-on   { display: none; }
-.audio-toggle.playing .audio-off { display: none; }
-.audio-toggle.playing .audio-on  { display: block; }
-
-/* ==========================================
    RESPONSIVE — TABLET (≤ 768px)
    ========================================== */
 @media (max-width: 768px) {
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-
   .hero-frame-inner {
     padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
   }
@@ -1775,6 +1546,10 @@ a {
     display: block;
   }
 
+  .lamp-wrapper {
+    display: none;
+  }
+
   .kural-lamp .vilakku-img {
     height: 55px;
   }
@@ -1782,6 +1557,12 @@ a {
   .kural-card {
     display: block;
     padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .kural-lamp {
+    display: flex;
+    justify-content: center;
+    margin: 0.75rem 0;
   }
 
   .hero-paisley {
@@ -1840,10 +1621,6 @@ a {
     display: block;
   }
 
-  .attractions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .event-actions {
     flex-direction: column;
     align-items: center;
@@ -1883,18 +1660,10 @@ a {
     font-size: 0.78rem;
   }
 
-  .whatsapp-btn,
   .instagram-btn,
   .event-map-btn {
     font-size: 0.85rem;
     padding: 0.75rem 1.5rem;
-  }
-
-  .audio-toggle {
-    bottom: 1rem;
-    right: 1rem;
-    width: 42px;
-    height: 42px;
   }
 
   .hero-gopuram {

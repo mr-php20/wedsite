@@ -11,7 +11,7 @@
     window.addEventListener('load', function () {
       setTimeout(function () {
         loadingScreen.classList.add('hidden');
-      }, 1200);
+      }, 1000);
     });
   }
 
@@ -72,25 +72,6 @@
     // Fallback: show everything immediately
     animateEls.forEach(function (el) {
       el.classList.add('visible');
-    });
-  }
-
-  /* ---------- AUDIO TOGGLE ---------- */
-  var audioToggle = document.getElementById('audioToggle');
-  var bgMusic     = document.getElementById('bgMusic');
-
-  if (audioToggle && bgMusic) {
-    audioToggle.addEventListener('click', function () {
-      if (bgMusic.paused) {
-        bgMusic.play().then(function () {
-          audioToggle.classList.add('playing');
-        }).catch(function () {
-          // Autoplay blocked
-        });
-      } else {
-        bgMusic.pause();
-        audioToggle.classList.remove('playing');
-      }
     });
   }
 
@@ -410,7 +391,6 @@
     { sel: '.timeline-item:last-child .event-venue', en: 'Maharaasi Mahal, Tirunelveli', ta: '\u0bae\u0b95\u0bbe\u0bb0\u0bbe\u0b9a\u0bbf \u0bae\u0bb9\u0bbe\u0bb2\u0bcd, \u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf' },
     { sel: '.timeline-item:last-child .event-venue-sub', en: '~19 km from the temple', ta: '\u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 ~19 \u0b95\u0bbf.\u0bae\u0bc0.' },
     { sel: '.timeline-item:last-child .event-map-btn .btn-text', en: 'See the route', ta: '\u0bb5\u0bb4\u0bbf\u0baf\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0ba3' },
-    { sel: '.calendar-btn .btn-text', en: 'Add to Calendar', ta: '\u0ba8\u0bbe\u0bb3\u0bcd\u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd' },
     // Kural
     { sel: '.kural-meaning', en: '\u201cThe loveless possess everything for themselves;<br>the loving give even their bones for others.\u201d', ta: '\u201c\u0b85\u0ba9\u0bcd\u0baa\u0bc1 \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bcd \u0ba4\u0bae\u0b95\u0bcd\u0b95\u0bc7 \u0b89\u0bb0\u0bbf\u0baf\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd;<br>\u0b85\u0ba9\u0bcd\u0baa\u0bc1 \u0b89\u0b9f\u0bc8\u0baf\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bae\u0bcd \u0b8e\u0bb2\u0bc1\u0bae\u0bcd\u0baa\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0bb1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0bb0\u0bbf\u0baf\u0ba4\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0bb5\u0bb0\u0bcd.\u201d' },
     { sel: '.kural-source', en: '\u2014 Thirukkural, Kural 72', ta: '\u2014 \u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bb1\u0bb3\u0bcd, \u0b95\u0bc1\u0bb1\u0bb3\u0bcd 72' },
@@ -419,30 +399,20 @@
     { sel: '#couple .section-title', en: 'Bride &amp; Groom', ta: '\u0bae\u0ba3\u0bae\u0b95\u0bcd\u0b95\u0bb3\u0bcd' },
     { sel: '.groom-photo .photo-name', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.bride-photo .photo-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
-    { sel: '.groom-photo .photo-placeholder span', en: 'A', ta: '\u0b85' },
-    { sel: '.bride-photo .photo-placeholder span', en: 'A', ta: '\u0b85' },
     { sel: '.couple-message p:first-child', en: 'We are both so delighted that you are able to join us in celebrating what we hope will be one of the happiest days of our lives. The affection shown to us by so many people has been incredibly moving, and has touched us both deeply.', ta: '\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbe\u0bb4\u0bcd\u0bb5\u0bbf\u0ba9\u0bcd \u0bae\u0bbf\u0b95 \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0baf\u0bbe\u0ba9 \u0ba8\u0bbe\u0bb3\u0bbf\u0bb2\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb2\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb5\u0ba4\u0bc1 \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bbf\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf \u0b85\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1. \u0baa\u0bb2\u0bb0\u0bbf\u0ba9\u0bcd \u0b85\u0ba9\u0bcd\u0baa\u0bc1\u0bae\u0bcd \u0b86\u0b9a\u0bbf\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b86\u0bb4\u0bae\u0bbe\u0b95 \u0ba4\u0bca\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9.' },
     { sel: '.couple-message p:last-child', en: 'We would like to take this opportunity to thank everyone most sincerely for their kindness. We are looking forward to seeing you at the wedding.', ta: '\u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0ba9\u0bae\u0bbe\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4 \u0ba8\u0ba9\u0bcd\u0bb1\u0bbf\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd. \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0b9a\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbf\u0b95\u0bcd\u0b95 \u0b86\u0bb5\u0bb2\u0bc1\u0b9f\u0ba9\u0bcd \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd.' },
     // Gallery
     { sel: '#gallery .section-label', en: 'our', ta: '\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
     { sel: '#gallery .section-title', en: 'Gallery', ta: '\u0baa\u0bc1\u0b95\u0bc8\u0baa\u0bcd\u0baa\u0b9f\u0ba4\u0bcd \u0ba4\u0bca\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc1' },
     { sel: '.gallery-hint', en: '\u2190 Swipe to see more \u2192', ta: '\u2190 \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0b95\u0bbe\u0ba3 \u2192' },
-    // RSVP
-    { sel: '#rsvp .section-label', en: 'Please', ta: '\u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1' },
-    { sel: '#rsvp .section-title', en: 'RSVP', ta: '\u0baa\u0ba4\u0bbf\u0bb2\u0bcd \u0b85\u0bb3\u0bbf\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '.rsvp-text', en: 'Click to message on WhatsApp', ta: 'WhatsApp-\u0bb2\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '.whatsapp-btn .btn-text', en: 'RSVP on WhatsApp', ta: 'WhatsApp-\u0bb2\u0bcd \u0baa\u0ba4\u0bbf\u0bb2\u0bb3\u0bbf\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
+    // RSVP - commented out in HTML
     // Info
     { sel: '#info .section-label', en: 'A few', ta: '\u0b9a\u0bbf\u0bb2' },
     { sel: '#info .section-title', en: 'Things to Know', ta: '\u0ba4\u0bc6\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbf\u0baf\u0bb5\u0bc8' },
     { sel: '.info-intro', en: 'To help you feel at ease and enjoy every moment of the celebrations, we\u2019ve gathered a few thoughtful details we\u2019d love for you to know before the big day.', ta: '\u0bb5\u0bbf\u0bb4\u0bbe\u0bb5\u0bbf\u0ba9\u0bcd \u0b92\u0bb5\u0bcd\u0bb5\u0bca\u0bb0\u0bc1 \u0ba4\u0bb0\u0bc1\u0ba3\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0baf\u0bbe\u0b95 \u0b85\u0ba9\u0bc1\u0baa\u0bb5\u0bbf\u0b95\u0bcd\u0b95, \u0b9a\u0bbf\u0bb2 \u0bae\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bae\u0bbe\u0ba9 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd\u0b95\u0bb3\u0bc8 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0ba4\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd.' },
-    { sel: '.info-grid .info-card:nth-child(1) .info-title', en: 'Hashtag', ta: '\u0bb9\u0bc7\u0bb7\u0bcd\u0b9f\u0bc7\u0b95\u0bcd' },
-    { sel: '.info-grid .info-card:nth-child(1) .info-desc', en: 'While posting photos on social media please use the hashtag \u2014 <strong>#ArivalanWedsAkshaya</strong>', ta: '\u0b9a\u0bae\u0bc2\u0b95 \u0b8a\u0b9f\u0b95\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0baa\u0bc1\u0b95\u0bc8\u0baa\u0bcd\u0baa\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0baa\u0ba4\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u2014 <strong>#ArivalanWedsAkshaya</strong> \u0bb9\u0bc7\u0bb7\u0bcd\u0b9f\u0bc7\u0b95\u0bcd\u0b95\u0bc8\u0baa\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd' },
-    { sel: '.info-grid .info-card:nth-child(2) .info-title', en: 'Weather', ta: '\u0bb5\u0bbe\u0ba9\u0bbf\u0bb2\u0bc8' },
-    { sel: '.info-grid .info-card:nth-child(2) .info-desc', en: 'It will be warm and sunny with temperatures reaching up to 38\u00b0C at the venue. Light, breathable attire is recommended.', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0bae\u0ba3\u0bcd\u0b9f\u0baa\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8 38\u00b0C \u0bb5\u0bb0\u0bc8 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd. \u0b87\u0bb2\u0b95\u0bc1\u0bb5\u0bbe\u0ba9 \u0b86\u0b9f\u0bc8\u0b95\u0bb3\u0bc8 \u0b85\u0ba3\u0bbf\u0baf\u0bb5\u0bc1\u0bae\u0bcd.' },
-    { sel: '.info-grid .info-card:nth-child(3) .info-title', en: 'Dresscode', ta: '\u0b86\u0b9f\u0bc8' },
-    { sel: '.info-grid .info-card:nth-child(3) .info-desc', en: 'Traditional attire is preferred. Ladies in sarees and gentlemen in veshti or formal wear would be wonderful.', ta: '\u0baa\u0bbe\u0bb0\u0bae\u0bcd\u0baa\u0bb0\u0bbf\u0baf \u0b89\u0b9f\u0bc8 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0b95\u0bcd\u0b95\u0ba4\u0bc1. \u0baa\u0bc6\u0ba3\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bc1\u0b9f\u0bb5\u0bc8\u0baf\u0bbf\u0bb2\u0bc1\u0bae\u0bcd, \u0b86\u0ba3\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0bb7\u0bcd\u0b9f\u0bbf \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bbe\u0ba9 \u0b89\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bc1\u0bae\u0bcd \u0bb5\u0bb0\u0bc1\u0bb5\u0ba4\u0bc1 \u0b85\u0bb4\u0b95\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd.' },
-    { sel: '.info-grid .info-card:nth-child(4) .info-title', en: 'Parking', ta: '\u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
+    { sel: '.info-grid .info-card:nth-child(1) .info-title', en: 'Weather', ta: '\u0bb5\u0bbe\u0ba9\u0bbf\u0bb2\u0bc8' },
+    { sel: '.info-grid .info-card:nth-child(1) .info-desc', en: 'It will be warm and sunny with temperatures reaching up to 38\u00b0C at the venue. Light, breathable attire is recommended.', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0bae\u0ba3\u0bcd\u0b9f\u0baa\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8 38\u00b0C \u0bb5\u0bb0\u0bc8 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd. \u0b87\u0bb2\u0b95\u0bc1\u0bb5\u0bbe\u0ba9 \u0b86\u0b9f\u0bc8\u0b95\u0bb3\u0bc8 \u0b85\u0ba3\u0bbf\u0baf\u0bb5\u0bc1\u0bae\u0bcd.' },
+    { sel: '.info-grid .info-card:nth-child(2) .info-title', en: 'Parking', ta: '\u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
     { sel: '.info-grid .info-card:nth-child(4) .info-desc', en: 'Ample parking space is available at the venue for all our guests.', ta: '\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1\u0bae\u0bbe\u0ba9 \u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4 \u0bb5\u0b9a\u0ba4\u0bbf \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.' },
     // Social
     { sel: '.follow-text-1', en: 'Follow', ta: '\u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
@@ -497,72 +467,5 @@
     });
   }
 
-  /* ---------- ADD TO CALENDAR ---------- */
-  var addToCalendarBtn = document.getElementById('addToCalendarBtn');
-  var calendarDropdown = document.getElementById('calendarDropdown');
-  var calGoogleBtn = document.getElementById('calGoogleBtn');
-  var calIcsBtn = document.getElementById('calIcsBtn');
-
-  var calTitle = 'Arivalan & Akshaya Wedding';
-  var calLocation = 'Arulmigu Sri Malai Parvathi Amman Temple, Tirunelveli';
-  var calDetails = 'Muhurtham: 9:00 AM – 10:00 AM at the Temple\\nReception: 11:30 AM onwards at Maharaasi Mahal, Tirunelveli';
-  // Wedding: 29 May 2026, 9:00 AM IST to 2:00 PM IST (covers both events)
-  var calStart = '20260529T033000Z'; // 9:00 AM IST = 3:30 AM UTC
-  var calEnd   = '20260529T083000Z'; // 2:00 PM IST = 8:30 AM UTC
-
-  if (calGoogleBtn) {
-    var googleUrl = 'https://www.google.com/calendar/render?action=TEMPLATE'
-      + '&text=' + encodeURIComponent(calTitle)
-      + '&dates=' + calStart + '/' + calEnd
-      + '&details=' + encodeURIComponent(calDetails)
-      + '&location=' + encodeURIComponent(calLocation);
-    calGoogleBtn.href = googleUrl;
-  }
-
-  if (calIcsBtn) {
-    var icsContent = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//ArivlanAkshayaWedding//EN',
-      'BEGIN:VEVENT',
-      'DTSTART:' + calStart,
-      'DTEND:' + calEnd,
-      'SUMMARY:' + calTitle,
-      'DESCRIPTION:' + calDetails.replace(/\\n/g, '\\n'),
-      'LOCATION:' + calLocation,
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
-
-    var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    calIcsBtn.href = URL.createObjectURL(blob);
-  }
-
-  if (addToCalendarBtn && calendarDropdown) {
-    addToCalendarBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      calendarDropdown.classList.toggle('open');
-    });
-    document.addEventListener('click', function () {
-      calendarDropdown.classList.remove('open');
-    });
-    calendarDropdown.addEventListener('click', function (e) {
-      e.stopPropagation();
-    });
-  }
-
-  /* ---------- DEV: FONT PICKER ---------- */
-  var fontPicker = document.getElementById('devFontPicker');
-  if (fontPicker) {
-    var fontBtns = fontPicker.querySelectorAll('.dev-font-btn');
-    fontBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var font = btn.getAttribute('data-font');
-        document.documentElement.style.setProperty('--font-display', font);
-        fontBtns.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-      });
-    });
-  }
 
 })();

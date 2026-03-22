@@ -442,7 +442,7 @@
     { sel: '.instagram-btns .instagram-btn:last-child .btn-text', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Countdown
     { sel: '#countdown .section-label', en: 'The', ta: '' },
-    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: 'நாள் எண்ணிக்கை' },
+    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: 'திருமணத்திற்காண நேரம்' },
     { sel: '.countdown-item:nth-child(1) .countdown-label', en: 'Days', ta: 'நாட்கள்' },
     { sel: '.countdown-item:nth-child(2) .countdown-label', en: 'Hours', ta: 'மணி' },
     { sel: '.countdown-item:nth-child(3) .countdown-label', en: 'Minutes', ta: 'நிமிடங்கள்' },
@@ -452,11 +452,11 @@
     { sel: '.footer > p:first-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026' },
     // Travel
     { sel: '#travel .section-label', en: 'How to', ta: 'எப்படி' },
-    { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: 'திருநெல்வேலி செல்வது' },
+    { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: 'திருநெல்வேலி செல்ல' },
     { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.', ta: 'முகூர்த்தம் வெள்ளிக்கிழமை, மே 29 காலை 9:00 மணிக்கு. சரியான நேரத்தில் வர பரிந்துரைக்கப்படும் ரயில்கள்.' },
     // Attractions
     { sel: '#attractions .section-label', en: 'Explore', ta: 'அறியுங்கள்' },
-    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: 'அருகில் சுற்றுலா இடங்கள்' },
+    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: 'அருகில் உள்ள சுற்றுலா தளங்கள்' },
     { sel: '.attractions-intro', en: 'If you’re travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.', ta: 'தூரத்திலிருந்து வருபவர்களுக்கு திருநெல்வேலியில் பார்க்க வேண்டிய இடங்கள்.' },
     { sel: '.travel-note', en: 'Timings are approximate. Please verify schedules before booking.', ta: 'நேரங்கள் தோராயமானவை. பயணத்திற்கு முன் சரிபார்க்கவும்.' },
     { sel: '.irctc-btn .btn-text', en: 'Book on IRCTC', ta: 'IRCTC-யில் பதிவு செய்க' },
@@ -464,9 +464,9 @@
     { sel: '.sort-btn[data-sort="arrival"]', en: 'Arrival', ta: 'வருகை' },
     { sel: '.sort-btn[data-sort="departure"]', en: 'Departure', ta: 'புறப்பாடு' },
     { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: 'காலம்' },
-    { sel: '.show-more-text', en: 'Show All Trains', ta: 'அனைத்து ரயில்கள்' },
+    { sel: '.show-more-text', en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காண' },
     { sel: '.footer-small', en: 'Made with ♥', ta: '♥ உடன் உருவாக்கப்பட்டது' },
-    { sel: '#shareBtn .btn-text', en: 'Share Invitation', ta: 'அழைப்பிதழை பகிரவும்' },
+    { sel: '#shareBtn .btn-text', en: 'Share Invitation', ta: 'அழைப்பிதழை பகிர' },
     // Loading
     { sel: '.loading-text', en: 'Arivalan &amp; Akshaya', ta: 'அறிவாளன் &amp; அக்‌ஷயா' },
     // Attraction names

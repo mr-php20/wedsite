@@ -520,7 +520,7 @@
       collapseList();
       renderTrains(currentCity);
       if (langToggleLabel) {
-        langToggleLabel.textContent = currentLang === 'en' ? 'த' : 'EN';
+        langToggleLabel.textContent = currentLang === 'en' ? 'தமிழில் காண' : 'English';
       }
       langToggle.classList.toggle('active', currentLang === 'ta');
       langToggle.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Tamil' : 'Switch to English');

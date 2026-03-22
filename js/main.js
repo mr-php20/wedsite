@@ -159,6 +159,23 @@
   var currentCity = 'chennai';
   var currentSort = 'arrival';
 
+  var trainLabels = {
+    dep: { en: 'Dep:', ta: 'புறப்பாடு:' },
+    arr: { en: 'Arr:', ta: 'வருகை:' },
+    noTrains: { en: 'No trains match the current filters.', ta: 'தேடலுக்குப் பொருந்தும் ரயில்கள் இல்லை.' },
+    showAll: { en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காட்டு' },
+    showLess: { en: 'Show Less', ta: 'குறைவாகக் காட்டு' },
+    board: { en: 'Board', ta: 'கிளம்பவும்' },
+    frequency: {
+      'Daily': 'தினமும்',
+      'Thu': 'வியா',
+      'Tue, Thu, Sun': 'செவ், வியா, ஞாயி',
+      'Daily (exc Wed)': 'தினமும் (புதன் தவிர)',
+      'Daily (exc Tue)': 'தினமும் (செவ் தவிர)'
+    },
+    may: { en: 'May', ta: 'மே' }
+  };
+
   function parseTime(str) {
     var timePart = str.split(',')[0].trim();
     var parts = timePart.split(':');
@@ -224,7 +241,7 @@
     var trains = getSortedFiltered(city);
 
     if (trains.length === 0) {
-      trainList.innerHTML = '<p style="text-align:center;color:var(--dark-muted);padding:2rem 0;">No trains match the current filters.</p>';
+      trainList.innerHTML = '<p style="text-align:center;color:var(--dark-muted);padding:2rem 0;">' + trainLabels.noTrains[currentLang] + '</p>';
       updateShowMore();
       return;
     }
@@ -240,11 +257,11 @@
         '<div class="train-details">' +
           '<span class="train-detail">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
-            '<span>Dep: <strong>' + t.dep + '</strong></span>' +
+            '<span>' + trainLabels.dep[currentLang] + ' <strong>' + (currentLang === 'ta' ? t.dep.replace(/May/g, 'மே') : t.dep) + '</strong></span>' +
           '</span>' +
           '<span class="train-detail">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
-            '<span>Arr: <strong>' + t.arr + '</strong></span>' +
+            '<span>' + trainLabels.arr[currentLang] + ' <strong>' + (currentLang === 'ta' ? t.arr.replace(/May/g, 'மே') : t.arr) + '</strong></span>' +
           '</span>' +
           '<span class="train-detail">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>' +
@@ -252,8 +269,8 @@
           '</span>' +
         '</div>' +
         '<div class="train-footer">' +
-          '<span class="train-frequency">' + t.frequency + '</span>' +
-          '<span class="train-board">' + t.board + '</span>' +
+          '<span class="train-frequency">' + (currentLang === 'ta' && trainLabels.frequency[t.frequency] ? trainLabels.frequency[t.frequency] : t.frequency) + '</span>' +
+          '<span class="train-board">' + (currentLang === 'ta' ? t.board.replace('Board', trainLabels.board.ta).replace(/May/g, trainLabels.may.ta) : t.board) + '</span>' +
         '</div>' +
       '</div>';
     });
@@ -268,7 +285,7 @@
     if (showMoreBtn) {
       showMoreBtn.classList.remove('expanded');
       var txtEl = showMoreBtn.querySelector('.show-more-text');
-      if (txtEl) txtEl.textContent = 'Show All Trains';
+      if (txtEl) txtEl.textContent = trainLabels.showAll[currentLang];
     }
   }
 
@@ -287,7 +304,7 @@
       var isExpanded = trainListWrap.classList.toggle('expanded');
       showMoreBtn.classList.toggle('expanded', isExpanded);
       var txtEl = showMoreBtn.querySelector('.show-more-text');
-      if (txtEl) txtEl.textContent = isExpanded ? 'Show Less' : 'Show All Trains';
+      if (txtEl) txtEl.textContent = isExpanded ? trainLabels.showLess[currentLang] : trainLabels.showAll[currentLang];
       if (trainListFade) trainListFade.style.display = isExpanded ? 'none' : '';
     });
   }
@@ -363,103 +380,147 @@
 
   var translations = [
     // Hero
-    { sel: '.hero-subtitle', en: 'Wedding Invitation', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0ba4\u0bb4\u0bcd' },
+    { sel: '.hero-subtitle', en: 'Wedding Invitation', ta: 'திருமண அழைப்பிதழ்' },
     { sel: '.hero-groom', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.weds-text', en: 'Weds', ta: 'உடன்' },
     { sel: '.hero-bride', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Invocation
     { sel: '.blessing-text', en: 'With love and blessings', ta: 'அன்புடனும் ஆசியுடனும்' },
-    { sel: '.parent-group:first-child .parent-label', en: 'Parents of the Groom', ta: '\u0bae\u0ba3\u0bae\u0b95\u0ba9\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bcb\u0bb0\u0bcd' },
-    { sel: '.parent-group:last-child .parent-label', en: 'Parents of the Bride', ta: '\u0bae\u0ba3\u0bae\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bcb\u0bb0\u0bcd' },
+    { sel: '.parent-group:first-child .parent-label', en: 'Parents of the Groom', ta: 'மணமகனின் பெற்றோர்' },
+    { sel: '.parent-group:last-child .parent-label', en: 'Parents of the Bride', ta: 'மணமகளின் பெற்றோர்' },
     { sel: '.invite-label', en: 'Cordially invite you', ta: 'திருமண விழாவிற்கு' },
     { sel: '.invite-sub', en: 'to join in the wedding celebrations of', ta: 'அன்புடன் அழைக்கின்றனர்' },
     { sel: '.couple-name.groom-name', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.couple-amp', en: '&', ta: '&' },
     { sel: '.couple-name.bride-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
+    // Parent names
+    { sel: '.parent-group:first-child .parent-name', en: 'Dr. C. Paramasivan &amp; Dr. A. Muthu Tamilarasi', ta: 'முனைவர் செ. பரமசிவன் &amp; முனைவர் ஆ. முத்து தமிழரசி' },
+    { sel: '.parent-group:last-child .parent-name', en: 'Mr. Manivannan &amp; Mrs. D. Umarani', ta: 'திரு. ஜெ. மணிவண்ணன் &amp; திருமதி. தெ. உமாராணி' },
     // Events
     { sel: '#events .section-label', en: 'Save the Date', ta: 'நாள்' },
-    { sel: '#events .section-title', en: 'Wedding Day', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0ba8\u0bbe\u0bb3\u0bcd' },
-    { sel: '.event-date-main', en: 'Friday, May 29th, 2026', ta: '\u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb4\u0bae\u0bc8, \u0bae\u0bc7 29, 2026' },
-    { sel: '.timeline-item:first-child .event-name', en: 'Muhurtham', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
-    { sel: '.timeline-item:first-child .event-time', en: '9:00 AM \u2013 10:00 AM', ta: '\u0b95\u0bbe\u0bb2\u0bc8 9:00 \u2013 10:00' },
-    { sel: '.timeline-item:first-child .event-venue', en: 'Arulmigu Sri Malai Parvathi Amman Temple', ta: '\u0b85\u0bb0\u0bc1\u0bb3\u0bcd\u0bae\u0bbf\u0b95\u0bc1 \u0bb8\u0bcd\u0bb0\u0bc0 \u0bae\u0bb2\u0bc8 \u0baa\u0bbe\u0bb0\u0bcd\u0bb5\u0ba4\u0bbf \u0b85\u0bae\u0bcd\u0bae\u0ba9\u0bcd \u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bcd' },
-    { sel: '.timeline-item:first-child .event-venue-sub', en: 'Atop a scenic hill near Tirunelveli', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf \u0b85\u0bb0\u0bc1\u0b95\u0bbf\u0bb2\u0bcd \u0b92\u0bb0\u0bc1 \u0bae\u0bb2\u0bc8\u0bae\u0bc7\u0bb2\u0bcd' },
-    { sel: '.timeline-item:first-child .event-map-btn:first-child .btn-text', en: 'Temple Location', ta: '\u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bcd \u0b87\u0b9f\u0bae\u0bcd' },
-    { sel: '.timeline-item:first-child .event-map-btn-alt .btn-text', en: 'Car Parking', ta: '\u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
-    { sel: '.timeline-item:last-child .event-name', en: 'Wedding Reception', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0bb5\u0bb0\u0bb5\u0bc7\u0bb1\u0bcd\u0baa\u0bc1' },
-    { sel: '.timeline-item:last-child .event-time', en: '11:30 AM onwards', ta: '\u0b95\u0bbe\u0bb2\u0bc8 11:30 \u0bae\u0bc1\u0ba4\u0bb2\u0bcd' },
-    { sel: '.timeline-item:last-child .event-venue', en: 'Maharaasi Mahal, Tirunelveli', ta: '\u0bae\u0b95\u0bbe\u0bb0\u0bbe\u0b9a\u0bbf \u0bae\u0bb9\u0bbe\u0bb2\u0bcd, \u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf' },
-    { sel: '.timeline-item:last-child .event-venue-sub', en: '~19 km from the temple', ta: '\u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 ~19 \u0b95\u0bbf.\u0bae\u0bc0.' },
-    { sel: '.timeline-item:last-child .event-map-btn .btn-text', en: 'See the route', ta: '\u0bb5\u0bb4\u0bbf\u0baf\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0ba3' },
+    { sel: '#events .section-title', en: 'Wedding Day', ta: 'திருமண நாள்' },
+    { sel: '.event-date-main', en: 'Friday, May 29th, 2026', ta: 'வெள்ளிக்கிழமை, மே 29, 2026' },
+    { sel: '.timeline-item:first-child .event-name', en: 'Muhurtham', ta: 'முகூர்த்தம்' },
+    { sel: '.timeline-item:first-child .event-time', en: '9:00 AM – 10:00 AM', ta: 'காலை 9:00 – 10:00' },
+    { sel: '.timeline-item:first-child .event-venue', en: 'Arulmigu Sri Malai Parvathi Amman Temple', ta: 'அருள்மிகு ஸ்ரீ மலை பார்வதி அம்மன் கோவில்' },
+    { sel: '.timeline-item:first-child .event-venue-sub', en: 'Atop a scenic hill near Tirunelveli', ta: 'திருநெல்வேலி அருகில் ஒரு மலைமேல்' },
+    { sel: '.timeline-item:first-child .event-map-btn:first-child .btn-text', en: 'Temple Location', ta: 'கோவில் இடம்' },
+    { sel: '.timeline-item:first-child .event-map-btn-alt .btn-text', en: 'Car Parking', ta: 'வாகன நிறுத்தம்' },
+    { sel: '.timeline-item:last-child .event-name', en: 'Wedding Reception', ta: 'திருமண வரவேற்பு' },
+    { sel: '.timeline-item:last-child .event-time', en: '11:30 AM onwards', ta: 'காலை 11:30 முதல்' },
+    { sel: '.timeline-item:last-child .event-venue', en: 'Maharaasi Mahal, Tirunelveli', ta: 'மகாராசி மஹால், திருநெல்வேலி' },
+    { sel: '.timeline-item:last-child .event-venue-sub', en: '~19 km from the temple', ta: 'கோவிலிலிருந்து ~19 கி.மீ.' },
+    { sel: '.timeline-item:last-child .event-map-btn .btn-text', en: 'See the route', ta: 'வழியைக் காண' },
     // Kural
-    { sel: '.kural-meaning', en: '\u201cThe loveless possess everything for themselves;<br>the loving give even their bones for others.\u201d', ta: '\u201c\u0b85\u0ba9\u0bcd\u0baa\u0bc1 \u0b87\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe\u0bae\u0bcd \u0ba4\u0bae\u0b95\u0bcd\u0b95\u0bc7 \u0b89\u0bb0\u0bbf\u0baf\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd;<br>\u0b85\u0ba9\u0bcd\u0baa\u0bc1 \u0b89\u0b9f\u0bc8\u0baf\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bae\u0bcd \u0b8e\u0bb2\u0bc1\u0bae\u0bcd\u0baa\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0bb1\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0bb0\u0bbf\u0baf\u0ba4\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0bb5\u0bb0\u0bcd.\u201d' },
-    { sel: '.kural-source', en: '\u2014 Thirukkural, Kural 72', ta: '\u2014 \u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bb1\u0bb3\u0bcd, \u0b95\u0bc1\u0bb1\u0bb3\u0bcd 72' },
+    { sel: '.kural-meaning', en: '“The loveless possess everything for themselves;<br>the loving give even their bones for others.”', ta: '“அன்பு இல்லாதவர்கள் எல்லாம் தமக்கே உரியவர்கள்;<br>அன்பு உடையவர்கள் தம் எலும்பையும் பிறருக்கு உரியதாக்குவர்.”' },
+    { sel: '.kural-source', en: '— Thirukkural, Kural 72', ta: ', திருக்குறள், குறள் 72' },
     // Couple
-    { sel: '#couple .section-label', en: 'meet the', ta: '\u0b9a\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '#couple .section-title', en: 'Bride &amp; Groom', ta: '\u0bae\u0ba3\u0bae\u0b95\u0bcd\u0b95\u0bb3\u0bcd' },
+    { sel: '#couple .section-label', en: 'meet the', ta: 'சந்தியுங்கள்' },
+    { sel: '#couple .section-title', en: 'Bride &amp; Groom', ta: 'மணமக்கள்' },
     { sel: '.groom-photo .photo-name', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.bride-photo .photo-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
-    { sel: '.couple-message p:first-child', en: 'We are both so delighted that you are able to join us in celebrating what we hope will be one of the happiest days of our lives. The affection shown to us by so many people has been incredibly moving, and has touched us both deeply.', ta: '\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bbe\u0bb4\u0bcd\u0bb5\u0bbf\u0ba9\u0bcd \u0bae\u0bbf\u0b95 \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0baf\u0bbe\u0ba9 \u0ba8\u0bbe\u0bb3\u0bbf\u0bb2\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb2\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb5\u0ba4\u0bc1 \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bbf\u0b95\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf \u0b85\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1. \u0baa\u0bb2\u0bb0\u0bbf\u0ba9\u0bcd \u0b85\u0ba9\u0bcd\u0baa\u0bc1\u0bae\u0bcd \u0b86\u0b9a\u0bbf\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0b86\u0bb4\u0bae\u0bbe\u0b95 \u0ba4\u0bca\u0b9f\u0bcd\u0b9f\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9.' },
-    { sel: '.couple-message p:last-child', en: 'We would like to take this opportunity to thank everyone most sincerely for their kindness. We are looking forward to seeing you at the wedding.', ta: '\u0b85\u0ba9\u0bc8\u0bb5\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0ba9\u0bae\u0bbe\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4 \u0ba8\u0ba9\u0bcd\u0bb1\u0bbf\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bca\u0bb3\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd. \u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0b9a\u0bcd \u0b9a\u0ba8\u0bcd\u0ba4\u0bbf\u0b95\u0bcd\u0b95 \u0b86\u0bb5\u0bb2\u0bc1\u0b9f\u0ba9\u0bcd \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd.' },
+    { sel: '.couple-message p:first-child', en: 'We are both so delighted that you are able to join us in celebrating what we hope will be one of the happiest days of our lives. The affection shown to us by so many people has been incredibly moving, and has touched us both deeply.', ta: 'எங்கள் வாழ்வின் மிக மகிழ்ச்சியான நாளில் நீங்கள் கலந்துகொள்வது எங்களுக்கு மிகவும் மகிழ்ச்சி அளிக்கிறது. பலரின் அன்பும் ஆசிகளும் எங்களை ஆழமாக தொட்டுள்ளன.' },
+    { sel: '.couple-message p:last-child', en: 'We would like to take this opportunity to thank everyone most sincerely for their kindness. We are looking forward to seeing you at the wedding.', ta: 'அனைவருக்கும் மனமார்ந்த நன்றியைத் தெரிவித்துக்கொள்கிறோம். திருமணத்தில் உங்களைச் சந்திக்க ஆவலுடன் காத்திருக்கிறோம்.' },
     // Gallery
-    { sel: '#gallery .section-label', en: 'our', ta: '\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '#gallery .section-title', en: 'Gallery', ta: '\u0baa\u0bc1\u0b95\u0bc8\u0baa\u0bcd\u0baa\u0b9f\u0ba4\u0bcd \u0ba4\u0bca\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc1' },
-    { sel: '.gallery-hint', en: '\u2190 Swipe to see more \u2192', ta: '\u2190 \u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0b95\u0bbe\u0ba3 \u2192' },
+    { sel: '#gallery .section-label', en: 'our', ta: 'எங்கள்' },
+    { sel: '#gallery .section-title', en: 'Gallery', ta: 'புகைப்படத் தொகுப்பு' },
+    { sel: '.gallery-hint', en: '← Swipe to see more →', ta: '← மேலும் காண →' },
     // RSVP - commented out in HTML
     // Info
-    { sel: '#info .section-label', en: 'A few', ta: '\u0b9a\u0bbf\u0bb2' },
-    { sel: '#info .section-title', en: 'Things to Know', ta: '\u0ba4\u0bc6\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bca\u0bb3\u0bcd\u0bb3 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbf\u0baf\u0bb5\u0bc8' },
-    { sel: '.info-intro', en: 'To help you feel at ease and enjoy every moment of the celebrations, we\u2019ve gathered a few thoughtful details we\u2019d love for you to know before the big day.', ta: '\u0bb5\u0bbf\u0bb4\u0bbe\u0bb5\u0bbf\u0ba9\u0bcd \u0b92\u0bb5\u0bcd\u0bb5\u0bca\u0bb0\u0bc1 \u0ba4\u0bb0\u0bc1\u0ba3\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0b95\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf\u0baf\u0bbe\u0b95 \u0b85\u0ba9\u0bc1\u0baa\u0bb5\u0bbf\u0b95\u0bcd\u0b95, \u0b9a\u0bbf\u0bb2 \u0bae\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0bae\u0bbe\u0ba9 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd\u0b95\u0bb3\u0bc8 \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0ba4\u0bcd \u0ba4\u0bc6\u0bb0\u0bbf\u0bb5\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bcb\u0bae\u0bcd.' },
-    { sel: '.info-grid .info-card:nth-child(1) .info-title', en: 'Weather', ta: '\u0bb5\u0bbe\u0ba9\u0bbf\u0bb2\u0bc8' },
-    { sel: '.info-grid .info-card:nth-child(1) .info-desc', en: 'It will be warm and sunny with temperatures reaching up to 38\u00b0C at the venue. Light, breathable attire is recommended.', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0bae\u0ba3 \u0bae\u0ba3\u0bcd\u0b9f\u0baa\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8 38\u00b0C \u0bb5\u0bb0\u0bc8 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd. \u0b87\u0bb2\u0b95\u0bc1\u0bb5\u0bbe\u0ba9 \u0b86\u0b9f\u0bc8\u0b95\u0bb3\u0bc8 \u0b85\u0ba3\u0bbf\u0baf\u0bb5\u0bc1\u0bae\u0bcd.' },
-    { sel: '.info-grid .info-card:nth-child(2) .info-title', en: 'Parking', ta: '\u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd' },
-    { sel: '.info-grid .info-card:nth-child(4) .info-desc', en: 'Ample parking space is available at the venue for all our guests.', ta: '\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0baa\u0bcb\u0ba4\u0bc1\u0bae\u0bbe\u0ba9 \u0bb5\u0bbe\u0b95\u0ba9 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4 \u0bb5\u0b9a\u0ba4\u0bbf \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.' },
+    { sel: '#info .section-label', en: 'A few', ta: 'சில' },
+    { sel: '#info .section-title', en: 'Things to Know', ta: 'தெரிந்துகொள்ள வேண்டியவை' },
+    { sel: '.info-intro', en: 'To help you feel at ease and enjoy every moment of the celebrations, we’ve gathered a few thoughtful details we’d love for you to know before the big day.', ta: 'விழாவின் ஒவ்வொரு தருணத்தையும் நீங்கள் மகிழ்ச்சியாக அனுபவிக்க, சில முக்கியமான தகவல்களை உங்களுக்குத் தெரிவிக்க விரும்புகிறோம்.' },
+    { sel: '.info-grid .info-card:nth-child(1) .info-title', en: 'Weather', ta: 'வானிலை' },
+    { sel: '.info-grid .info-card:nth-child(1) .info-desc', en: 'It will be warm and sunny with temperatures reaching up to 42°C. Light, breathable attire is recommended.', ta: 'வெப்பநிலை 42°C வரை இருக்கும். இலகுவான ஆடைகளை அணியவும்.' },
+    { sel: '.info-grid .info-card:nth-child(2) .info-title', en: 'Parking', ta: 'வாகன நிறுத்தம்' },
+    { sel: '.info-grid .info-card:nth-child(2) .info-desc', en: '<a href="https://maps.app.goo.gl/HpBWswTSFMNCj8PG6" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">Dedicated parking</a> is available at the base of the temple hill. Parking is also available at <a href="https://www.google.com/maps/search/Maharaasi+Mahal+Tirunelveli" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">Maharaasi Mahal</a>.', ta: 'கோவில் மலை அடிவாரத்தில் <a href="https://maps.app.goo.gl/HpBWswTSFMNCj8PG6" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">பிரத்யேக வாகன நிறுத்தம்</a> உள்ளது. <a href="https://www.google.com/maps/search/Maharaasi+Mahal+Tirunelveli" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;">மகாராசி மஹால்</a> இலும் வாகன நிறுத்தம் உள்ளது.' },
     // Social
-    { sel: '.follow-text-1', en: 'Follow', ta: '\u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
+    { sel: '.follow-text-1', en: 'Follow', ta: 'தொடருங்கள்' },
     { sel: '.follow-text-2', en: 'the', ta: '' },
-    { sel: '.follow-text-3', en: 'action', ta: '\u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bc8' },
+    { sel: '.follow-text-3', en: 'action', ta: 'நிகழ்வுகளை' },
     { sel: '.instagram-btns .instagram-btn:first-child .btn-text', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.instagram-btns .instagram-btn:last-child .btn-text', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Countdown
     { sel: '#countdown .section-label', en: 'The', ta: '' },
-    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: '\u0ba8\u0bbe\u0bb3\u0bcd \u0b8e\u0ba3\u0bcd\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc8' },
-    { sel: '.countdown-item:nth-child(1) .countdown-label', en: 'Days', ta: '\u0ba8\u0bbe\u0b9f\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '.countdown-item:nth-child(2) .countdown-label', en: 'Hours', ta: '\u0bae\u0ba3\u0bbf' },
-    { sel: '.countdown-item:nth-child(3) .countdown-label', en: 'Minutes', ta: '\u0ba8\u0bbf\u0bae\u0bbf\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '.countdown-item:nth-child(4) .countdown-label', en: 'Seconds', ta: '\u0bb5\u0bbf\u0ba9\u0bbe\u0b9f\u0bbf\u0b95\u0bb3\u0bcd' },
-    { sel: '.countdown-message', en: 'Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.', ta: '\u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bc1\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bb0\u0bc1\u0b95\u0bc8\u0baf\u0bc8 \u0b86\u0bb5\u0bb2\u0bc1\u0b9f\u0ba9\u0bcd \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9\u0bb0\u0bcd.' },
+    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: 'நாள் எண்ணிக்கை' },
+    { sel: '.countdown-item:nth-child(1) .countdown-label', en: 'Days', ta: 'நாட்கள்' },
+    { sel: '.countdown-item:nth-child(2) .countdown-label', en: 'Hours', ta: 'மணி' },
+    { sel: '.countdown-item:nth-child(3) .countdown-label', en: 'Minutes', ta: 'நிமிடங்கள்' },
+    { sel: '.countdown-item:nth-child(4) .countdown-label', en: 'Seconds', ta: 'வினாடிகள்' },
+    { sel: '.countdown-message', en: 'Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.', ta: 'எங்கள் குடும்பத்தினர் உங்கள் வருகையை ஆவலுடன் எதிர்பார்க்கின்றனர்.' },
     // Footer
-    { sel: '.footer > p:first-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 \u0bae\u0bc7 2026' },
+    { sel: '.footer > p:first-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026' },
     // Travel
-    { sel: '#travel .section-label', en: 'How to', ta: '\u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf' },
-    { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: '\u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf \u0b9a\u0bc6\u0bb2\u0bcd\u0bb5\u0ba4\u0bc1' },
-    { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.', ta: '\u0bae\u0bc1\u0b95\u0bc2\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0bae\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0bb4\u0bae\u0bc8, \u0bae\u0bc7 29 \u0b95\u0bbe\u0bb2\u0bc8 9:00 \u0bae\u0ba3\u0bbf\u0b95\u0bcd\u0b95\u0bc1. \u0b9a\u0bb0\u0bbf\u0baf\u0bbe\u0ba9 \u0ba8\u0bc7\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bb0 \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0b95\u0bb3\u0bcd.' },
+    { sel: '#travel .section-label', en: 'How to', ta: 'எப்படி' },
+    { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: 'திருநெல்வேலி செல்வது' },
+    { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.', ta: 'முகூர்த்தம் வெள்ளிக்கிழமை, மே 29 காலை 9:00 மணிக்கு. சரியான நேரத்தில் வர பரிந்துரைக்கப்படும் ரயில்கள்.' },
     // Attractions
-    { sel: '#attractions .section-label', en: 'Explore', ta: '\u0b85\u0bb1\u0bbf\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: '\u0b85\u0bb0\u0bc1\u0b95\u0bbf\u0bb2\u0bcd \u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1\u0bb2\u0bbe \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '.attractions-intro', en: 'If you\u2019re travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.', ta: '\u0ba4\u0bc2\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bb0\u0bc1\u0baa\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0bbf\u0bb0\u0bc1\u0ba8\u0bc6\u0bb2\u0bcd\u0bb5\u0bc7\u0bb2\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbf\u0baf \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd.' },
-    { sel: '.travel-note', en: 'Timings are approximate. Please verify schedules before booking.', ta: '\u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bcb\u0bb0\u0bbe\u0baf\u0bae\u0bbe\u0ba9\u0bb5\u0bc8. \u0baa\u0baf\u0ba3\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.' },
-    { sel: '.irctc-btn .btn-text', en: 'Book on IRCTC', ta: 'IRCTC-\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0b95' },
-    { sel: '.sort-label', en: 'Sort by', ta: '\u0bb5\u0bb0\u0bbf\u0b9a\u0bc8' },
-    { sel: '.sort-btn[data-sort="arrival"]', en: 'Arrival', ta: '\u0bb5\u0bb0\u0bc1\u0b95\u0bc8' },
-    { sel: '.sort-btn[data-sort="departure"]', en: 'Departure', ta: '\u0baa\u0bc1\u0bb1\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bc1' },
-    { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: '\u0b95\u0bbe\u0bb2\u0bae\u0bcd' },
-    { sel: '.show-more-text', en: 'Show All Trains', ta: '\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0b95\u0bb3\u0bcd' },
-    { sel: '.footer-small', en: 'Made with \u2665', ta: '\u2665 \u0b89\u0b9f\u0ba9\u0bcd \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1' },
-    { sel: '#shareBtn .btn-text', en: 'Share Invitation', ta: '\u0b85\u0bb4\u0bc8\u0baa\u0bcd\u0baa\u0bbf\u0ba4\u0bb4\u0bc8 \u0baa\u0b95\u0bbf\u0bb0\u0bb5\u0bc1\u0bae\u0bcd' },
+    { sel: '#attractions .section-label', en: 'Explore', ta: 'அறியுங்கள்' },
+    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: 'அருகில் சுற்றுலா இடங்கள்' },
+    { sel: '.attractions-intro', en: 'If you’re travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.', ta: 'தூரத்திலிருந்து வருபவர்களுக்கு திருநெல்வேலியில் பார்க்க வேண்டிய இடங்கள்.' },
+    { sel: '.travel-note', en: 'Timings are approximate. Please verify schedules before booking.', ta: 'நேரங்கள் தோராயமானவை. பயணத்திற்கு முன் சரிபார்க்கவும்.' },
+    { sel: '.irctc-btn .btn-text', en: 'Book on IRCTC', ta: 'IRCTC-யில் பதிவு செய்க' },
+    { sel: '.sort-label', en: 'Sort by', ta: 'வரிசை' },
+    { sel: '.sort-btn[data-sort="arrival"]', en: 'Arrival', ta: 'வருகை' },
+    { sel: '.sort-btn[data-sort="departure"]', en: 'Departure', ta: 'புறப்பாடு' },
+    { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: 'காலம்' },
+    { sel: '.show-more-text', en: 'Show All Trains', ta: 'அனைத்து ரயில்கள்' },
+    { sel: '.footer-small', en: 'Made with ♥', ta: '♥ உடன் உருவாக்கப்பட்டது' },
+    { sel: '#shareBtn .btn-text', en: 'Share Invitation', ta: 'அழைப்பிதழை பகிரவும்' },
     // Loading
-    { sel: '.loading-text', en: 'Arivalan &amp; Akshaya', ta: 'அறிவாளன் &amp; அக்‌ஷயா' }
+    { sel: '.loading-text', en: 'Arivalan &amp; Akshaya', ta: 'அறிவாளன் &amp; அக்‌ஷயா' },
+    // Attraction names
+    { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-name', en: 'Tirunelveli Halwa', ta: 'திருநெல்வேலி அல்வா' },
+    { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-name', en: 'Nellaiappar Temple', ta: 'நெல்லையப்பர் கோவில்' },
+    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-name', en: 'Sivakalai Archaeological Site', ta: 'சிவகளை அகழாய்வு' },
+    { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-name', en: 'Adichanallur Archaeological Site', ta: 'ஆதிச்சநல்லூர் அகழாய்வு' },
+    { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-name', en: 'Vallanadu Blackbuck Sanctuary', ta: 'வள்ளநாடு வெளிமான் சரணாலயம்' },
+    { sel: '.attractions-grid .attraction-card:nth-child(6) .attraction-name', en: 'Manimutharu Falls', ta: 'மணிமுத்தாறு அருவி' },
+    { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-name', en: 'Agasthiyar Falls', ta: 'அகத்தியர் அருவி' },
+    { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-name', en: 'Courtallam Falls', ta: 'குற்றாலம் அருவி' },
+    { sel: '.attractions-grid .attraction-card:nth-child(9) .attraction-name', en: 'Tiruchendur Murugan Temple', ta: 'திருச்செந்தூர் முருகன் கோவில்' },
+    // Attraction descriptions
+    { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-desc', en: 'Don’t leave without the legendary wheat halwa. Skip the overrated Iruttu Kadai — try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> instead for the real deal!', ta: 'புகழ்பெற்ற கோதுமை அல்வா சுவைக்காமல் செல்லாதீர்கள். இருட்டுக்கடையைத் தவிர்த்து ,<a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">சாந்தி ஸ்வீட்ஸ்</a> முயற்சியுங்கள்!' },
+    { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-desc', en: 'Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.', ta: 'அழகிய திராவிட கட்டிடக்கலை மற்றும் புகழ்பெற்ற இசைத் தூண்களைக் கொண்ட பண்டைய சிவன் கோவில்.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-desc', en: 'A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.', ta: 'பண்டைய தமிழ் நாகரிக தொல்பொருட்களை வெளிக்கொணரும் முக்கியமான தொல்பொருள் அகழ்வாய்வு நிலையம்.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-desc', en: 'An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.', ta: '3,800 ஆண்டுகள் பழமையான புதைகுழி , இந்தியாவின் மிக முக்கியமான தொல்பொருள் கண்டுபிடிப்புகளில் ஒன்று.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-desc', en: 'A wildlife sanctuary home to the endangered Indian blackbuck — a rare sight in Tamil Nadu.', ta: 'அருகிவரும் இந்திய வெளிமானின் வாழிடம் , தமிழ்நாட்டில் அரிதான காட்சி.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(6) .attraction-desc', en: 'A beautiful waterfall nestled in the Western Ghats — a serene spot for nature lovers.', ta: 'மேற்குத் தொடர்ச்சி மலையில் அமைந்த அழகிய அருவி , இயற்கை ஆர்வலர்களுக்கான அமைதியான இடம்.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-desc', en: 'A scenic waterfall near Papanasam, believed to be blessed by Sage Agasthiyar.', ta: 'பாபநாசம் அருகே உள்ள இயற்கை எழில் கொஞ்சும் அருவி, அகத்திய முனிவரின் அருளால் புனிதமானது.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-desc', en: 'The “Spa of South India” — scenic waterfalls surrounded by the Western Ghats, ~60 km away.', ta: '“தென் இந்தியாவின் ஆரோக்கிய நீரூற்று” , மேற்குத் தொடர்ச்சி மலைகளால் சூழப்பட்ட அழகிய அருவிகள், ~60 கி.மீ. தொலைவில்.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(9) .attraction-desc', en: 'One of the six abodes of Lord Murugan, a magnificent seaside temple ~80 km from the city.', ta: 'முருகப் பெருமானின் ஆறுபடை வீடுகளில் ஒன்று, நகரத்திலிருந்து ~80 கி.மீ. தொலைவிலுள்ள கடலோர கோவில்.' },
+    // Attraction links
+    { selAll: '.attraction-link', en: 'View on Map →', ta: 'வரைபடத்தில் காண →' },
+    // City buttons
+    { sel: '.city-btn[data-city="chennai"]', en: 'Chennai', ta: 'சென்னை' },
+    { sel: '.city-btn[data-city="bengaluru"]', en: 'Bengaluru', ta: 'பெங்களூர்' },
+    { sel: '.city-btn[data-city="coimbatore"]', en: 'Coimbatore', ta: 'கோயம்புத்தூர்' },
+    { sel: '.city-btn[data-city="madurai"]', en: 'Madurai', ta: 'மதுரை' },
+    { sel: '.city-btn[data-city="trichy"]', en: 'Trichy', ta: 'திருச்சி' },
+    { sel: '.city-btn[data-city="thiruthuraipoondi"]', en: 'Thiruthuraipoondi', ta: 'திருத்துறைப்பூண்டி' },
+    // Filters
+    { sel: '#filterDaily + span', en: 'Daily only', ta: 'தினமும் மட்டும்' },
+    { sel: '#filterNoVB + span', en: 'Hide Vande Bharat', ta: 'வந்தே பாரத் மறை' },
+    // Reception car parking
+    { sel: '.timeline-item:last-child .event-map-btn-alt .btn-text', en: 'Car Parking', ta: 'வாகன நிறுத்தம்' }
   ];
 
   if (langToggle) {
     langToggle.addEventListener('click', function () {
       currentLang = currentLang === 'en' ? 'ta' : 'en';
       translations.forEach(function (t) {
-        var el = document.querySelector(t.sel);
-        if (el) el.innerHTML = t[currentLang];
+        if (t.selAll) {
+          var els = document.querySelectorAll(t.selAll);
+          els.forEach(function (el) { el.innerHTML = t[currentLang]; });
+        } else {
+          var el = document.querySelector(t.sel);
+          if (el) el.innerHTML = t[currentLang];
+        }
       });
+      collapseList();
+      renderTrains(currentCity);
       if (langToggleLabel) {
-        langToggleLabel.textContent = currentLang === 'en' ? '\u0ba4' : 'EN';
+        langToggleLabel.textContent = currentLang === 'en' ? 'த' : 'EN';
       }
       langToggle.classList.toggle('active', currentLang === 'ta');
       langToggle.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Tamil' : 'Switch to English');

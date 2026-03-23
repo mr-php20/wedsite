@@ -75,7 +75,18 @@
     });
   }
 
-  /* ---------- SHARE BUTTON ---------- */
+  /* ---------- ATTRACTIONS SHOW MORE ---------- */
+  var attractionsShowMore = document.getElementById('attractionsShowMore');
+  var attractionsGrid = document.querySelector('.attractions-grid');
+  var attractionsLabels = { show: { en: 'Show More', ta: 'மேலும் காண' }, less: { en: 'Show Less', ta: 'குறைவாகக் காட்டு' } };
+  if (attractionsShowMore && attractionsGrid) {
+    attractionsShowMore.addEventListener('click', function () {
+      var isExpanded = attractionsGrid.classList.toggle('expanded');
+      attractionsShowMore.classList.toggle('expanded', isExpanded);
+      var txtEl = attractionsShowMore.querySelector('.attractions-show-more-text');
+      if (txtEl) txtEl.textContent = isExpanded ? attractionsLabels.less[currentLang] : attractionsLabels.show[currentLang];
+    });
+  }
 
   /* ---------- FALLING PETALS ---------- */
   var heroSection = document.getElementById('hero');
@@ -458,6 +469,7 @@
     { sel: '.sort-btn[data-sort="departure"]', en: 'Departure', ta: 'புறப்பாடு' },
     { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: 'காலம்' },
     { sel: '.show-more-text', en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காண' },
+    { sel: '.attractions-show-more-text', en: 'Show More', ta: 'மேலும் காண' },
     { sel: '.footer-small', en: 'Made with ♥', ta: '♥ உடன் உருவாக்கப்பட்டது' },
 
     // Loading

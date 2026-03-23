@@ -16,7 +16,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Catamaran:wght@400;600;700&family=Mukta+Malar:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="css/style.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -103,7 +104,7 @@
   <!-- ========== LOADING SCREEN ========== -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-content">
-      <img class="loading-vilakku" src="assets/vilakkuCommon.png" width="50" height="163" alt="" aria-hidden="true">
+      <img class="loading-vilakku" src="assets/vilakkuCommon.png" width="50" height="163" alt="" aria-hidden="true" fetchpriority="high">
       <div class="loading-flame-glow"></div>
       <p class="loading-text">Arivalan &amp; Akshaya</p>
     </div>
@@ -146,32 +147,31 @@
     </div>
   </section>
 
-  <!-- ========== MANGO LEAF TORAN DIVIDER ========== -->
-  <div class="toran-divider" aria-hidden="true">
-    <div class="toran-string"></div>
-    <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="">
-    <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="">
-    <div class="toran-leaves">
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-    </div>
-  </div>
-
   <!-- ========== INVOCATION SECTION ========== -->
   <section id="invocation" class="section invocation">
+    <!-- MANGO LEAF TORAN DIVIDER -->
+    <div class="toran-divider" aria-hidden="true">
+      <div class="toran-string"></div>
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="" loading="lazy">
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="" loading="lazy">
+      <div class="toran-leaves">
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+      </div>
+    </div>
     <div class="container">
       <div class="invocation-lamps">
         <div class="lamp-wrapper lamp-left animate-on-scroll">
-          <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true">
+          <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true" loading="lazy">
         </div>
         <div class="invocation-text">
           <div class="animate-on-scroll">
@@ -210,34 +210,33 @@
           </div>
         </div>
         <div class="lamp-wrapper lamp-right animate-on-scroll">
-          <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true">
+          <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== TORAN DIVIDER ========== -->
-  <div class="toran-divider" aria-hidden="true">
-    <div class="toran-string"></div>
-    <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="">
-    <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="">
-    <div class="toran-leaves">
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-      <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
-    </div>
-  </div>
-
   <!-- ========== EVENT SECTION (TIMELINE) ========== -->
   <section id="events" class="section events">
+    <!-- TORAN DIVIDER -->
+    <div class="toran-divider" aria-hidden="true">
+      <div class="toran-string"></div>
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="" loading="lazy">
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="" loading="lazy">
+      <div class="toran-leaves">
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+        <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
+      </div>
+    </div>
     <div class="container">
       <div class="section-header animate-on-scroll">
         <p class="section-label">Save the Date</p>
@@ -314,19 +313,19 @@
       <div class="animate-on-scroll">
         <div class="kural-card">
           <div class="kural-lamp">
-            <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true">
+            <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true" loading="lazy">
           </div>
           <div class="kural-content">
             <p class="kural-tamil">அன்பிலார் எல்லாம் தமக்குரியர் அன்புடையார்</p>
             <p class="kural-tamil">என்பும் உரியர் பிறர்க்கு.</p>
             <div class="kolam-divider tiny">
-              <img src="assets/pulliKolam.png" width="25" height="25" alt="" aria-hidden="true">
+              <img src="assets/pulliKolam.png" width="25" height="25" alt="" aria-hidden="true" loading="lazy">
             </div>
             <p class="kural-meaning">"The loveless possess everything for themselves;<br>the loving give even their bones for others."</p>
             <p class="kural-source">— Thirukkural, Kural 72</p>
           </div>
           <div class="kural-lamp">
-            <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true">
+            <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true" loading="lazy">
           </div>
         </div>
       </div>
@@ -348,13 +347,13 @@
         <div class="couple-photos">
           <div class="couple-photo groom-photo">
             <div class="photo-placeholder">
-              <img src="assets/IMG_9304.jpg" alt="Arivalan">
+              <img src="assets/IMG_9304.jpg" alt="Arivalan" loading="lazy">
             </div>
             <p class="photo-name">Arivalan</p>
           </div>
           <div class="couple-photo bride-photo">
             <div class="photo-placeholder">
-              <img src="assets/DSC04827.jpg" alt="Akshaya">
+              <img src="assets/DSC04827.jpg" alt="Akshaya" loading="lazy">
             </div>
             <p class="photo-name">Akshaya</p>
           </div>
@@ -495,9 +494,7 @@
   <section id="social" class="section social">
     <div class="container">
       <div class="animate-on-scroll">
-        <p class="follow-text-1">Follow</p>
-        <p class="follow-text-2">the</p>
-        <p class="follow-text-3">action</p>
+        <p class="follow-heading"><span class="follow-text-1">Follow</span> <span class="follow-text-2">the</span> <span class="follow-text-3">action</span></p>
         <div class="instagram-btns">
           <a href="https://instagram.com/alan.amiable__" target="_blank" rel="noopener noreferrer" class="instagram-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -527,14 +524,14 @@
       <div class="attractions-grid">
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/halwa.png" alt="Halwa" width="32" height="32">
+            <img src="assets/halwa.png" alt="Halwa" width="32" height="32" loading="lazy">
           </div>
           <h3 class="attraction-name">Tirunelveli Halwa</h3>
           <p class="attraction-desc">Don't leave without the legendary wheat halwa. Skip the overrated Iruttu Kadai — try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> instead for the real deal!</p>
         </div>
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/gopuram.png" alt="Gopuram" width="32" height="32">
+            <img src="assets/gopuram.png" alt="Gopuram" width="32" height="32" loading="lazy">
           </div>
           <h3 class="attraction-name">Nellaiappar Temple</h3>
           <p class="attraction-desc">Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.</p>
@@ -542,23 +539,7 @@
         </div>
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/archeological.png" alt="Archaeological Site" width="32" height="32">
-          </div>
-          <h3 class="attraction-name">Sivakalai Archaeological Site</h3>
-          <p class="attraction-desc">A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.</p>
-          <a href="https://maps.app.goo.gl/UmFkiC9Wwu4YpdcW7" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <img src="assets/archeological.png" alt="Archaeological Site" width="32" height="32">
-          </div>
-          <h3 class="attraction-name">Adichanallur Archaeological Site</h3>
-          <p class="attraction-desc">An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.</p>
-          <a href="https://maps.app.goo.gl/vimr6aSUraDFkD4F9" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
-        </div>
-        <div class="attraction-card animate-on-scroll">
-          <div class="attraction-icon">
-            <img src="assets/blackBuck.png" alt="Blackbuck" width="32" height="32">
+            <img src="assets/blackBuck.png" alt="Blackbuck" width="32" height="32" loading="lazy">
           </div>
           <h3 class="attraction-name">Vallanadu Blackbuck Sanctuary</h3>
           <p class="attraction-desc">A wildlife sanctuary home to the endangered Indian blackbuck — a rare sight in Tamil Nadu.</p>
@@ -566,7 +547,23 @@
         </div>
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/waterfall.png" alt="Waterfall" width="38" height="38">
+            <img src="assets/archeological.png" alt="Archaeological Site" width="32" height="32" loading="lazy">
+          </div>
+          <h3 class="attraction-name">Sivakalai Archaeological Site</h3>
+          <p class="attraction-desc">A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.</p>
+          <a href="https://maps.app.goo.gl/UmFkiC9Wwu4YpdcW7" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <img src="assets/archeological.png" alt="Archaeological Site" width="32" height="32" loading="lazy">
+          </div>
+          <h3 class="attraction-name">Adichanallur Archaeological Site</h3>
+          <p class="attraction-desc">An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.</p>
+          <a href="https://maps.app.goo.gl/vimr6aSUraDFkD4F9" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
+        </div>
+        <div class="attraction-card animate-on-scroll">
+          <div class="attraction-icon">
+            <img src="assets/waterfall.png" alt="Waterfall" width="38" height="38" loading="lazy">
           </div>
           <h3 class="attraction-name">Manimutharu Falls</h3>
           <p class="attraction-desc">A beautiful waterfall nestled in the Western Ghats — a serene spot for nature lovers.</p>
@@ -574,7 +571,7 @@
         </div>
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/waterfall.png" alt="Waterfall" width="38" height="38">
+            <img src="assets/waterfall.png" alt="Waterfall" width="38" height="38" loading="lazy">
           </div>
           <h3 class="attraction-name">Agasthiyar Falls</h3>
           <p class="attraction-desc">A scenic waterfall near Papanasam, believed to be blessed by Sage Agasthiyar.</p>
@@ -582,7 +579,7 @@
         </div>
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/waterfall.png" alt="Waterfall" width="38" height="38">
+            <img src="assets/waterfall.png" alt="Waterfall" width="38" height="38" loading="lazy">
           </div>
           <h3 class="attraction-name">Courtallam Falls</h3>
           <p class="attraction-desc">The "Spa of South India" — scenic waterfalls surrounded by the Western Ghats, ~60 km away.</p>
@@ -590,13 +587,17 @@
         </div>
         <div class="attraction-card animate-on-scroll">
           <div class="attraction-icon">
-            <img src="assets/gopuram.png" alt="Temple" width="32" height="32">
+            <img src="assets/gopuram.png" alt="Temple" width="32" height="32" loading="lazy">
           </div>
           <h3 class="attraction-name">Tiruchendur Murugan Temple</h3>
           <p class="attraction-desc">One of the six abodes of Lord Murugan, a magnificent seaside temple ~80 km from the city.</p>
           <a href="https://www.google.com/maps/search/Tiruchendur+Murugan+Temple" target="_blank" rel="noopener noreferrer" class="attraction-link">View on Map →</a>
         </div>
       </div>
+      <button class="attractions-show-more" id="attractionsShowMore">
+        <span class="attractions-show-more-text">Show More</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
   </section>
 
@@ -646,6 +647,6 @@
     <span class="lang-toggle-label" id="langToggleLabel">தமிழில் காண</span>
   </button>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

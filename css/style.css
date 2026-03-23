@@ -398,6 +398,7 @@ a {
   height: 55px;
   overflow: visible;
   background: transparent;
+  margin-bottom: 2rem;
 }
 
 .toran-string {
@@ -460,8 +461,8 @@ a {
    ========================================== */
 .invocation {
   background: var(--white);
-  padding-top: calc(var(--section-padding) * 1);
-  padding-bottom: calc(var(--section-padding) * 1);
+  padding-top: 0;
+  padding-bottom: calc(var(--section-padding) * 0.5);
 }
 
 .invocation-lamps {
@@ -567,8 +568,8 @@ a {
    EVENTS SECTION
    ========================================== */
 .events {
-  background:
-    linear-gradient(180deg, var(--ivory) 0%, var(--pink-soft) 50%, var(--ivory) 100%);
+  background: var(--ivory);
+  padding-top: 0;
   padding-bottom: calc(var(--section-padding) * 0.8);
 }
 
@@ -773,14 +774,14 @@ a {
   top: 1rem;
   right: 1rem;
   z-index: 1000;
-  width: 100px;
-  height: 50px;
+  width: 60px;
+  height: 45px;
   border-radius: 10%;
   background: var(--maroon);
   color: var(--ivory);
   border: 2px solid var(--gold);
   font-family: var(--font-tamil);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -823,7 +824,7 @@ a {
    ========================================== */
 .couple {
   background:
-    linear-gradient(180deg, rgba(255,248,240,0.92) 0%, rgba(245,230,224,0.88) 50%, rgba(255,248,240,0.92) 100%),
+    linear-gradient(180deg, rgba(255,248,240,0.92) 0%, rgba(255,248,240,0.88) 50%, rgba(255,248,240,0.92) 100%),
     url('../assets/nellaiyappar-bg.jpg') center/cover no-repeat;
 }
 
@@ -945,7 +946,7 @@ a {
    THINGS TO KNOW SECTION
    ========================================== */
 .info {
-  background: var(--white);
+  background: var(--ivory);
 }
 
 .info-intro {
@@ -963,7 +964,7 @@ a {
 }
 
 .info-card {
-  background: var(--ivory);
+  background: var(--white);
   border-radius: 12px;
   padding: clamp(1.25rem, 2.5vw, 2rem);
   text-align: center;
@@ -999,7 +1000,7 @@ a {
    TRAVEL BY TRAIN SECTION
    ========================================== */
 .travel {
-  background: var(--ivory);
+  background: var(--white);
 }
 
 .travel-intro {
@@ -1134,7 +1135,7 @@ a {
   left: 0;
   right: 0;
   height: 80px;
-  background: linear-gradient(to bottom, transparent, var(--ivory));
+  background: linear-gradient(to bottom, transparent, var(--white));
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -1182,7 +1183,7 @@ a {
 }
 
 .train-card {
-  background: var(--white);
+  background: var(--ivory);
   border-radius: 12px;
   padding: clamp(1rem, 2vw, 1.5rem);
   border: 1px solid transparent;
@@ -1219,7 +1220,7 @@ a {
   font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--dark-muted);
-  background: var(--ivory);
+  background: var(--white);
   padding: 0.15rem 0.6rem;
   border-radius: 4px;
 }
@@ -1311,12 +1312,19 @@ a {
    SOCIAL / FOLLOW SECTION
    ========================================== */
 .social {
-  background:
-    linear-gradient(180deg, var(--ivory) 0%, var(--pink-soft) 50%, var(--ivory) 100%);
+  padding: 1rem 0;
+  background: var(--ivory);
+}
+
+.follow-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .follow-text-1,
-.follow-text-2,
 .follow-text-3 {
   font-family: var(--font-script);
   line-height: 1;
@@ -1329,7 +1337,6 @@ a {
   font-size: clamp(1rem, 1.2vw + 0.3rem, 1.2rem);
   font-style: italic;
   color: var(--dark-muted);
-  margin: 0.25rem 0;
 }
 .follow-text-3 { font-size: clamp(2.5rem, 5vw, 3.8rem); }
 
@@ -1437,6 +1444,53 @@ a {
 
 .attraction-link:hover {
   color: var(--gold-dark);
+}
+
+/* Attractions show more */
+.attractions-show-more {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 1.5rem auto 0;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--maroon);
+  background: transparent;
+  border: 1.5px solid var(--maroon);
+  padding: 0.55rem 1.6rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.attractions-show-more:hover {
+  background: var(--maroon);
+  color: var(--white);
+}
+
+.attractions-show-more svg {
+  transition: transform 0.3s ease;
+}
+
+.attractions-show-more.expanded svg {
+  transform: rotate(180deg);
+}
+
+/* Desktop: hide cards 7+ by default */
+.attractions-grid .attraction-card:nth-child(n+7) {
+  display: none;
+}
+
+.attractions-grid.expanded .attraction-card:nth-child(n+7) {
+  display: block;
+}
+
+/* Show the button on all screen sizes since there are 9 cards */
+.attractions-show-more {
+  display: flex;
 }
 
 /* ==========================================
@@ -1576,9 +1630,7 @@ a {
   }
 
   .kural-lamp {
-    display: flex;
-    justify-content: center;
-    margin: 0.75rem 0;
+    display: none;
   }
 
   .hero-paisley {
@@ -1692,6 +1744,23 @@ a {
 
   .attractions-grid {
     grid-template-columns: 1fr;
+  }
+
+  .attractions-grid .attraction-card:nth-child(n+4) {
+    display: none;
+  }
+
+  .attractions-grid.expanded .attraction-card:nth-child(n+4) {
+    display: block;
+  }
+
+  /* Override desktop rule: on mobile also show cards 4-6 when expanded */
+  .attractions-grid.expanded .attraction-card {
+    display: block;
+  }
+
+  .attractions-show-more {
+    display: flex;
   }
 
   .toran-leaf-svg:nth-child(n+9) {

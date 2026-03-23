@@ -18,7 +18,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="css/style.css" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Critical CSS — loading screen (inlined for instant first paint) */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cormorant Garamond',Georgia,serif;background:#FFF8F0;overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    .loading-screen{position:fixed;inset:0;z-index:9999;background:#FFF8F0;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+    .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loading-content{text-align:center;position:relative;display:flex;flex-direction:column;align-items:center}
+    .loading-vilakku{height:clamp(80px,15vh,120px);width:auto;display:block;margin:0 auto;animation:loadingPulse 1.5s ease-in-out infinite}
+    @keyframes loadingPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.05);opacity:1}}
+    .loading-flame-glow{width:40px;height:40px;background:radial-gradient(circle,rgba(201,168,76,.5) 0%,transparent 70%);border-radius:50%;position:absolute;top:-5px;left:50%;transform:translateX(-50%);animation:flameGlow 1s ease-in-out infinite alternate}
+    @keyframes flameGlow{0%{opacity:.4;transform:translateX(-50%) scale(.8)}100%{opacity:.8;transform:translateX(-50%) scale(1.2)}}
+    .loading-text{font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,3vw,2.2rem);color:#800020;margin-top:1.5rem}
+  </style>
+  <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 <body>
 
@@ -104,7 +119,7 @@
   <!-- ========== LOADING SCREEN ========== -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-content">
-      <img class="loading-vilakku" src="assets/vilakkuCommon.png" width="50" height="163" alt="" aria-hidden="true" fetchpriority="high">
+      <img class="loading-vilakku" src="assets/vilakkuCommon.webp" width="50" height="163" alt="" aria-hidden="true" fetchpriority="high">
       <div class="loading-flame-glow"></div>
       <p class="loading-text">Arivalan &amp; Akshaya</p>
     </div>
@@ -121,8 +136,8 @@
     </div>
 
     <!-- Floating kolam decorations -->
-    <div class="hero-kolam hero-kolam-1"><img src="assets/pulliKolam.png" width="60" height="60" alt="" aria-hidden="true"></div>
-    <div class="hero-kolam hero-kolam-2"><img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true"></div>
+    <div class="hero-kolam hero-kolam-1"><img src="assets/pulliKolam.webp" width="60" height="60" alt="" aria-hidden="true"></div>
+    <div class="hero-kolam hero-kolam-2"><img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true"></div>
 
     <div class="hero-content">
       <div class="hero-frame">
@@ -152,8 +167,8 @@
     <!-- MANGO LEAF TORAN DIVIDER -->
     <div class="toran-divider" aria-hidden="true">
       <div class="toran-string"></div>
-      <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="" loading="lazy">
-      <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="" loading="lazy">
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.webp" alt="" loading="lazy">
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.webp" alt="" loading="lazy">
       <div class="toran-leaves">
         <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
         <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
@@ -171,12 +186,12 @@
     <div class="container">
       <div class="invocation-lamps">
         <div class="lamp-wrapper lamp-left animate-on-scroll">
-          <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="vilakku-img" src="assets/vilakku1Left.webp" alt="" aria-hidden="true" loading="lazy">
         </div>
         <div class="invocation-text">
           <div class="animate-on-scroll">
             <div class="kolam-divider">
-              <img src="assets/pulliKolam.png" width="50" height="50" alt="" aria-hidden="true">
+              <img src="assets/pulliKolam.webp" width="50" height="50" alt="" aria-hidden="true">
             </div>
           </div>
 
@@ -190,7 +205,7 @@
               <p class="parent-label">Parents of the Groom</p>
             </div>
             <div class="parents-separator">
-              <img src="assets/pulliKolam.png" width="30" height="30" alt="" aria-hidden="true">
+              <img src="assets/pulliKolam.webp" width="30" height="30" alt="" aria-hidden="true">
             </div>
             <div class="parent-group">
               <p class="parent-name">Mr. Manivannan &amp; Mrs. D. Umarani</p>
@@ -210,7 +225,7 @@
           </div>
         </div>
         <div class="lamp-wrapper lamp-right animate-on-scroll">
-          <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true" loading="lazy">
+          <img class="vilakku-img" src="assets/vilakku1Right.webp" alt="" aria-hidden="true" loading="lazy">
         </div>
       </div>
     </div>
@@ -221,8 +236,8 @@
     <!-- TORAN DIVIDER -->
     <div class="toran-divider" aria-hidden="true">
       <div class="toran-string"></div>
-      <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.png" alt="" loading="lazy">
-      <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.png" alt="" loading="lazy">
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-left" src="assets/hangingVilakku.webp" alt="" loading="lazy">
+      <img class="toran-hanging-vilakku toran-hanging-vilakku-right" src="assets/hangingVilakku.webp" alt="" loading="lazy">
       <div class="toran-leaves">
         <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
         <svg class="toran-leaf-svg" width="28" height="35"><use href="#toran-leaf"/></svg>
@@ -242,7 +257,7 @@
         <p class="section-label">Save the Date</p>
         <h2 class="section-title">Wedding Day</h2>
         <div class="kolam-divider small">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="event-date-main">Friday, May 29th, 2026</p>
       </div>
@@ -284,7 +299,7 @@
           </div>
           <div class="event-card">
             <div class="event-icon">
-              <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+              <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
             </div>
             <h3 class="event-name">Wedding Reception</h3>
             <div class="event-detail-divider"></div>
@@ -313,19 +328,19 @@
       <div class="animate-on-scroll">
         <div class="kural-card">
           <div class="kural-lamp">
-            <img class="vilakku-img" src="assets/vilakku1Left.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="vilakku-img" src="assets/vilakku1Left.webp" alt="" aria-hidden="true" loading="lazy">
           </div>
           <div class="kural-content">
             <p class="kural-tamil">அன்பிலார் எல்லாம் தமக்குரியர் அன்புடையார்</p>
             <p class="kural-tamil">என்பும் உரியர் பிறர்க்கு.</p>
             <div class="kolam-divider tiny">
-              <img src="assets/pulliKolam.png" width="25" height="25" alt="" aria-hidden="true" loading="lazy">
+              <img src="assets/pulliKolam.webp" width="25" height="25" alt="" aria-hidden="true" loading="lazy">
             </div>
             <p class="kural-meaning">"The loveless possess everything for themselves;<br>the loving give even their bones for others."</p>
             <p class="kural-source">— Thirukkural, Kural 72</p>
           </div>
           <div class="kural-lamp">
-            <img class="vilakku-img" src="assets/vilakku1Right.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="vilakku-img" src="assets/vilakku1Right.webp" alt="" aria-hidden="true" loading="lazy">
           </div>
         </div>
       </div>
@@ -339,7 +354,7 @@
         <p class="section-label">meet the</p>
         <h2 class="section-title">Bride &amp; Groom</h2>
         <div class="kolam-divider small">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
       </div>
 
@@ -347,13 +362,13 @@
         <div class="couple-photos">
           <div class="couple-photo groom-photo">
             <div class="photo-placeholder">
-              <img src="assets/IMG_9304.jpg" alt="Arivalan" loading="lazy">
+              <picture><source srcset="assets/IMG_9304.webp" type="image/webp"><img src="assets/IMG_9304.jpg" alt="Arivalan" loading="lazy"></picture>
             </div>
             <p class="photo-name">Arivalan</p>
           </div>
           <div class="couple-photo bride-photo">
             <div class="photo-placeholder">
-              <img src="assets/DSC04827.jpg" alt="Akshaya" loading="lazy">
+              <picture><source srcset="assets/DSC04827.webp" type="image/webp"><img src="assets/DSC04827.jpg" alt="Akshaya" loading="lazy"></picture>
             </div>
             <p class="photo-name">Akshaya</p>
           </div>
@@ -380,18 +395,18 @@
         <p class="section-label">our</p>
         <h2 class="section-title">Gallery</h2>
         <div class="kolam-divider small">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
       </div>
 
       <div class="gallery-scroll animate-on-scroll">
         <div class="gallery-track">
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04852.jpeg" alt="Photo 1" loading="lazy"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04896.jpeg" alt="Photo 2" loading="lazy"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC04904.jpeg" alt="Photo 3" loading="lazy"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05425.jpeg" alt="Photo 4" loading="lazy"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05428.jpeg" alt="Photo 5" loading="lazy"></div></div>
-          <div class="gallery-item"><div class="gallery-placeholder"><img src="assets/DSC05465.jpeg" alt="Photo 6" loading="lazy"></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><picture><source srcset="assets/DSC04852.webp" type="image/webp"><img src="assets/DSC04852.jpeg" alt="Photo 1" loading="lazy"></picture></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><picture><source srcset="assets/DSC04896.webp" type="image/webp"><img src="assets/DSC04896.jpeg" alt="Photo 2" loading="lazy"></picture></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><picture><source srcset="assets/DSC04904.webp" type="image/webp"><img src="assets/DSC04904.jpeg" alt="Photo 3" loading="lazy"></picture></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><picture><source srcset="assets/DSC05425.webp" type="image/webp"><img src="assets/DSC05425.jpeg" alt="Photo 4" loading="lazy"></picture></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><picture><source srcset="assets/DSC05428.webp" type="image/webp"><img src="assets/DSC05428.jpeg" alt="Photo 5" loading="lazy"></picture></div></div>
+          <div class="gallery-item"><div class="gallery-placeholder"><picture><source srcset="assets/DSC05465.webp" type="image/webp"><img src="assets/DSC05465.jpeg" alt="Photo 6" loading="lazy"></picture></div></div>
         </div>
       </div>
       <p class="gallery-hint animate-on-scroll">← Swipe to see more →</p>
@@ -405,7 +420,7 @@
         <p class="section-label">A few</p>
         <h2 class="section-title">Things to Know</h2>
         <div class="kolam-divider small">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="info-intro">To help you feel at ease and enjoy every moment of the celebrations, we've gathered a few thoughtful details we'd love for you to know before the big day.</p>
       </div>
@@ -436,7 +451,7 @@
         <p class="section-label">How to</p>
         <h2 class="section-title">Reach Tirunelveli</h2>
         <div class="kolam-divider small">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="travel-intro">Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.</p>
       </div>
@@ -516,7 +531,7 @@
         <p class="section-label">Explore</p>
         <h2 class="section-title">Nearby Attractions</h2>
         <div class="kolam-divider small">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
         <p class="attractions-intro">If you're travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.</p>
       </div>
@@ -608,7 +623,7 @@
         <p class="section-label">The</p>
         <h2 class="section-title">Countdown Begins</h2>
         <div class="kolam-divider small dark">
-          <img src="assets/pulliKolam.png" width="40" height="40" alt="" aria-hidden="true">
+          <img src="assets/pulliKolam.webp" width="40" height="40" alt="" aria-hidden="true">
         </div>
       </div>
 

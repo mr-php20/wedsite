@@ -825,7 +825,7 @@ a {
 .couple {
   background:
     linear-gradient(180deg, rgba(255,248,240,0.92) 0%, rgba(255,248,240,0.88) 50%, rgba(255,248,240,0.92) 100%),
-    url('../assets/nellaiyappar-bg.jpg') center/cover no-repeat;
+    url('../assets/nellaiyappar-bg.webp') center/cover no-repeat;
 }
 
 .couple-section-content {
@@ -1499,7 +1499,7 @@ a {
 .countdown {
   background:
     linear-gradient(180deg, rgba(128,0,32,0.88) 0%, rgba(128,0,32,0.82) 50%, rgba(128,0,32,0.88) 100%),
-    url('../assets/thamirabharani-bg.jpg') center/cover no-repeat;
+    url('../assets/thamirabharani-bg.webp') center/cover no-repeat;
   color: var(--white);
 }
 

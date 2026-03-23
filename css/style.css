@@ -928,6 +928,11 @@ a {
   transform: scale(1.02);
 }
 
+.gallery-placeholder picture {
+  width: 100%;
+  height: 100%;
+}
+
 .gallery-placeholder img {
   width: 100%;
   height: 100%;

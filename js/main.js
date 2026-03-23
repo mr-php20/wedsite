@@ -76,7 +76,27 @@
   }
 
   /* ---------- SHARE BUTTON ---------- */
-  var shareBtn = document.getElementById('shareBtn');
+
+  /* ---------- FALLING PETALS ---------- */
+  var heroSection = document.getElementById('hero');
+  if (heroSection) {
+    var petalColors = ['#F5C6D0', '#F2B5C4', '#E8A0B0', '#FAD4DC', '#F0D0A0', '#ECC8C8'];
+    var petalCount = window.innerWidth < 768 ? 18 : 30;
+    for (var i = 0; i < petalCount; i++) {
+      var petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.innerHTML = '<div class="petal-inner"></div>';
+      var size = 8 + Math.random() * 10;
+      petal.style.left = Math.random() * 100 + '%';
+      petal.style.setProperty('--petal-size', size + 'px');
+      petal.style.setProperty('--petal-color', petalColors[Math.floor(Math.random() * petalColors.length)]);
+      petal.style.setProperty('--fall-duration', (4.8 + Math.random() * 4.8) + 's');
+      petal.style.setProperty('--fall-delay', (Math.random() * 6.4) + 's');
+      petal.style.setProperty('--spin-duration', (2.4 + Math.random() * 3.2) + 's');
+      petal.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+      heroSection.appendChild(petal);
+    }
+  }
 
   /* ---------- TRAVEL BY TRAIN ---------- */
   var trainData = {
@@ -158,6 +178,7 @@
 
   var currentCity = 'chennai';
   var currentSort = 'arrival';
+  var currentLang = 'en';
 
   var trainLabels = {
     dep: { en: 'Dep:', ta: 'புறப்பாடு:' },
@@ -346,37 +367,9 @@
     });
   }
 
-  if (shareBtn) {
-    shareBtn.addEventListener('click', function () {
-      var shareData = {
-        title: 'Arivalan & Akshaya Wedding',
-        text: 'You are cordially invited to the wedding of Arivalan & Akshaya on 29th May 2026.',
-        url: window.location.href
-      };
-
-      if (navigator.share) {
-        navigator.share(shareData).catch(function () {
-          // Share cancelled or failed silently
-        });
-      } else {
-        // Fallback: copy link to clipboard
-        navigator.clipboard.writeText(window.location.href).then(function () {
-          var original = shareBtn.innerHTML;
-          shareBtn.innerHTML = '<span>Link Copied!</span>';
-          setTimeout(function () {
-            shareBtn.innerHTML = original;
-          }, 2000);
-        }).catch(function () {
-          // Clipboard write failed silently
-        });
-      }
-    });
-  }
-
   /* ---------- GLOBAL LANGUAGE TOGGLE ---------- */
   var langToggle = document.getElementById('langToggle');
   var langToggleLabel = document.getElementById('langToggleLabel');
-  var currentLang = 'en';
 
   var translations = [
     // Hero
@@ -466,7 +459,7 @@
     { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: 'காலம்' },
     { sel: '.show-more-text', en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காண' },
     { sel: '.footer-small', en: 'Made with ♥', ta: '♥ உடன் உருவாக்கப்பட்டது' },
-    { sel: '#shareBtn .btn-text', en: 'Share Invitation', ta: 'அழைப்பிதழை பகிர' },
+
     // Loading
     { sel: '.loading-text', en: 'Arivalan &amp; Akshaya', ta: 'அறிவாளன் &amp; அக்‌ஷயா' },
     // Attraction names

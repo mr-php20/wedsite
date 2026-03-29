@@ -20,7 +20,9 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-script: 'Great Vibes', cursive;
   --font-body: 'Cormorant Garamond', Georgia, serif;
-  --font-tamil: 'Latha', sans-serif;
+  --font-tamil: 'Noto Sans Tamil', 'Latha', sans-serif;
+  --font-tamil-display: 'Noto Serif Tamil', 'Latha', serif;
+  --font-tamil-script: 'Kavivanar', 'Latha', cursive;
 
   --section-padding: clamp(3.5rem, 8vw, 7rem);
   --container-max: 900px;
@@ -762,7 +764,7 @@ a {
 
 .kural-tamil {
   font-family: var(--font-tamil);
-  font-size: clamp(1rem, 1.3vw + 0.4rem, 1.3rem);
+  font-size: clamp(1rem, 1.1vw + 0.4rem, 1.1rem);
   font-weight: 600;
   color: var(--maroon);
   line-height: 1.8;
@@ -781,7 +783,7 @@ a {
   color: var(--ivory);
   border: 2px solid var(--gold);
   font-family: var(--font-tamil);
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -1015,6 +1017,32 @@ a {
   color: var(--dark-muted);
 }
 
+.tickets-open-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 520px;
+  margin: 1.5rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, rgba(74, 124, 92, 0.1), rgba(74, 124, 92, 0.05));
+  border: 1px solid var(--green-leaf);
+  border-radius: 12px;
+  color: var(--green-leaf);
+}
+
+.tickets-open-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.tickets-open-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 0.9vw + 0.25rem, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
 .city-selector {
   display: flex;
   flex-wrap: wrap;
@@ -1204,6 +1232,33 @@ a {
 .train-card.vande-bharat {
   border-left: 3px solid var(--gold);
   background: linear-gradient(135deg, var(--white) 0%, rgba(201, 168, 76, 0.06) 100%);
+}
+
+.train-card.tickets-available {
+  border-left: 3px solid var(--green-leaf);
+  background: linear-gradient(135deg, var(--white) 0%, rgba(74, 124, 92, 0.06) 100%);
+}
+
+.ticket-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--green-leaf);
+  background: rgba(74, 124, 92, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-top: 0.4rem;
+  width: fit-content;
+}
+
+.ticket-badge::before {
+  content: '\2713';
+  font-weight: 700;
 }
 
 .train-header {
@@ -1779,4 +1834,69 @@ a {
   .gallery-item {
     flex: 0 0 75vw;
   }
+}
+
+/* ==========================================
+   TAMIL LANGUAGE FONT OVERRIDES
+   1:1 mapping — display/script → Kavivanar, body → Noto Sans Tamil
+   ========================================== */
+
+/* body (Cormorant Garamond → Noto Sans Tamil) */
+[lang="ta"] body {
+  font-family: var(--font-tamil);
+  font-size: 0.92em;
+}
+
+/* --font-display elements (Playfair Display → Kavivanar) */
+[lang="ta"] .weds-text,
+[lang="ta"] .hero-date,
+[lang="ta"] .parent-name,
+[lang="ta"] .invite-label,
+[lang="ta"] .event-date-main,
+[lang="ta"] .event-name,
+[lang="ta"] .event-time,
+[lang="ta"] .event-map-btn,
+[lang="ta"] .kural-source,
+[lang="ta"] .photo-name,
+[lang="ta"] .info-title,
+[lang="ta"] .tickets-open-text,
+[lang="ta"] .city-btn,
+[lang="ta"] .sort-label,
+[lang="ta"] .show-more-btn,
+[lang="ta"] .train-name,
+[lang="ta"] .irctc-btn,
+[lang="ta"] .instagram-btn,
+[lang="ta"] .attraction-name,
+[lang="ta"] .attraction-link,
+[lang="ta"] .attractions-show-more,
+[lang="ta"] .countdown-value {
+  font-family: var(--font-tamil-display);
+}
+
+/* --font-script elements (Great Vibes → Kavivanar) */
+[lang="ta"] .section-title,
+[lang="ta"] .loading-text,
+[lang="ta"] .hero-groom,
+[lang="ta"] .hero-bride,
+[lang="ta"] .couple-name,
+[lang="ta"] .couple-amp,
+[lang="ta"] .follow-text-3 {
+  font-family: var(--font-tamil-script);
+}
+
+/* --font-body elements (Cormorant Garamond → Noto Sans Tamil) */
+[lang="ta"] .section-label,
+[lang="ta"] .hero-subtitle,
+[lang="ta"] .blessing-text,
+[lang="ta"] .lang-toggle.active,
+[lang="ta"] .kural-meaning,
+[lang="ta"] .kural-tamil,
+[lang="ta"] .sort-btn,
+[lang="ta"] .filter-check,
+[lang="ta"] .ticket-badge,
+[lang="ta"] .train-number,
+[lang="ta"] .follow-text-2,
+[lang="ta"] .countdown-label,
+[lang="ta"] .footer {
+  font-family: var(--font-tamil);
 }

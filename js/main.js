@@ -117,7 +117,7 @@
         { number: '16127', name: 'MS Guruvayur Express', dep: '11:07, May 28', arr: '21:10, May 28', duration: '~10h 03m', frequency: 'Daily', board: 'Board May 28' },
         { number: '12633', name: 'Kanyakumari Express', dep: '17:20, May 28', arr: '03:10, May 29', duration: '~9h 50m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20605', name: 'MS TCN SF Express', dep: '16:00, May 28', arr: '04:10, May 29', duration: '~12h 10m', frequency: 'Daily', board: 'Board May 28' },
-        { number: '12667', name: 'MS Cape SF Express', dep: '19:30, May 28', arr: '04:55, May 29', duration: '~9h 25m', frequency: 'Daily', board: 'Board May 28' },
+        { number: '12667', name: 'MS Cape SF Express', dep: '19:30, May 28', arr: '04:55, May 29', duration: '~9h 25m', frequency: 'Daily', board: 'Board May 28', ticketsAvailable: true },
         { number: '20635', name: 'Anantapuri Express', dep: '20:17, May 28', arr: '06:00, May 29', duration: '~9h 43m', frequency: 'Daily', board: 'Board May 28' },
         { number: '12631', name: 'Nellai SF Express', dep: '20:50, May 28', arr: '07:00, May 29', duration: '~10h 10m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20683', name: 'TBM SCT SF Express', dep: '20:50, May 28', arr: '08:45, May 29', duration: '~11h 55m', frequency: 'Tue, Thu, Sun', board: 'Board May 28' },
@@ -150,7 +150,7 @@
         { number: '17069', name: 'HYB Cape Express', dep: '22:00, May 28', arr: '00:20, May 29', duration: '~2h 20m', frequency: 'Thu', board: 'Board May 28' },
         { number: '07230', name: 'HYB Cape Special', dep: '21:50, May 28', arr: '00:23, May 29', duration: '~2h 33m', frequency: 'Thu', board: 'Board May 28' },
         { number: '16729', name: 'MDU Punalur Express', dep: '23:15, May 28', arr: '01:40, May 29', duration: '~2h 25m', frequency: 'Daily', board: 'Board May 28' },
-        { number: '12667', name: 'MS Cape SF Express', dep: '02:35, May 29', arr: '04:55, May 29', duration: '~2h 20m', frequency: 'Daily', board: 'Board May 29' },
+        { number: '12667', name: 'MS Cape SF Express', dep: '02:35, May 29', arr: '04:55, May 29', duration: '~2h 20m', frequency: 'Daily', board: 'Board May 29', ticketsAvailable: true },
         { number: '16707', name: 'MAJN TEN Express', dep: '04:20, May 29', arr: '07:45, May 29', duration: '~3h 25m', frequency: 'Daily', board: 'Board May 29' },
         { number: '20627', name: 'Vande Bharat Express', dep: '10:40, May 28', arr: '12:38, May 28', duration: '~1h 58m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
         { number: '20665', name: 'TEN Vande Bharat', dep: '20:50, May 28', arr: '23:00, May 28', duration: '~2h 10m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
@@ -165,7 +165,7 @@
         { number: '07230', name: 'HYB Cape Special', dep: '19:15, May 28', arr: '00:23, May 29', duration: '~5h 08m', frequency: 'Thu', board: 'Board May 28' },
         { number: '12633', name: 'Kanyakumari Express', dep: '22:30, May 28', arr: '03:10, May 29', duration: '~4h 40m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20605', name: 'MS TCN SF Express', dep: '23:50, May 28', arr: '04:10, May 29', duration: '~4h 20m', frequency: 'Daily', board: 'Board May 28' },
-        { number: '12667', name: 'MS Cape SF Express', dep: '00:30, May 29', arr: '04:55, May 29', duration: '~4h 25m', frequency: 'Daily', board: 'Board May 29' },
+        { number: '12667', name: 'MS Cape SF Express', dep: '00:30, May 29', arr: '04:55, May 29', duration: '~4h 25m', frequency: 'Daily', board: 'Board May 29', ticketsAvailable: true },
         { number: '20627', name: 'Vande Bharat Express', dep: '09:00, May 28', arr: '12:38, May 28', duration: '~3h 38m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
         { number: '20665', name: 'TEN Vande Bharat', dep: '19:05, May 28', arr: '23:00, May 28', duration: '~3h 55m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
       ]
@@ -198,6 +198,7 @@
     showAll: { en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காட்டு' },
     showLess: { en: 'Show Less', ta: 'குறைவாகக் காட்டு' },
     board: { en: 'Board', ta: 'கிளம்பவும்' },
+    ticketsAvailable: { en: 'Tickets Available', ta: 'டிக்கெட் உள்ளது' },
     frequency: {
       'Daily': 'தினமும்',
       'Thu': 'வியா',
@@ -243,6 +244,9 @@
 
     if (currentSort === 'arrival') {
       trains.sort(function (a, b) {
+        var ta = a.ticketsAvailable ? -1 : 0;
+        var tb = b.ticketsAvailable ? -1 : 0;
+        if (ta !== tb) return ta - tb;
         var va = isVandeBharat(a) ? 1 : 0;
         var vb = isVandeBharat(b) ? 1 : 0;
         if (va !== vb) return va - vb;
@@ -250,6 +254,9 @@
       });
     } else if (currentSort === 'departure') {
       trains.sort(function (a, b) {
+        var ta = a.ticketsAvailable ? -1 : 0;
+        var tb = b.ticketsAvailable ? -1 : 0;
+        if (ta !== tb) return ta - tb;
         var va = isVandeBharat(a) ? 1 : 0;
         var vb = isVandeBharat(b) ? 1 : 0;
         if (va !== vb) return va - vb;
@@ -257,6 +264,9 @@
       });
     } else if (currentSort === 'duration') {
       trains.sort(function (a, b) {
+        var ta = a.ticketsAvailable ? -1 : 0;
+        var tb = b.ticketsAvailable ? -1 : 0;
+        if (ta !== tb) return ta - tb;
         var va = isVandeBharat(a) ? 1 : 0;
         var vb = isVandeBharat(b) ? 1 : 0;
         if (va !== vb) return va - vb;
@@ -281,11 +291,13 @@
     var html = '';
     trains.forEach(function (t) {
       var vb = isVandeBharat(t);
-      html += '<div class="train-card' + (vb ? ' vande-bharat' : '') + '">' +
+      var ta = t.ticketsAvailable;
+      html += '<div class="train-card' + (vb ? ' vande-bharat' : '') + (ta ? ' tickets-available' : '') + '">' +
         '<div class="train-header">' +
           '<span class="train-name">' + t.name + '</span>' +
           '<span class="train-number">#' + t.number + '</span>' +
         '</div>' +
+        (ta ? '<span class="ticket-badge">' + trainLabels.ticketsAvailable[currentLang] + '</span>' : '') +
         '<div class="train-details">' +
           '<span class="train-detail">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
@@ -392,8 +404,8 @@
     { sel: '.blessing-text', en: 'With love and blessings', ta: 'அன்புடனும் ஆசியுடனும்' },
     { sel: '.parent-group:first-child .parent-label', en: 'Parents of the Groom', ta: 'மணமகனின் பெற்றோர்' },
     { sel: '.parent-group:last-child .parent-label', en: 'Parents of the Bride', ta: 'மணமகளின் பெற்றோர்' },
-    { sel: '.invite-label', en: 'Cordially invite you', ta: 'திருமண விழாவிற்கு' },
-    { sel: '.invite-sub', en: 'to join in the wedding celebrations of', ta: 'அன்புடன் அழைக்கின்றனர்' },
+    { sel: '.invite-label', en: 'Cordially invite you', ta: 'இணைந்து அழைக்கும்' },
+    { sel: '.invite-sub', en: 'to join in the wedding celebrations of', ta: 'அன்புத் திருமணம்' },
     { sel: '.couple-name.groom-name', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.couple-amp', en: '&', ta: '&' },
     { sel: '.couple-name.bride-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
@@ -401,32 +413,31 @@
     { sel: '.parent-group:first-child .parent-name', en: 'Dr. C. Paramasivan &amp; Dr. A. Muthu Tamilarasi', ta: 'முனைவர் செ. பரமசிவன் &amp; முனைவர் ஆ. முத்து தமிழரசி' },
     { sel: '.parent-group:last-child .parent-name', en: 'Mr. Manivannan &amp; Mrs. D. Umarani', ta: 'திரு. ஜெ. மணிவண்ணன் &amp; திருமதி. தெ. உமாராணி' },
     // Events
-    { sel: '#events .section-label', en: 'Save the Date', ta: 'நாள்' },
+    { sel: '#events .section-label', en: 'Save the Date', ta: '' },
     { sel: '#events .section-title', en: 'Wedding Day', ta: 'திருமண நாள்' },
-    { sel: '.event-date-main', en: 'Friday, May 29th, 2026', ta: 'வெள்ளிக்கிழமை, மே 29, 2026' },
+    { sel: '.event-date-main', en: 'Friday, May 29th, 2026', ta: 'வெள்ளிக்கிழமை, வைகாசி 15 (29.05.2026)' },
     { sel: '.timeline-item:first-child .event-name', en: 'Muhurtham', ta: 'முகூர்த்தம்' },
     { sel: '.timeline-item:first-child .event-time', en: '9:00 AM – 10:00 AM', ta: 'காலை 9:00 – 10:00' },
     { sel: '.timeline-item:first-child .event-venue', en: 'Arulmigu Sri Malai Parvathi Amman Temple', ta: 'அருள்மிகு ஸ்ரீ மலை பார்வதி அம்மன் கோவில்' },
-    { sel: '.timeline-item:first-child .event-venue-sub', en: 'Atop a scenic hill near Tirunelveli', ta: 'திருநெல்வேலி அருகில் ஒரு மலைமேல்' },
-    { sel: '.timeline-item:first-child .event-map-btn:first-child .btn-text', en: 'Temple Location', ta: 'கோவில் இடம்' },
+    { sel: '.timeline-item:first-child .event-venue-sub', en: 'At the scenic vallanadu hill', ta: 'அழகிய வல்லநாடு மலைமேல்' },
+    { sel: '.timeline-item:first-child .event-map-btn:first-child .btn-text', en: 'Temple Location', ta: 'கோவில் இருப்பிடம்' },
     { sel: '.timeline-item:first-child .event-map-btn-alt .btn-text', en: 'Car Parking', ta: 'வாகன நிறுத்தம்' },
     { sel: '.timeline-item:last-child .event-name', en: 'Wedding Reception', ta: 'திருமண வரவேற்பு' },
     { sel: '.timeline-item:last-child .event-time', en: '11:30 AM onwards', ta: 'காலை 11:30 முதல்' },
     { sel: '.timeline-item:last-child .event-venue', en: 'Maharaasi Mahal, Tirunelveli', ta: 'மகாராசி மஹால், திருநெல்வேலி' },
     { sel: '.timeline-item:last-child .event-venue-sub', en: '~19 km from the temple', ta: 'கோவிலிலிருந்து ~19 கி.மீ.' },
-    { sel: '.timeline-item:last-child .event-map-btn .btn-text', en: 'See the route', ta: 'வழியைக் காண' },
+    { sel: '.timeline-item:last-child .event-map-btn .btn-text', en: 'See the route', ta: 'மண்டபம்' },
     // Kural
-    { sel: '.kural-meaning', en: '“The loveless possess everything for themselves;<br>the loving give even their bones for others.”', ta: '“அன்பு இல்லாதவர்கள் எல்லாம் தமக்கே உரியவர்கள்;<br>அன்பு உடையவர்கள் தம் எலும்பையும் பிறருக்கு உரியதாக்குவர்.”' },
-    { sel: '.kural-source', en: '— Thirukkural, Kural 72', ta: ', திருக்குறள், குறள் 72' },
+    { sel: '.kural-meaning', en: '"The splendour that the joyous ones of this world attain<br>is said to be the fruit of love, deeply held."', ta: '"அன்பு நிறைந்து வாழ்வதே உலகில்<br>இன்பம் பெற்றவர் அடையும் சிறப்பு என்பர்."' },
+    { sel: '.kural-source', en: '— Thirukkural, Kural 75', ta: ', திருக்குறள், குறள் 75' },
     // Couple
-    { sel: '#couple .section-label', en: 'meet the', ta: 'சந்தியுங்கள்' },
+    { sel: '#couple .section-label', en: 'meet the', ta: '' },
     { sel: '#couple .section-title', en: 'Bride &amp; Groom', ta: 'மணமக்கள்' },
     { sel: '.groom-photo .photo-name', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.bride-photo .photo-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
-    { sel: '.couple-message p:first-child', en: 'We are both so delighted that you are able to join us in celebrating what we hope will be one of the happiest days of our lives. The affection shown to us by so many people has been incredibly moving, and has touched us both deeply.', ta: 'எங்கள் வாழ்வின் மிக மகிழ்ச்சியான நாளில் நீங்கள் கலந்துகொள்வது எங்களுக்கு மிகவும் மகிழ்ச்சி அளிக்கிறது. பலரின் அன்பும் ஆசிகளும் எங்களை ஆழமாக தொட்டுள்ளன.' },
-    { sel: '.couple-message p:last-child', en: 'We would like to take this opportunity to thank everyone most sincerely for their kindness. We are looking forward to seeing you at the wedding.', ta: 'அனைவருக்கும் மனமார்ந்த நன்றியைத் தெரிவித்துக்கொள்கிறோம். திருமணத்தில் உங்களைச் சந்திக்க ஆவலுடன் காத்திருக்கிறோம்.' },
+    { sel: '.couple-message p:first-child', en: 'We are happy to begin this new journey together and would be glad to have you with us on this special day. Your presence and blessings will make the occasion even more meaningful.', ta: 'எங்களின் இந்தப் புதிய பயணத்தின் தொடக்கத்தின் இந்நாளை தங்களுடன் பகிர்ந்து கொள்ள விரும்புகிறோம். தங்களின் வருகை இந்நாளை மேலும் சிறப்பாக்கும்' },
     // Gallery
-    { sel: '#gallery .section-label', en: 'our', ta: 'எங்கள்' },
+    { sel: '#gallery .section-label', en: 'our', ta: 'எங்களின்' },
     { sel: '#gallery .section-title', en: 'Gallery', ta: 'புகைப்படத் தொகுப்பு' },
     { sel: '.gallery-hint', en: '← Swipe to see more →', ta: '← மேலும் காண →' },
     // RSVP - commented out in HTML
@@ -441,26 +452,27 @@
     // Social
     { sel: '.follow-text-1', en: 'Follow', ta: 'தொடருங்கள்' },
     { sel: '.follow-text-2', en: 'the', ta: '' },
-    { sel: '.follow-text-3', en: 'action', ta: 'நிகழ்வுகளை' },
+    { sel: '.follow-text-3', en: 'action', ta: '' },
     { sel: '.instagram-btns .instagram-btn:first-child .btn-text', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.instagram-btns .instagram-btn:last-child .btn-text', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Countdown
     { sel: '#countdown .section-label', en: 'The', ta: '' },
-    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: 'திருமணத்திற்காண நேரம்' },
+    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: 'திருமணத்திற்கு மீதம் உள்ள நேரம்' },
     { sel: '.countdown-item:nth-child(1) .countdown-label', en: 'Days', ta: 'நாட்கள்' },
     { sel: '.countdown-item:nth-child(2) .countdown-label', en: 'Hours', ta: 'மணி' },
     { sel: '.countdown-item:nth-child(3) .countdown-label', en: 'Minutes', ta: 'நிமிடங்கள்' },
     { sel: '.countdown-item:nth-child(4) .countdown-label', en: 'Seconds', ta: 'வினாடிகள்' },
-    { sel: '.countdown-message', en: 'Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.', ta: 'எங்கள் குடும்பத்தினர் உங்கள் வருகையை ஆவலுடன் எதிர்பார்க்கின்றனர்.' },
+    { sel: '.countdown-message', en: 'Our families are excited in celebrating what we hope will be one of the greatest day of our lives with you.', ta: 'எங்கள் வாழ்க்கையின் ஒரு மிகச்சிறப்பான நாளை தங்களுடன் சேர்ந்து கொண்டாடுவவதில் எங்கள் குடும்பத்தினர் ஆவலுடன் உள்ளனர்.' },
     // Footer
     { sel: '.footer > p:first-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026' },
     // Travel
     { sel: '#travel .section-label', en: 'How to', ta: 'எப்படி' },
     { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: 'திருநெல்வேலி செல்ல' },
-    { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are recommended trains to arrive in time.', ta: 'முகூர்த்தம் வெள்ளிக்கிழமை, மே 29 காலை 9:00 மணிக்கு. சரியான நேரத்தில் வர பரிந்துரைக்கப்படும் ரயில்கள்.' },
+    { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are some recommended trains.', ta: 'முகூர்த்தம் வெள்ளிக்கிழமை, மே 29 காலை 9:00 மணிக்கு.' },
+    { sel: '.tickets-open-text', en: 'Tickets are now open!', ta: 'டிக்கெட் முன்பதிவு தொடங்கிவிட்டது!' },
     // Attractions
-    { sel: '#attractions .section-label', en: 'Explore', ta: 'அறியுங்கள்' },
-    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: 'அருகில் உள்ள சுற்றுலா தளங்கள்' },
+    { sel: '#attractions .section-label', en: 'Explore', ta: 'அருகில் உள்ள' },
+    { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: 'சுற்றுலா தளங்கள்' },
     { sel: '.attractions-intro', en: 'If you’re travelling from afar, Tirunelveli has much to offer. Here are a few places worth visiting.', ta: 'தூரத்திலிருந்து வருபவர்களுக்கு திருநெல்வேலியில் பார்க்க வேண்டிய இடங்கள்.' },
     { sel: '.travel-note', en: 'Timings are approximate. Please verify schedules before booking.', ta: 'நேரங்கள் தோராயமானவை. பயணத்திற்கு முன் சரிபார்க்கவும்.' },
     { sel: '.irctc-btn .btn-text', en: 'Book on IRCTC', ta: 'IRCTC-யில் பதிவு செய்க' },
@@ -477,9 +489,9 @@
     // Attraction names
     { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-name', en: 'Tirunelveli Halwa', ta: 'திருநெல்வேலி அல்வா' },
     { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-name', en: 'Nellaiappar Temple', ta: 'நெல்லையப்பர் கோவில்' },
-    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-name', en: 'Sivakalai Archaeological Site', ta: 'சிவகளை அகழாய்வு' },
-    { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-name', en: 'Adichanallur Archaeological Site', ta: 'ஆதிச்சநல்லூர் அகழாய்வு' },
-    { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-name', en: 'Vallanadu Blackbuck Sanctuary', ta: 'வள்ளநாடு வெளிமான் சரணாலயம்' },
+    { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-name', en: 'Sivakalai Archaeological Site', ta: 'சிவகளை அகழாய்வு' },
+    { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-name', en: 'Adichanallur Archaeological Site', ta: 'ஆதிச்சநல்லூர் அகழாய்வு' },
+    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-name', en: 'Vallanadu Blackbuck Sanctuary', ta: 'வள்ளநாடு வெளிமான் சரணாலயம்' },
     { sel: '.attractions-grid .attraction-card:nth-child(6) .attraction-name', en: 'Manimutharu Falls', ta: 'மணிமுத்தாறு அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-name', en: 'Agasthiyar Falls', ta: 'அகத்தியர் அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-name', en: 'Courtallam Falls', ta: 'குற்றாலம் அருவி' },
@@ -487,9 +499,9 @@
     // Attraction descriptions
     { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-desc', en: 'Don’t leave without the legendary wheat halwa. Skip the overrated Iruttu Kadai — try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> instead for the real deal!', ta: 'புகழ்பெற்ற கோதுமை அல்வா சுவைக்காமல் செல்லாதீர்கள். இருட்டுக்கடையைத் தவிர்த்து ,<a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">சாந்தி ஸ்வீட்ஸ்</a> முயற்சியுங்கள்!' },
     { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-desc', en: 'Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.', ta: 'அழகிய திராவிட கட்டிடக்கலை மற்றும் புகழ்பெற்ற இசைத் தூண்களைக் கொண்ட பண்டைய சிவன் கோவில்.' },
-    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-desc', en: 'A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.', ta: 'பண்டைய தமிழ் நாகரிக தொல்பொருட்களை வெளிக்கொணரும் முக்கியமான தொல்பொருள் அகழ்வாய்வு நிலையம்.' },
-    { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-desc', en: 'An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.', ta: '3,800 ஆண்டுகள் பழமையான புதைகுழி , இந்தியாவின் மிக முக்கியமான தொல்பொருள் கண்டுபிடிப்புகளில் ஒன்று.' },
-    { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-desc', en: 'A wildlife sanctuary home to the endangered Indian blackbuck — a rare sight in Tamil Nadu.', ta: 'அருகிவரும் இந்திய வெளிமானின் வாழிடம் , தமிழ்நாட்டில் அரிதான காட்சி.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-desc', en: 'A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.', ta: 'பண்டைய தமிழ் நாகரிக தொல்பொருட்களை வெளிக்கொணரும் முக்கியமான தொல்பொருள் அகழ்வாய்வு நிலையம்.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-desc', en: 'An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.', ta: '3,800 ஆண்டுகள் பழமையான புதைகுழி , இந்தியாவின் மிக முக்கியமான தொல்பொருள் கண்டுபிடிப்புகளில் ஒன்று.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-desc', en: 'A wildlife sanctuary home to the endangered Indian blackbuck — a rare sight in Tamil Nadu.', ta: 'அருகிவரும் இந்திய வெளிமானின் வாழிடம் , தமிழ்நாட்டில் அரிதான காட்சி.' },
     { sel: '.attractions-grid .attraction-card:nth-child(6) .attraction-desc', en: 'A beautiful waterfall nestled in the Western Ghats — a serene spot for nature lovers.', ta: 'மேற்குத் தொடர்ச்சி மலையில் அமைந்த அழகிய அருவி , இயற்கை ஆர்வலர்களுக்கான அமைதியான இடம்.' },
     { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-desc', en: 'A scenic waterfall near Papanasam, believed to be blessed by Sage Agasthiyar.', ta: 'பாபநாசம் அருகே உள்ள இயற்கை எழில் கொஞ்சும் அருவி, அகத்திய முனிவரின் அருளால் புனிதமானது.' },
     { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-desc', en: 'The “Spa of South India” — scenic waterfalls surrounded by the Western Ghats, ~60 km away.', ta: '“தென் இந்தியாவின் ஆரோக்கிய நீரூற்று” , மேற்குத் தொடர்ச்சி மலைகளால் சூழப்பட்ட அழகிய அருவிகள், ~60 கி.மீ. தொலைவில்.' },

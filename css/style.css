@@ -1900,3 +1900,8 @@ a {
 [lang="ta"] .footer {
   font-family: var(--font-tamil);
 }
+
+/* Tamil script: remove letter-spacing that breaks conjunct characters */
+[lang="ta"] .hero-subtitle {
+  letter-spacing: 0;
+}

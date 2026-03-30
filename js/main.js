@@ -197,7 +197,7 @@
     noTrains: { en: 'No trains match the current filters.', ta: 'தேடலுக்குப் பொருந்தும் ரயில்கள் இல்லை.' },
     showAll: { en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காட்டு' },
     showLess: { en: 'Show Less', ta: 'குறைவாகக் காட்டு' },
-    board: { en: 'Board', ta: 'கிளம்பவும்' },
+    board: { en: 'Board', ta: 'கிளம்பும் தினம்:' },
     ticketsAvailable: { en: 'Tickets Available', ta: 'டிக்கெட் உள்ளது' },
     frequency: {
       'Daily': 'தினமும்',
@@ -517,7 +517,7 @@
     { sel: '.city-btn[data-city="thiruthuraipoondi"]', en: 'Thiruthuraipoondi', ta: 'திருத்துறைப்பூண்டி' },
     // Filters
     { sel: '#filterDaily + span', en: 'Daily only', ta: 'தினமும் மட்டும்' },
-    { sel: '#filterNoVB + span', en: 'Hide Vande Bharat', ta: 'வந்தே பாரத் மறை' },
+    { sel: '#filterNoVB + span', en: 'Hide Vande Bharat', ta: 'வந்தே பாரத் வண்டிகளை மறை' },
     // Reception car parking
     { sel: '.timeline-item:last-child .event-map-btn-alt .btn-text', en: 'Car Parking', ta: 'வாகன நிறுத்தம்' }
   ];

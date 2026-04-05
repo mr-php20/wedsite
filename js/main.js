@@ -410,7 +410,7 @@
     { sel: '.couple-amp', en: '&', ta: '&' },
     { sel: '.couple-name.bride-name', en: 'Akshaya', ta: 'அக்‌ஷயா' },
     // Parent names
-    { sel: '.parent-group:first-child .parent-name', en: 'Dr. C. Paramasivan &amp; Dr. A. Muthu Tamilarasi', ta: 'முனைவர் செ. பரமசிவன் &amp; முனைவர் ஆ. முத்து தமிழரசி' },
+    { sel: '.parent-group:first-child .parent-name', en: 'Dr. C. Paramasivan &amp; Dr. A. Muthu Tamilarasi', ta: 'முனைவர் செ. பரமசிவன் &amp; முனைவர் ஆ. முத்துத் தமிழரசி' },
     { sel: '.parent-group:last-child .parent-name', en: 'Mr. Manivannan &amp; Mrs. D. Umarani', ta: 'திரு. ஜெ. மணிவண்ணன் &amp; திருமதி. தெ. உமாராணி' },
     // Events
     { sel: '#events .section-label', en: 'Save the Date', ta: '' },
@@ -491,13 +491,13 @@
     { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-name', en: 'Nellaiappar Temple', ta: 'நெல்லையப்பர் கோவில்' },
     { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-name', en: 'Sivakalai Archaeological Site', ta: 'சிவகளை அகழாய்வு' },
     { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-name', en: 'Adichanallur Archaeological Site', ta: 'ஆதிச்சநல்லூர் அகழாய்வு' },
-    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-name', en: 'Vallanadu Blackbuck Sanctuary', ta: 'வள்ளநாடு வெளிமான் சரணாலயம்' },
+    { sel: '.attractions-grid .attraction-card:nth-child(3) .attraction-name', en: 'Vallanadu Blackbuck Sanctuary', ta: 'வல்லநாடு வெளிமான் சரணாலயம்' },
     { sel: '.attractions-grid .attraction-card:nth-child(6) .attraction-name', en: 'Manimutharu Falls', ta: 'மணிமுத்தாறு அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-name', en: 'Agasthiyar Falls', ta: 'அகத்தியர் அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-name', en: 'Courtallam Falls', ta: 'குற்றாலம் அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(9) .attraction-name', en: 'Tiruchendur Murugan Temple', ta: 'திருச்செந்தூர் முருகன் கோவில்' },
     // Attraction descriptions
-    { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-desc', en: 'Don’t leave without the legendary wheat halwa. Skip the overrated Iruttu Kadai — try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> instead for the real deal!', ta: 'புகழ்பெற்ற கோதுமை அல்வா சுவைக்காமல் செல்லாதீர்கள். இருட்டுக்கடையைத் தவிர்த்து ,<a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">சாந்தி ஸ்வீட்ஸ்</a> முயற்சியுங்கள்!' },
+    { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-desc', en: 'Don’t leave without the legendary wheat halwa. Try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> for the real deal!', ta: 'புகழ்பெற்ற கோதுமை அல்வா சுவைக்காமல் செல்லாதீர்கள். <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">சாந்தி ஸ்வீட்ஸ்</a> முயற்சியுங்கள்!' },
     { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-desc', en: 'Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.', ta: 'அழகிய திராவிட கட்டிடக்கலை மற்றும் புகழ்பெற்ற இசைத் தூண்களைக் கொண்ட பண்டைய சிவன் கோவில்.' },
     { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-desc', en: 'A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.', ta: 'பண்டைய தமிழ் நாகரிக தொல்பொருட்களை வெளிக்கொணரும் முக்கியமான தொல்பொருள் அகழ்வாய்வு நிலையம்.' },
     { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-desc', en: 'An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.', ta: '3,800 ஆண்டுகள் பழமையான புதைகுழி , இந்தியாவின் மிக முக்கியமான தொல்பொருள் கண்டுபிடிப்புகளில் ஒன்று.' },

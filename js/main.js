@@ -117,7 +117,7 @@
         { number: '16127', name: 'MS Guruvayur Express', dep: '11:07, May 28', arr: '21:10, May 28', duration: '~10h 03m', frequency: 'Daily', board: 'Board May 28' },
         { number: '12633', name: 'Kanyakumari Express', dep: '17:20, May 28', arr: '03:10, May 29', duration: '~9h 50m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20605', name: 'MS TCN SF Express', dep: '16:00, May 28', arr: '04:10, May 29', duration: '~12h 10m', frequency: 'Daily', board: 'Board May 28' },
-        { number: '12667', name: 'MS Cape SF Express', dep: '19:30, May 28', arr: '04:55, May 29', duration: '~9h 25m', frequency: 'Daily', board: 'Board May 28', ticketsAvailable: true },
+        { number: '12667', name: 'MS Cape SF Express', dep: '19:30, May 28', arr: '04:55, May 29', duration: '~9h 25m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20635', name: 'Anantapuri Express', dep: '20:17, May 28', arr: '06:00, May 29', duration: '~9h 43m', frequency: 'Daily', board: 'Board May 28' },
         { number: '12631', name: 'Nellai SF Express', dep: '20:50, May 28', arr: '07:00, May 29', duration: '~10h 10m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20683', name: 'TBM SCT SF Express', dep: '20:50, May 28', arr: '08:45, May 29', duration: '~11h 55m', frequency: 'Tue, Thu, Sun', board: 'Board May 28' },
@@ -150,7 +150,7 @@
         { number: '17069', name: 'HYB Cape Express', dep: '22:00, May 28', arr: '00:20, May 29', duration: '~2h 20m', frequency: 'Thu', board: 'Board May 28' },
         { number: '07230', name: 'HYB Cape Special', dep: '21:50, May 28', arr: '00:23, May 29', duration: '~2h 33m', frequency: 'Thu', board: 'Board May 28' },
         { number: '16729', name: 'MDU Punalur Express', dep: '23:15, May 28', arr: '01:40, May 29', duration: '~2h 25m', frequency: 'Daily', board: 'Board May 28' },
-        { number: '12667', name: 'MS Cape SF Express', dep: '02:35, May 29', arr: '04:55, May 29', duration: '~2h 20m', frequency: 'Daily', board: 'Board May 29', ticketsAvailable: true },
+        { number: '12667', name: 'MS Cape SF Express', dep: '02:35, May 29', arr: '04:55, May 29', duration: '~2h 20m', frequency: 'Daily', board: 'Board May 29' },
         { number: '16707', name: 'MAJN TEN Express', dep: '04:20, May 29', arr: '07:45, May 29', duration: '~3h 25m', frequency: 'Daily', board: 'Board May 29' },
         { number: '20627', name: 'Vande Bharat Express', dep: '10:40, May 28', arr: '12:38, May 28', duration: '~1h 58m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
         { number: '20665', name: 'TEN Vande Bharat', dep: '20:50, May 28', arr: '23:00, May 28', duration: '~2h 10m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
@@ -165,7 +165,7 @@
         { number: '07230', name: 'HYB Cape Special', dep: '19:15, May 28', arr: '00:23, May 29', duration: '~5h 08m', frequency: 'Thu', board: 'Board May 28' },
         { number: '12633', name: 'Kanyakumari Express', dep: '22:30, May 28', arr: '03:10, May 29', duration: '~4h 40m', frequency: 'Daily', board: 'Board May 28' },
         { number: '20605', name: 'MS TCN SF Express', dep: '23:50, May 28', arr: '04:10, May 29', duration: '~4h 20m', frequency: 'Daily', board: 'Board May 28' },
-        { number: '12667', name: 'MS Cape SF Express', dep: '00:30, May 29', arr: '04:55, May 29', duration: '~4h 25m', frequency: 'Daily', board: 'Board May 29', ticketsAvailable: true },
+        { number: '12667', name: 'MS Cape SF Express', dep: '00:30, May 29', arr: '04:55, May 29', duration: '~4h 25m', frequency: 'Daily', board: 'Board May 29' },
         { number: '20627', name: 'Vande Bharat Express', dep: '09:00, May 28', arr: '12:38, May 28', duration: '~3h 38m', frequency: 'Daily (exc Wed)', board: 'Board May 28' },
         { number: '20665', name: 'TEN Vande Bharat', dep: '19:05, May 28', arr: '23:00, May 28', duration: '~3h 55m', frequency: 'Daily (exc Tue)', board: 'Board May 28' }
       ]
@@ -186,6 +186,7 @@
   var trainControls = document.getElementById('trainControls');
   var filterDaily = document.getElementById('filterDaily');
   var filterNoVB = document.getElementById('filterNoVB');
+  var heroScrollIndicator = document.querySelector('.hero-scroll-indicator');
 
   var currentCity = 'chennai';
   var currentSort = 'arrival';
@@ -198,7 +199,6 @@
     showAll: { en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காட்டு' },
     showLess: { en: 'Show Less', ta: 'குறைவாகக் காட்டு' },
     board: { en: 'Board', ta: 'கிளம்பும் தினம்:' },
-    ticketsAvailable: { en: 'Tickets Available', ta: 'டிக்கெட் உள்ளது' },
     frequency: {
       'Daily': 'தினமும்',
       'Thu': 'வியா',
@@ -244,9 +244,6 @@
 
     if (currentSort === 'arrival') {
       trains.sort(function (a, b) {
-        var ta = a.ticketsAvailable ? -1 : 0;
-        var tb = b.ticketsAvailable ? -1 : 0;
-        if (ta !== tb) return ta - tb;
         var va = isVandeBharat(a) ? 1 : 0;
         var vb = isVandeBharat(b) ? 1 : 0;
         if (va !== vb) return va - vb;
@@ -254,9 +251,6 @@
       });
     } else if (currentSort === 'departure') {
       trains.sort(function (a, b) {
-        var ta = a.ticketsAvailable ? -1 : 0;
-        var tb = b.ticketsAvailable ? -1 : 0;
-        if (ta !== tb) return ta - tb;
         var va = isVandeBharat(a) ? 1 : 0;
         var vb = isVandeBharat(b) ? 1 : 0;
         if (va !== vb) return va - vb;
@@ -264,9 +258,6 @@
       });
     } else if (currentSort === 'duration') {
       trains.sort(function (a, b) {
-        var ta = a.ticketsAvailable ? -1 : 0;
-        var tb = b.ticketsAvailable ? -1 : 0;
-        if (ta !== tb) return ta - tb;
         var va = isVandeBharat(a) ? 1 : 0;
         var vb = isVandeBharat(b) ? 1 : 0;
         if (va !== vb) return va - vb;
@@ -291,13 +282,11 @@
     var html = '';
     trains.forEach(function (t) {
       var vb = isVandeBharat(t);
-      var ta = t.ticketsAvailable;
-      html += '<div class="train-card' + (vb ? ' vande-bharat' : '') + (ta ? ' tickets-available' : '') + '">' +
+      html += '<div class="train-card' + (vb ? ' vande-bharat' : '') + '">' +
         '<div class="train-header">' +
           '<span class="train-name">' + t.name + '</span>' +
           '<span class="train-number">#' + t.number + '</span>' +
         '</div>' +
-        (ta ? '<span class="ticket-badge">' + trainLabels.ticketsAvailable[currentLang] + '</span>' : '') +
         '<div class="train-details">' +
           '<span class="train-detail">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
@@ -400,6 +389,7 @@
     { sel: '.hero-groom', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.weds-text', en: 'Weds', ta: 'உடன்' },
     { sel: '.hero-bride', en: 'Akshaya', ta: 'அக்‌ஷயா' },
+    { sel: '.hero-scroll-text', en: 'Scroll for more', ta: 'மேலும் காண கீழே செல்லவும்' },
     // Invocation
     { sel: '.blessing-text', en: 'With love and blessings', ta: 'அன்புடனும் ஆசியுடனும்' },
     { sel: '.parent-group:first-child .parent-label', en: 'Parents of the Groom', ta: 'மணமகனின் பெற்றோர்' },
@@ -464,12 +454,12 @@
     { sel: '.countdown-item:nth-child(4) .countdown-label', en: 'Seconds', ta: 'வினாடிகள்' },
     { sel: '.countdown-message', en: 'Our families are excited in celebrating what we hope will be one of the greatest day of our lives with you.', ta: 'எங்கள் வாழ்க்கையின் ஒரு மிகச்சிறப்பான நாளை தங்களுடன் சேர்ந்து கொண்டாடுவவதில் எங்கள் குடும்பத்தினர் ஆவலுடன் உள்ளனர்.' },
     // Footer
-    { sel: '.footer > p:first-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026' },
+    { sel: '.footer > p:first-of-type', en: 'With Best Compliments from <a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Indian Academic Researchers Association</a>', ta: '<a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Indian Academic Researchers Association</a> இன் வாழ்த்துக்களுடன்' },
+    { sel: '.footer > p:last-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026 &middot; Made with ♥', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026 &middot; ♥ உடன் உருவாக்கப்பட்டது' },
     // Travel
     { sel: '#travel .section-label', en: 'How to', ta: 'எப்படி' },
     { sel: '#travel .section-title', en: 'Reach Tirunelveli', ta: 'திருநெல்வேலி செல்ல' },
     { sel: '.travel-intro', en: 'Muhurtham is at 9:00 AM on Friday, May 29th. Here are some recommended trains.', ta: 'முகூர்த்தம் வெள்ளிக்கிழமை, மே 29 காலை 9:00 மணிக்கு.' },
-    { sel: '.tickets-open-text', en: 'Tickets are now open!', ta: 'டிக்கெட் முன்பதிவு தொடங்கிவிட்டது!' },
     // Attractions
     { sel: '#attractions .section-label', en: 'Explore', ta: 'அருகில் உள்ள' },
     { sel: '#attractions .section-title', en: 'Nearby Attractions', ta: 'சுற்றுலா தளங்கள்' },
@@ -482,7 +472,7 @@
     { sel: '.sort-btn[data-sort="duration"]', en: 'Duration', ta: 'காலம்' },
     { sel: '.show-more-text', en: 'Show All Trains', ta: 'அனைத்து ரயில்களையும் காண' },
     { sel: '.attractions-show-more-text', en: 'Show More', ta: 'மேலும் காண' },
-    { sel: '.footer-small', en: 'Made with ♥', ta: '♥ உடன் உருவாக்கப்பட்டது' },
+
 
     // Loading
     { sel: '.loading-text', en: 'Arivalan &amp; Akshaya', ta: 'அறிவாளன் &amp; அக்‌ஷயா' },
@@ -496,8 +486,9 @@
     { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-name', en: 'Agasthiyar Falls', ta: 'அகத்தியர் அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-name', en: 'Courtallam Falls', ta: 'குற்றாலம் அருவி' },
     { sel: '.attractions-grid .attraction-card:nth-child(9) .attraction-name', en: 'Tiruchendur Murugan Temple', ta: 'திருச்செந்தூர் முருகன் கோவில்' },
+    { sel: '.attractions-grid .attraction-card:nth-child(10) .attraction-name', en: 'Porunai Museum', ta: 'பொருநை அருங்காட்சியகம்' },
     // Attraction descriptions
-    { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-desc', en: 'Don’t leave without the legendary wheat halwa. Try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> for the real deal!', ta: 'புகழ்பெற்ற கோதுமை அல்வா சுவைக்காமல் செல்லாதீர்கள். <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">சாந்தி ஸ்வீட்ஸ்</a> முயற்சியுங்கள்!' },
+    { sel: '.attractions-grid .attraction-card:nth-child(1) .attraction-desc', en: 'Don’t leave without the legendary wheat halwa. Skip the overrated Iruttu Kadai — try <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">Santhi Sweets</a> instead for the real deal!', ta: 'புகழ்பெற்ற கோதுமை அல்வா சுவைக்காமல் செல்லாதீர்கள். <a href="https://maps.app.goo.gl/FDzMyCoymCQKwmcEA" target="_blank" rel="noopener noreferrer" style="color:var(--maroon);text-decoration:underline;font-weight:600;">சாந்தி ஸ்வீட்ஸ்</a> முயற்சியுங்கள்!' },
     { sel: '.attractions-grid .attraction-card:nth-child(2) .attraction-desc', en: 'Ancient Shiva temple with stunning Dravidian architecture and the famous musical pillars.', ta: 'அழகிய திராவிட கட்டிடக்கலை மற்றும் புகழ்பெற்ற இசைத் தூண்களைக் கொண்ட பண்டைய சிவன் கோவில்.' },
     { sel: '.attractions-grid .attraction-card:nth-child(4) .attraction-desc', en: 'A significant archaeological excavation site revealing ancient Tamil civilisation artefacts and heritage.', ta: 'பண்டைய தமிழ் நாகரிக தொல்பொருட்களை வெளிக்கொணரும் முக்கியமான தொல்பொருள் அகழ்வாய்வு நிலையம்.' },
     { sel: '.attractions-grid .attraction-card:nth-child(5) .attraction-desc', en: 'An ancient burial site dating back 3,800 years — one of the most important archaeological discoveries in India.', ta: '3,800 ஆண்டுகள் பழமையான புதைகுழி , இந்தியாவின் மிக முக்கியமான தொல்பொருள் கண்டுபிடிப்புகளில் ஒன்று.' },
@@ -506,6 +497,7 @@
     { sel: '.attractions-grid .attraction-card:nth-child(7) .attraction-desc', en: 'A scenic waterfall near Papanasam, believed to be blessed by Sage Agasthiyar.', ta: 'பாபநாசம் அருகே உள்ள இயற்கை எழில் கொஞ்சும் அருவி, அகத்திய முனிவரின் அருளால் புனிதமானது.' },
     { sel: '.attractions-grid .attraction-card:nth-child(8) .attraction-desc', en: 'The “Spa of South India” — scenic waterfalls surrounded by the Western Ghats, ~60 km away.', ta: '“தென் இந்தியாவின் ஆரோக்கிய நீரூற்று” , மேற்குத் தொடர்ச்சி மலைகளால் சூழப்பட்ட அழகிய அருவிகள், ~60 கி.மீ. தொலைவில்.' },
     { sel: '.attractions-grid .attraction-card:nth-child(9) .attraction-desc', en: 'One of the six abodes of Lord Murugan, a magnificent seaside temple ~80 km from the city.', ta: 'முருகப் பெருமானின் ஆறுபடை வீடுகளில் ஒன்று, நகரத்திலிருந்து ~80 கி.மீ. தொலைவிலுள்ள கடலோர கோவில்.' },
+    { sel: '.attractions-grid .attraction-card:nth-child(10) .attraction-desc', en: 'A museum showcasing the rich cultural heritage and archaeological finds of the Thamirabarani (Porunai) river civilisation.', ta: 'தாமிரபரணி (பொருநை) நதி நாகரிகத்தின் பண்பாட்டு பாரம்பரியம் மற்றும் தொல்பொருள் கண்டுபிடிப்புகளை காட்சிப்படுத்தும் அருங்காட்சியகம்.' },
     // Attraction links
     { selAll: '.attraction-link', en: 'View on Map →', ta: 'வரைபடத்தில் காண →' },
     // City buttons
@@ -538,6 +530,9 @@
       renderTrains(currentCity);
       if (langToggleLabel) {
         langToggleLabel.textContent = currentLang === 'en' ? 'தமிழில் காண' : 'English';
+      }
+      if (heroScrollIndicator) {
+        heroScrollIndicator.setAttribute('aria-label', currentLang === 'en' ? 'Scroll to the invitation section' : 'அழைப்புப் பகுதிக்கு செல்ல');
       }
       langToggle.classList.toggle('active', currentLang === 'ta');
       langToggle.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Tamil' : 'Switch to English');

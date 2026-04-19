@@ -649,7 +649,7 @@ a {
   background-image: url('../assets/ArchBackground.png');
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: cover;
+  background-size: clamp(1100px, 200vw, 2300px) auto;
   opacity: 0.25;
   pointer-events: none;
   z-index: 0;

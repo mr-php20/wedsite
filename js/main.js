@@ -553,5 +553,47 @@
     });
   }
 
+  /* ---------- INVITATION CARD VIEWER ---------- */
+  var inviteModal = document.getElementById('inviteModal');
+  var inviteToggle = document.getElementById('inviteCardToggle');
+  var inviteClose = document.getElementById('inviteModalClose');
+  var inviteCardLabel = document.getElementById('inviteCardLabel');
+
+  function openInviteModal() {
+    if (inviteModal) {
+      inviteModal.classList.add('active');
+      inviteModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeInviteModal() {
+    if (inviteModal) {
+      inviteModal.classList.remove('active');
+      inviteModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (inviteToggle) {
+    inviteToggle.addEventListener('click', openInviteModal);
+  }
+  if (inviteClose) {
+    inviteClose.addEventListener('click', closeInviteModal);
+  }
+  if (inviteModal) {
+    inviteModal.addEventListener('click', function (e) {
+      if (e.target === inviteModal) closeInviteModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && inviteModal.classList.contains('active')) {
+        closeInviteModal();
+      }
+    });
+  }
+
+  // Add invite button label to translations
+  translations.push({ sel: '#inviteCardLabel', en: 'Invite Card', ta: 'அழைப்பு பத்திரிக்கை' });
+
 
 })();

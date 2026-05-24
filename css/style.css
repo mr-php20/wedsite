@@ -932,6 +932,13 @@ a {
   transform: scale(1.1);
 }
 
+@media (hover: none) {
+  .lang-toggle:hover {
+    background: var(--maroon);
+    transform: none;
+  }
+}
+
 .lang-toggle.active {
   font-family: var(--font-body);
   font-size: 0.85rem;

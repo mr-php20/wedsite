@@ -18,7 +18,7 @@
   }
 
   /* ---------- LIVE INDICATOR ---------- */
-  var liveStart = new Date('2026-05-23T08:30:00+05:30').getTime();
+  var liveStart = new Date('2026-05-29T08:30:00+05:30').getTime();
   var liveEnd = new Date('2026-05-29T16:30:00+05:30').getTime();
   var liveIndicator = document.getElementById('liveIndicator');
   var headerWidgetBar = document.getElementById('headerWidgetBar');

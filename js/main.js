@@ -15,6 +15,20 @@
     });
   }
 
+  /* ---------- LIVE INDICATOR ---------- */
+  var liveStart = new Date('2026-05-29T08:30:00+05:30').getTime();
+  var liveEnd = new Date('2026-05-29T16:30:00+05:30').getTime();
+  var liveIndicator = document.getElementById('liveIndicator');
+
+  function checkLive() {
+    var now = Date.now();
+    if (liveIndicator) {
+      liveIndicator.style.display = (now >= liveStart && now <= liveEnd) ? 'flex' : 'none';
+    }
+  }
+  checkLive();
+  setInterval(checkLive, 30000);
+
   /* ---------- COUNTDOWN TIMER ---------- */
   const weddingDate = new Date('2026-05-29T09:00:00+05:30').getTime();
 
@@ -594,6 +608,8 @@
 
   // Add invite button label to translations
   translations.push({ sel: '#inviteCardLabel', en: 'Invite Card', ta: 'அழைப்பு பத்திரிக்கை' });
+  translations.push({ sel: '#headerWidgetText', en: 'Wedding Photos', ta: 'திருமணப் புகைப்படங்கள்' });
+  translations.push({ sel: '#liveText', en: 'Live', ta: 'நேரலை' });
 
 
 })();

@@ -5,6 +5,8 @@
 (function () {
   'use strict';
 
+  var currentLang = 'en';
+
   /* ---------- LOADING SCREEN ---------- */
   const loadingScreen = document.getElementById('loadingScreen');
   if (loadingScreen) {
@@ -40,23 +42,48 @@
   const hoursEl  = document.getElementById('cdHours');
   const minsEl   = document.getElementById('cdMinutes');
   const secsEl   = document.getElementById('cdSeconds');
+  var countdownSectionLabel = document.querySelector('#countdown .section-label');
+  var countdownSectionTitle = document.querySelector('#countdown .section-title');
+  var countdownMessage = document.querySelector('.countdown-message');
+  var marriedState = false;
+
+  var marriedTexts = {
+    label: { en: '\u{1F389}', ta: '\u{1F389}' },
+    title: { en: 'We\'re Married!', ta: 'நாங்கள் இணைந்துவிட்டோம்!' },
+    message: { en: 'Thank you for being part of our special day. Here\'s to forever together!', ta: 'எங்கள் சிறப்பான நாளில் பங்கேற்றதற்கு நன்றி. என்றும் இணைந்தே!' }
+  };
+
+  function switchToMarriedState() {
+    if (marriedState) return;
+    marriedState = true;
+    if (countdownSectionLabel) countdownSectionLabel.innerHTML = marriedTexts.label[currentLang];
+    if (countdownSectionTitle) countdownSectionTitle.innerHTML = marriedTexts.title[currentLang];
+    if (countdownMessage) countdownMessage.innerHTML = marriedTexts.message[currentLang];
+  }
 
   function updateCountdown() {
     const now  = Date.now();
     const diff = weddingDate - now;
 
     if (diff <= 0) {
-      if (daysEl)  daysEl.textContent  = '0';
-      if (hoursEl) hoursEl.textContent = '0';
-      if (minsEl)  minsEl.textContent  = '0';
-      if (secsEl)  secsEl.textContent  = '0';
+      switchToMarriedState();
+      var elapsed = now - weddingDate;
+      var d = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+      var h = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var m = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+      var s = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+      if (daysEl)  daysEl.textContent  = d;
+      if (hoursEl) hoursEl.textContent = h;
+      if (minsEl)  minsEl.textContent  = m;
+      if (secsEl)  secsEl.textContent  = s;
       return;
     }
 
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var s = Math.floor((diff % (1000 * 60)) / 1000);
 
     if (daysEl)  daysEl.textContent  = d;
     if (hoursEl) hoursEl.textContent = h;
@@ -221,7 +248,6 @@
 
   var currentCity = 'chennai';
   var currentSort = 'arrival';
-  var currentLang = 'en';
 
   var trainLabels = {
     dep: { en: 'Dep:', ta: 'புறப்பாடு:' },
@@ -476,14 +502,11 @@
     { sel: '.follow-text-3', en: 'action', ta: '' },
     { sel: '.instagram-btns .instagram-btn:first-child .btn-text', en: 'Arivalan', ta: 'அறிவாளன்' },
     { sel: '.instagram-btns .instagram-btn:last-child .btn-text', en: 'Akshaya', ta: 'அக்‌ஷயா' },
-    // Countdown
-    { sel: '#countdown .section-label', en: 'The', ta: '' },
-    { sel: '#countdown .section-title', en: 'Countdown Begins', ta: 'திருமணத்திற்கு மீதம் உள்ள நேரம்' },
+    // Countdown (only applied when still counting down; married state handled by JS)
     { sel: '.countdown-item:nth-child(1) .countdown-label', en: 'Days', ta: 'நாட்கள்' },
     { sel: '.countdown-item:nth-child(2) .countdown-label', en: 'Hours', ta: 'மணி' },
     { sel: '.countdown-item:nth-child(3) .countdown-label', en: 'Minutes', ta: 'நிமிடங்கள்' },
     { sel: '.countdown-item:nth-child(4) .countdown-label', en: 'Seconds', ta: 'வினாடிகள்' },
-    { sel: '.countdown-message', en: 'Our families are excited in celebrating what we hope will be one of the greatest day of our lives with you.', ta: 'எங்கள் வாழ்க்கையின் ஒரு மிகச்சிறப்பான நாளை தங்களுடன் சேர்ந்து கொண்டாடுவவதில் எங்கள் குடும்பத்தினர் ஆவலுடன் உள்ளனர்.' },
     // Footer
     { sel: '.footer > p:first-of-type', en: 'With Best Compliments from <br/><a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:900;">Indian Academic Researchers Association</a>', ta: '<a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:700;">Indian Academic Researchers Association</a> இன் வாழ்த்துக்களுடன்' },
     { sel: '.footer > p:last-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026 &middot; Made with ♥', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026 &middot; ♥ உடன் உருவாக்கப்பட்டது' },
@@ -568,6 +591,15 @@
       langToggle.classList.toggle('active', currentLang === 'ta');
       langToggle.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Tamil' : 'Switch to English');
       document.documentElement.lang = currentLang;
+      if (marriedState) {
+        if (countdownSectionLabel) countdownSectionLabel.innerHTML = marriedTexts.label[currentLang];
+        if (countdownSectionTitle) countdownSectionTitle.innerHTML = marriedTexts.title[currentLang];
+        if (countdownMessage) countdownMessage.innerHTML = marriedTexts.message[currentLang];
+      } else {
+        if (countdownSectionLabel) countdownSectionLabel.innerHTML = currentLang === 'en' ? 'The' : '';
+        if (countdownSectionTitle) countdownSectionTitle.innerHTML = currentLang === 'en' ? 'Countdown Begins' : 'திருமணத்திற்கு மீதம் உள்ள நேரம்';
+        if (countdownMessage) countdownMessage.innerHTML = currentLang === 'en' ? 'Our families are excited in celebrating what we hope will be one of the greatest day of our lives with you.' : 'எங்கள் வாழ்க்கையின் ஒரு மிகச்சிறப்பான நாளை தங்களுடன் சேர்ந்து கொண்டாடுவவதில் எங்கள் குடும்பத்தினர் ஆவலுடன் உள்ளனர்.';
+      }
     });
   }
 

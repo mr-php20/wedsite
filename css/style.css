@@ -847,6 +847,7 @@ a {
 .header-widget-bar {
   position: fixed;
   top: 1rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
@@ -914,6 +915,7 @@ a {
   z-index: 1000;
   width: 60px;
   height: 40px;
+  height: 40px;
   border-radius: 10%;
   background: var(--maroon);
   color: var(--ivory);
@@ -953,6 +955,8 @@ a {
   top: 4rem;
   right: 0.2rem;
   z-index: 1000;
+  max-width: 85px;
+  height: 40px;
   max-width: 85px;
   height: 40px;
   padding: 0 0.7rem;

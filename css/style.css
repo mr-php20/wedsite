@@ -838,6 +838,7 @@ a {
   font-weight: 600;
   color: var(--maroon);
   line-height: 1.8;
+  white-space: nowrap;
 }
 
 /* Global Language Toggle (fixed top-right) */

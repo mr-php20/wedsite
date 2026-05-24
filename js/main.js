@@ -481,7 +481,7 @@
     { sel: '.countdown-item:nth-child(4) .countdown-label', en: 'Seconds', ta: 'வினாடிகள்' },
     { sel: '.countdown-message', en: 'Our families are excited in celebrating what we hope will be one of the greatest day of our lives with you.', ta: 'எங்கள் வாழ்க்கையின் ஒரு மிகச்சிறப்பான நாளை தங்களுடன் சேர்ந்து கொண்டாடுவவதில் எங்கள் குடும்பத்தினர் ஆவலுடன் உள்ளனர்.' },
     // Footer
-    { sel: '.footer > p:first-of-type', en: 'With Best Compliments from <br/><a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Indian Academic Researchers Association</a>', ta: '<a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">Indian Academic Researchers Association</a> இன் வாழ்த்துக்களுடன்' },
+    { sel: '.footer > p:first-of-type', en: 'With Best Compliments from <br/><a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:900;">Indian Academic Researchers Association</a>', ta: '<a href="https://iaraindia.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:700;">Indian Academic Researchers Association</a> இன் வாழ்த்துக்களுடன்' },
     { sel: '.footer > p:last-of-type', en: 'Arivalan &amp; Akshaya &middot; 29 May 2026 &middot; Made with ♥', ta: 'அறிவாளன் &amp; அக்‌ஷயா &middot; 29 மே 2026 &middot; ♥ உடன் உருவாக்கப்பட்டது' },
     // Travel
     { sel: '#travel .section-label', en: 'How to', ta: 'எப்படி' },

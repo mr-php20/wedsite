@@ -583,7 +583,7 @@
       collapseList();
       renderTrains(currentCity);
       if (langToggleLabel) {
-        langToggleLabel.textContent = currentLang === 'en' ? 'தமிழில் காண' : 'English';
+        langToggleLabel.textContent = currentLang === 'en' ? 'தமிழ்' : 'English';
       }
       if (heroScrollIndicator) {
         heroScrollIndicator.setAttribute('aria-label', currentLang === 'en' ? 'Scroll to the invitation section' : 'அழைப்புப் பகுதிக்கு செல்ல');
@@ -643,7 +643,7 @@
   }
 
   // Add invite button label to translations
-  translations.push({ sel: '#inviteCardLabel', en: 'Invite Card', ta: 'அழைப்பு பத்திரிக்கை' });
+  translations.push({ sel: '#inviteCardLabel', en: 'Invite<br/>Card', ta: 'பத்திரிக்கை' });
   translations.push({ sel: '#headerWidgetText', en: 'Wedding Photos', ta: 'திருமணப் புகைப்படங்கள்' });
   translations.push({ sel: '#liveText', en: 'Live', ta: 'நேரலை' });
   translations.push({ sel: '#photosDriveBtnText', en: 'View Wedding Photos', ta: 'திருமணப் புகைப்படங்களைக் காண' });

@@ -830,11 +830,12 @@ a {
 .kural-content {
   text-align: center;
   flex: 1;
+  min-width: 0;
 }
 
 .kural-tamil {
   font-family: var(--font-tamil);
-  font-size: clamp(1rem, 1.1vw + 0.4rem, 1.1rem);
+  font-size: clamp(0.72rem, 2.8vw, 1.1rem);
   font-weight: 600;
   color: var(--maroon);
   line-height: 1.8;
@@ -1840,23 +1841,49 @@ a {
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--gold);
+  gap: 0.6rem;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--gold) 0%, #e8c94a 50%, var(--gold) 100%);
+  background-size: 200% 200%;
+  animation: shineBtn 2s ease-in-out infinite;
   color: var(--dark);
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 3rem;
   text-decoration: none;
-  transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4), 0 0 15px rgba(212, 175, 55, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.photos-drive-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shineBtn {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { left: -60%; }
+  50%, 100% { left: 120%; }
 }
 
 .photos-drive-btn:hover {
-  background: var(--gold-dark, #c4973a);
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 /* ==========================================

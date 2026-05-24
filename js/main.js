@@ -18,7 +18,7 @@
   }
 
   /* ---------- LIVE INDICATOR ---------- */
-  var liveStart = new Date('2026-05-29T08:30:00+05:30').getTime();
+  var liveStart = new Date('2026-05-23T08:30:00+05:30').getTime();
   var liveEnd = new Date('2026-05-29T16:30:00+05:30').getTime();
   var liveIndicator = document.getElementById('liveIndicator');
   var headerWidgetBar = document.getElementById('headerWidgetBar');
@@ -646,6 +646,27 @@
   translations.push({ sel: '#inviteCardLabel', en: 'Invite Card', ta: 'அழைப்பு பத்திரிக்கை' });
   translations.push({ sel: '#headerWidgetText', en: 'Wedding Photos', ta: 'திருமணப் புகைப்படங்கள்' });
   translations.push({ sel: '#liveText', en: 'Live', ta: 'நேரலை' });
+  translations.push({ sel: '#photosDriveBtnText', en: 'View Wedding Photos', ta: 'திருமணப் புகைப்படங்களைக் காண' });
+
+  /* ---------- HEADER PILL SCROLL TO COUNTDOWN ---------- */
+  if (headerWidgetBar) {
+    headerWidgetBar.addEventListener('click', function () {
+      var countdownSection = document.getElementById('countdown');
+      if (countdownSection) {
+        countdownSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  /* ---------- PHOTOS DRIVE BUTTON VISIBILITY ---------- */
+  var photosDriveBtn = document.getElementById('photosDriveBtn');
+  function checkPhotosBtn() {
+    if (photosDriveBtn) {
+      photosDriveBtn.style.display = (Date.now() >= liveStart) ? 'inline-flex' : 'none';
+    }
+  }
+  checkPhotosBtn();
+  setInterval(checkPhotosBtn, 30000);
 
 
 })();

@@ -910,7 +910,7 @@ a {
 .lang-toggle {
   position: fixed;
   top: 1rem;
-  right: 0.5rem;
+  right: 0.2rem;
   z-index: 1000;
   width: 60px;
   height: 40px;
@@ -951,7 +951,7 @@ a {
 .invite-card-toggle {
   position: fixed;
   top: 4rem;
-  right: 0.5rem;
+  right: 0.2rem;
   z-index: 1000;
   max-width: 85px;
   height: 40px;

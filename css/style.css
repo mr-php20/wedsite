@@ -846,7 +846,7 @@ a {
 /* Header Widget Bar */
 .header-widget-bar {
   position: fixed;
-  top: 1.5rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
@@ -910,10 +910,10 @@ a {
 .lang-toggle {
   position: fixed;
   top: 1rem;
-  right: 1rem;
+  right: 0.5rem;
   z-index: 1000;
   width: 60px;
-  height: 45px;
+  height: 40px;
   border-radius: 10%;
   background: var(--maroon);
   color: var(--ivory);
@@ -950,10 +950,11 @@ a {
 /* Invitation Card Toggle Button */
 .invite-card-toggle {
   position: fixed;
-  top: 1rem;
-  right: 5rem;
+  top: 4.5rem;
+  right: 0.5rem;
   z-index: 1000;
-  height: 45px;
+  max-width: 85px;
+  height: 40px;
   padding: 0 0.7rem;
   border-radius: 10%;
   background: var(--maroon);

@@ -860,7 +860,7 @@ a {
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   aspect-ratio: 5 / 1;
   min-width: 200px;
-  max-width: 280px;
+  max-width: 300px;
   text-decoration: none;
   color: var(--ivory);
   font-family: var(--font-body);
@@ -950,7 +950,7 @@ a {
 /* Invitation Card Toggle Button */
 .invite-card-toggle {
   position: fixed;
-  top: 4.5rem;
+  top: 4rem;
   right: 0.5rem;
   z-index: 1000;
   max-width: 85px;

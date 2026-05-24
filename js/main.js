@@ -19,9 +19,13 @@
   var liveStart = new Date('2026-05-29T08:30:00+05:30').getTime();
   var liveEnd = new Date('2026-05-29T16:30:00+05:30').getTime();
   var liveIndicator = document.getElementById('liveIndicator');
+  var headerWidgetBar = document.getElementById('headerWidgetBar');
 
   function checkLive() {
     var now = Date.now();
+    if (headerWidgetBar) {
+      headerWidgetBar.style.display = (now >= liveStart) ? 'flex' : 'none';
+    }
     if (liveIndicator) {
       liveIndicator.style.display = (now >= liveStart && now <= liveEnd) ? 'flex' : 'none';
     }

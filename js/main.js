@@ -36,7 +36,7 @@
   setInterval(checkLive, 30000);
 
   /* ---------- COUNTDOWN TIMER ---------- */
-  const weddingDate = new Date('2026-05-29T09:00:00+05:30').getTime();
+  const weddingDate = new Date('2026-05-29T09:42:00+05:30').getTime();
 
   const daysEl   = document.getElementById('cdDays');
   const hoursEl  = document.getElementById('cdHours');
